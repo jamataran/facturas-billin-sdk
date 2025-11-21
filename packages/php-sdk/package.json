@@ -4,10 +4,10 @@
   "private": true,
   "description": "PHP SDK for Facturas Billin API",
   "scripts": {
-    "generate": "docker run --rm -v ${PWD}/../..:/workspace openapitools/openapi-generator-cli generate -i /workspace/openapi-spec/swagger.json -g php -o /workspace/packages/php-sdk -c /workspace/packages/php-sdk/openapi-generator-config.yaml || openapi-generator-cli generate -i ../../openapi-spec/swagger.json -g php -o . -c openapi-generator-config.yaml",
+    "generate": "docker run --rm --user $(id -u):$(id -g) -v ${PWD}/../..:/workspace openapitools/openapi-generator-cli generate -i /workspace/openapi-spec/swagger.json -g php -o /workspace/packages/php-sdk -c /workspace/packages/php-sdk/openapi-generator-config.yaml || openapi-generator-cli generate -i ../../openapi-spec/swagger.json -g php -o . -c openapi-generator-config.yaml",
     "install": "composer install",
     "build": "composer install --no-dev --optimize-autoloader",
     "test": "composer test",
-    "clean": "rm -rf lib/ test/ docs/ && composer clear-cache"
+    "clean": "rm -rf lib/ test/ docs/ .openapi-generator/ && composer clear-cache"
   }
 }

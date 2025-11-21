@@ -11,4 +11,5 @@ README.md
 git_push.sh
 .php_cs
 .php_cs.dist
+.php-cs-fixer.dist.php
 phpunit.xml.dist
