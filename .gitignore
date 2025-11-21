@@ -164,7 +164,22 @@ packages/*/docs/
 packages/*/test/
 packages/java-sdk/.openapi-generator/
 packages/php-sdk/.openapi-generator/
-.openapi-generator-ignore
+packages/*/api/
+packages/java-sdk/build.gradle
+packages/java-sdk/build.sbt
+packages/java-sdk/settings.gradle
+packages/java-sdk/gradle.properties
+packages/java-sdk/gradle/
+packages/java-sdk/gradlew
+packages/java-sdk/gradlew.bat
+packages/java-sdk/.travis.yml
+packages/java-sdk/.github/
+packages/java-sdk/git_push.sh
+packages/php-sdk/.travis.yml
+packages/php-sdk/git_push.sh
+packages/php-sdk/.php_cs
+packages/php-sdk/.php_cs.dist
+packages/php-sdk/phpunit.xml.dist
 
 # IDE
 .idea/
