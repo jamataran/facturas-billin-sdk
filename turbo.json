@@ -3,7 +3,7 @@
   "tasks": {
     "generate": {
       "dependsOn": ["^generate"],
-      "inputs": ["openapi-spec/**", "openapi-generator-config.yaml"],
+      "inputs": ["../../openapi-spec/**", "**/openapi-generator-config.yaml"],
       "outputs": ["src/**", "lib/**"]
     },
     "build": {
