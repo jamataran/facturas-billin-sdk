@@ -21,6 +21,3 @@ hideGenerationTimestamp: true
 # Documentation
 generateApiDocumentation: true
 generateModelDocumentation: true
-
-# Additional properties
-additionalModelTypeAnnotations: "@lombok.Builder @lombok.AllArgsConstructor"
