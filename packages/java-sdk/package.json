@@ -1,0 +1,12 @@
+{
+  "name": "@facturas-billin-sdk/java",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Java/Maven SDK for Facturas Billin API",
+  "scripts": {
+    "generate": "mvn org.openapitools:openapi-generator-maven-plugin:generate",
+    "build": "mvn clean package -DskipTests",
+    "test": "mvn test",
+    "clean": "mvn clean && rm -rf src/"
+  }
+}

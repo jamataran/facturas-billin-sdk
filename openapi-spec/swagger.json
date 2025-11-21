@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Facturas Billin API",
+    "description": "API REST de Facturas Billin - PLACEHOLDER - Reemplaza este archivo con la especificación OpenAPI/Swagger oficial de facturasbillin.net",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Facturas Billin",
+      "url": "https://www.facturasbillin.net/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.facturasbillin.net",
+      "description": "Servidor de producción"
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "get": {
+        "summary": "Health check endpoint",
+        "description": "Endpoint de ejemplo para verificar que la API está funcionando",
+        "operationId": "ping",
+        "responses": {
+          "200": {
+            "description": "Respuesta exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
+}
