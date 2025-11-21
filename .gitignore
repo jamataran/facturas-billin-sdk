@@ -107,6 +107,9 @@ dist
 # Docusaurus cache and generated files
 .docusaurus
 
+# Turborepo cache
+.turbo
+
 # Serverless directories
 .serverless/
 
@@ -137,3 +140,57 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# PHP
+vendor/
+composer.lock
+composer.phar
+/phpunit.xml
+.phpunit.result.cache
+.php-cs-fixer.dist.php
+.php_cs
+.php_cs.dist
+
+# Generated SDK files
+packages/*/src/
+packages/*/lib/
+packages/*/docs/
+packages/*/test/
+packages/java-sdk/.openapi-generator/
+packages/php-sdk/.openapi-generator/
+packages/*/api/
+packages/java-sdk/build.gradle
+packages/java-sdk/build.sbt
+packages/java-sdk/settings.gradle
+packages/java-sdk/gradle.properties
+packages/java-sdk/gradle/
+packages/java-sdk/gradlew
+packages/java-sdk/gradlew.bat
+packages/java-sdk/.travis.yml
+packages/java-sdk/.github/
+packages/java-sdk/git_push.sh
+packages/php-sdk/.travis.yml
+packages/php-sdk/git_push.sh
+packages/php-sdk/.php_cs
+packages/php-sdk/.php_cs.dist
+packages/php-sdk/phpunit.xml.dist
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store

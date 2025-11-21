@@ -1,0 +1,45 @@
+{
+  "name": "facturas-billin/php-sdk",
+  "description": "PHP SDK for Facturas Billin REST API (unofficial)",
+  "type": "library",
+  "license": "Apache-2.0",
+  "keywords": [
+    "facturas-billin",
+    "api",
+    "sdk",
+    "php",
+    "billing",
+    "invoicing"
+  ],
+  "homepage": "https://github.com/jamataran/facturas-billin-sdk",
+  "authors": [
+    {
+      "name": "jamataran",
+      "homepage": "https://github.com/jamataran"
+    }
+  ],
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "guzzlehttp/guzzle": "^7.8",
+    "guzzlehttp/psr7": "^2.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6 || ^10.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "FacturasBillin\\SDK\\": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FacturasBillin\\SDK\\Test\\": "test/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  }
+}

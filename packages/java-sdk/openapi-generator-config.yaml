@@ -1,0 +1,23 @@
+# OpenAPI Generator configuration for Java SDK
+---
+# Use Java 11 features
+dateLibrary: java8
+java8: true
+useJakartaEe: false
+
+# Naming conventions
+artifactId: facturas-billin-java-sdk
+artifactVersion: 1.0.0
+groupId: net.facturasbillin
+
+# Code generation options
+serializableModel: true
+useBeanValidation: true
+performBeanValidation: false
+useGzipFeature: true
+useRuntimeException: false
+hideGenerationTimestamp: true
+
+# Documentation
+generateApiDocumentation: true
+generateModelDocumentation: true

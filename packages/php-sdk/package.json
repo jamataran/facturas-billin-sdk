@@ -1,0 +1,13 @@
+{
+  "name": "@facturas-billin-sdk/php",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PHP SDK for Facturas Billin API",
+  "scripts": {
+    "generate": "./generate.sh",
+    "install": "composer install",
+    "build": "composer install --no-dev --optimize-autoloader",
+    "test": "composer test",
+    "clean": "rm -rf lib/ test/ docs/ .openapi-generator/ && composer clear-cache"
+  }
+}

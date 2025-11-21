@@ -1,0 +1,15 @@
+# OpenAPI Generator Ignore
+# Ignore our custom configuration files
+composer.json
+package.json
+openapi-generator-config.yaml
+README.md
+
+# Ignore build files
+.gitignore
+.travis.yml
+git_push.sh
+.php_cs
+.php_cs.dist
+.php-cs-fixer.dist.php
+phpunit.xml.dist

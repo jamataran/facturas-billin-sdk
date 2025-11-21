@@ -1,0 +1,22 @@
+# OpenAPI Generator configuration for PHP SDK
+---
+# Package information
+composerVendorName: facturas-billin
+composerProjectName: php-sdk
+artifactVersion: 1.0.0
+
+# Namespaces
+invokerPackage: FacturasBillin\SDK
+modelPackage: Model
+apiPackage: Api
+
+# PHP version
+phpVersion: 7.4
+
+# Code generation options
+hideGenerationTimestamp: true
+srcBasePath: lib/
+
+# Documentation
+generateApiDocumentation: true
+generateModelDocumentation: true
