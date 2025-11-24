@@ -51,22 +51,70 @@ mvn clean package
 
 ## Uso
 
+### Uso Básico con BillinProvider
+
+```java
+import net.facturasbillin.sdk.BillinProvider;
+import net.facturasbillin.sdk.api.*;
+
+public class Example {
+    public static void main(String[] args) {
+        // Inicializar el provider con tu API key
+        String apiKey = System.getenv("BILLIN_API_KEY");
+        BillinProvider provider = new BillinProvider(apiKey);
+        
+        // Obtener APIs para interactuar con los recursos
+        ContactsApi contactsApi = provider.getContactsApi();
+        InvoicesApi invoicesApi = provider.getInvoicesApi();
+        ProductsApi productsApi = provider.getProductsApi();
+        
+        // Ejemplo: listar contactos
+        try {
+            // var contacts = contactsApi.getContactsList(...);
+            // ... tu código aquí
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Uso Avanzado con ApiClient
+
 ```java
 import net.facturasbillin.sdk.ApiClient;
 import net.facturasbillin.sdk.api.*;
 import net.facturasbillin.sdk.model.*;
 
-public class Example {
+public class AdvancedExample {
     public static void main(String[] args) {
+        // Configurar el cliente manualmente
         ApiClient client = new ApiClient();
+        client.setBasePath("https://api.facturasbillin.net");
         client.setApiKey("YOUR_API_KEY");
         
-        // Usa las APIs generadas
-        // DefaultApi api = new DefaultApi(client);
-        // ... tu código aquí
+        // Crear instancias de APIs
+        ContactsApi contactsApi = new ContactsApi(client);
+        
+        // Usar las APIs
+        try {
+            // var response = contactsApi.someMethod(...);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 ```
+
+### Variables de Entorno
+
+Es recomendable usar variables de entorno para la API key:
+
+```bash
+export BILLIN_API_KEY="tu-api-key-aqui"
+```
+
+O usar un archivo `.env.local` en la raíz del proyecto (ver `.env.example`).
 
 ## Testing
 
