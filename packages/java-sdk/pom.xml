@@ -151,6 +151,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.2</version>
+                <configuration>
+                    <environmentVariables>
+                        <BILLIN_API_KEY>${env.BILLIN_API_KEY}</BILLIN_API_KEY>
+                        <BILLIN_API_URL>${env.BILLIN_API_URL}</BILLIN_API_URL>
+                    </environmentVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>
