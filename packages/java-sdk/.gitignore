@@ -43,6 +43,11 @@ Thumbs.db
 # OpenAPI Generator metadata
 .openapi-generator/
 
+# OpenAPI generated files (regenerated during build)
+src/
+docs/
+api/
+
 # Test reports
 surefire-reports/
 jacoco.xml

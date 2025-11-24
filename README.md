@@ -61,6 +61,50 @@ npm run test
 npm run clean
 ```
 
+### Ejecutar comandos para un solo paquete
+
+Para ejecutar comandos específicos solo para el Java SDK:
+
+```bash
+# Generar solo el Java SDK
+npm run generate -- --filter=@facturas-billin-sdk/java
+
+# Compilar solo el Java SDK
+npm run build -- --filter=@facturas-billin-sdk/java
+
+# Ejecutar tests solo del Java SDK
+npm run test -- --filter=@facturas-billin-sdk/java
+
+# Limpiar solo el Java SDK
+npm run clean -- --filter=@facturas-billin-sdk/java
+```
+
+También puedes ejecutar comandos directamente desde el directorio del paquete:
+
+```bash
+cd packages/java-sdk
+npm run generate  # Genera el código desde OpenAPI spec
+npm run build     # Compila el SDK (mvn clean package)
+npm run test      # Ejecuta los tests (mvn test)
+npm run clean     # Limpia archivos generados (mvn clean)
+```
+
+### Configuración de Variables de Entorno para Tests
+
+Los tests de integración requieren una API key válida de Billin. Para configurarla:
+
+1. Copia el archivo `.env.example` a `.env.local`:
+```bash
+cp .env.example .env.local
+```
+
+2. Edita `.env.local` y agrega tu API key:
+```
+BILLIN_API_KEY=tu-clave-api-aqui
+```
+
+**Nota**: El archivo `.env.local` está en `.gitignore` y no se subirá al repositorio.
+
 ## 📖 Uso de los SDKs
 
 ### Java SDK
@@ -122,18 +166,46 @@ facturas-billin-sdk/
 │   ├── java-sdk/           # SDK para Java/Maven
 │   │   ├── pom.xml
 │   │   ├── openapi-generator-config.yaml
+│   │   ├── package.json
 │   │   └── README.md
 │   └── php-sdk/            # SDK para PHP
 │       ├── composer.json
 │       ├── openapi-generator-config.yaml
+│       ├── package.json
 │       └── README.md
 ├── openapi-spec/
 │   ├── swagger.json        # Especificación OpenAPI (PLACEHOLDER)
 │   └── README.md
+├── .github/
+│   └── workflows/
+│       └── ci.yml          # GitHub Actions CI/CD
 ├── package.json            # Configuración del monorepo
 ├── turbo.json              # Configuración de Turborepo
+├── .env.example            # Ejemplo de configuración de entorno
 └── README.md
 ```
+
+## 🏗️ Arquitectura y Flujo de Ejecución
+
+El proyecto utiliza una arquitectura en capas para la gestión y ejecución de tareas:
+
+```
+TurboRepo → Node/npm → Maven → Tests
+```
+
+### Cómo funciona:
+
+1. **TurboRepo**: Orquesta y cachea las tareas del monorepo, optimizando la ejecución paralela
+2. **Node/npm**: Proporciona gestión de workspaces y scripts multiplataforma
+3. **Maven**: Maneja la generación de código desde OpenAPI, compilación y testing del Java SDK
+4. **Tests**: JUnit 5 para tests unitarios e integración
+
+Este flujo permite:
+- ✅ Ejecución local sin scripts de shell
+- ✅ Integración con CI/CD (GitHub Actions)
+- ✅ Cacheo inteligente de builds
+- ✅ Ejecución paralela de tests en múltiples SDKs
+- ✅ Multiplataforma (Windows, Linux, macOS)
 
 ## 🛠️ Desarrollo
 

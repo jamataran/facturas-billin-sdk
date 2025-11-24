@@ -7,6 +7,6 @@
     "generate": "mvn org.openapitools:openapi-generator-maven-plugin:generate",
     "build": "mvn clean package -DskipTests",
     "test": "mvn test",
-    "clean": "mvn clean && rm -rf src/"
+    "clean": "mvn clean"
   }
 }
