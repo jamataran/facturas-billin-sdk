@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,8 +80,6 @@ public class TokenAnswerDto implements Serializable {
    * @return accessToken
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getAccessToken() {
     return accessToken;
   }
@@ -103,9 +99,6 @@ public class TokenAnswerDto implements Serializable {
    * @return expireIn
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getExpireIn() {
     return expireIn;
   }
@@ -125,8 +118,6 @@ public class TokenAnswerDto implements Serializable {
    * @return refreshToken
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getRefreshToken() {
     return refreshToken;
   }

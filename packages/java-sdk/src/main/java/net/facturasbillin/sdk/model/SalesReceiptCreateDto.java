@@ -29,8 +29,6 @@ import net.facturasbillin.sdk.model.DocumentTaxLineBaseDto;
 import net.facturasbillin.sdk.model.DocumentTotalDto;
 import net.facturasbillin.sdk.model.VisualLineDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -89,11 +87,11 @@ public class SalesReceiptCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_VISUAL_LINES = "visualLines";
   @SerializedName(SERIALIZED_NAME_VISUAL_LINES)
-  private List<@Valid VisualLineDto> visualLines;
+  private List<VisualLineDto> visualLines;
 
   public static final String SERIALIZED_NAME_TAX_LINES = "taxLines";
   @SerializedName(SERIALIZED_NAME_TAX_LINES)
-  private List<@Valid DocumentTaxLineBaseDto> taxLines;
+  private List<DocumentTaxLineBaseDto> taxLines;
 
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
@@ -395,7 +393,7 @@ public class SalesReceiptCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private List<@Valid DocumentLineDto> lines = new ArrayList<>();
+  private List<DocumentLineDto> lines = new ArrayList<>();
 
   public SalesReceiptCreateDto() {
   }
@@ -410,7 +408,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return serieId
   **/
   @javax.annotation.Nullable
-
   public String getSerieId() {
     return serieId;
   }
@@ -430,7 +427,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return serialCode
   **/
   @javax.annotation.Nullable
-
   public String getSerialCode() {
     return serialCode;
   }
@@ -452,8 +448,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("1000000000")
   public BigDecimal getCode() {
     return code;
   }
@@ -475,8 +469,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return mask
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("1000000000")
   public BigDecimal getMask() {
     return mask;
   }
@@ -496,7 +488,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -516,7 +507,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
-
   public String getReference() {
     return reference;
   }
@@ -526,7 +516,7 @@ public class SalesReceiptCreateDto implements Serializable {
   }
 
 
-  public SalesReceiptCreateDto visualLines(List<@Valid VisualLineDto> visualLines) {
+  public SalesReceiptCreateDto visualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
     return this;
   }
@@ -544,18 +534,16 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return visualLines
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid VisualLineDto> getVisualLines() {
+  public List<VisualLineDto> getVisualLines() {
     return visualLines;
   }
 
-  public void setVisualLines(List<@Valid VisualLineDto> visualLines) {
+  public void setVisualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
   }
 
 
-  public SalesReceiptCreateDto taxLines(List<@Valid DocumentTaxLineBaseDto> taxLines) {
+  public SalesReceiptCreateDto taxLines(List<DocumentTaxLineBaseDto> taxLines) {
     this.taxLines = taxLines;
     return this;
   }
@@ -573,13 +561,11 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return taxLines
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid DocumentTaxLineBaseDto> getTaxLines() {
+  public List<DocumentTaxLineBaseDto> getTaxLines() {
     return taxLines;
   }
 
-  public void setTaxLines(List<@Valid DocumentTaxLineBaseDto> taxLines) {
+  public void setTaxLines(List<DocumentTaxLineBaseDto> taxLines) {
     this.taxLines = taxLines;
   }
 
@@ -594,7 +580,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return comments
   **/
   @javax.annotation.Nullable
-
   public String getComments() {
     return comments;
   }
@@ -614,8 +599,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return currency
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -635,8 +618,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return total
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public DocumentTotalDto getTotal() {
     return total;
   }
@@ -656,7 +637,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return isPaid
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsPaid() {
     return isPaid;
   }
@@ -676,8 +656,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return paidAmount
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getPaidAmount() {
     return paidAmount;
   }
@@ -697,8 +675,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return retentionAmount
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getRetentionAmount() {
     return retentionAmount;
   }
@@ -718,8 +694,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return retentionPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getRetentionPercentage() {
     return retentionPercentage;
   }
@@ -739,7 +713,6 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return showProductReference
   **/
   @javax.annotation.Nullable
-
   public Boolean getShowProductReference() {
     return showProductReference;
   }
@@ -749,7 +722,7 @@ public class SalesReceiptCreateDto implements Serializable {
   }
 
 
-  public SalesReceiptCreateDto lines(List<@Valid DocumentLineDto> lines) {
+  public SalesReceiptCreateDto lines(List<DocumentLineDto> lines) {
     this.lines = lines;
     return this;
   }
@@ -767,14 +740,11 @@ public class SalesReceiptCreateDto implements Serializable {
    * @return lines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentLineDto> getLines() {
+  public List<DocumentLineDto> getLines() {
     return lines;
   }
 
-  public void setLines(List<@Valid DocumentLineDto> lines) {
+  public void setLines(List<DocumentLineDto> lines) {
     this.lines = lines;
   }
 

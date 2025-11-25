@@ -24,8 +24,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -103,8 +101,6 @@ public class CreateProductDto implements Serializable {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(max=255)
   public String getName() {
     return name;
   }
@@ -124,7 +120,6 @@ public class CreateProductDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nullable
- @Size(max=2000)
   public String getDescription() {
     return description;
   }
@@ -144,7 +139,6 @@ public class CreateProductDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
- @Size(max=50)
   public String getReference() {
     return reference;
   }
@@ -164,8 +158,6 @@ public class CreateProductDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getTaxKey() {
     return taxKey;
   }
@@ -187,8 +179,6 @@ public class CreateProductDto implements Serializable {
    * @return buyingPrice
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("999999")
   public BigDecimal getBuyingPrice() {
     return buyingPrice;
   }
@@ -210,8 +200,6 @@ public class CreateProductDto implements Serializable {
    * @return sellingPrice
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("999999")
   public BigDecimal getSellingPrice() {
     return sellingPrice;
   }
@@ -232,8 +220,6 @@ public class CreateProductDto implements Serializable {
    * @return retailPrice
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0")
   public BigDecimal getRetailPrice() {
     return retailPrice;
   }
@@ -255,8 +241,6 @@ public class CreateProductDto implements Serializable {
    * @return discountPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("100")
   public BigDecimal getDiscountPercentage() {
     return discountPercentage;
   }

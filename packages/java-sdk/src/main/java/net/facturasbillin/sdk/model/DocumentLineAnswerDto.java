@@ -24,8 +24,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -321,8 +319,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(max=250)
   public String getName() {
     return name;
   }
@@ -342,7 +338,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nullable
- @Size(max=2000)
   public String getDescription() {
     return description;
   }
@@ -362,7 +357,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return productId
   **/
   @javax.annotation.Nullable
-
   public String getProductId() {
     return productId;
   }
@@ -382,9 +376,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return quantity
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getQuantity() {
     return quantity;
   }
@@ -404,9 +395,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return unitPrice
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getUnitPrice() {
     return unitPrice;
   }
@@ -426,9 +414,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return subtotal
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSubtotal() {
     return subtotal;
   }
@@ -448,9 +433,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return totalAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTotalAmount() {
     return totalAmount;
   }
@@ -470,9 +452,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return discountPercentage
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getDiscountPercentage() {
     return discountPercentage;
   }
@@ -492,9 +471,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return discountAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getDiscountAmount() {
     return discountAmount;
   }
@@ -514,8 +490,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public Object getTaxKey() {
     return taxKey;
   }
@@ -535,9 +509,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return taxBase
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxBase() {
     return taxBase;
   }
@@ -557,9 +528,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return taxPercentage
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxPercentage() {
     return taxPercentage;
   }
@@ -579,9 +547,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return taxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxAmount() {
     return taxAmount;
   }
@@ -601,9 +566,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return salesEqTaxPercentage
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSalesEqTaxPercentage() {
     return salesEqTaxPercentage;
   }
@@ -623,9 +585,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return salesEqTaxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSalesEqTaxAmount() {
     return salesEqTaxAmount;
   }
@@ -645,7 +604,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return taxExemptionGroup
   **/
   @javax.annotation.Nullable
-
   public TaxExemptionGroupEnum getTaxExemptionGroup() {
     return taxExemptionGroup;
   }
@@ -665,7 +623,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return taxExemptionCause
   **/
   @javax.annotation.Nullable
-
   public TaxExemptionCauseEnum getTaxExemptionCause() {
     return taxExemptionCause;
   }
@@ -685,7 +642,6 @@ public class DocumentLineAnswerDto implements Serializable {
    * @return operation
   **/
   @javax.annotation.Nullable
-
   public OperationEnum getOperation() {
     return operation;
   }

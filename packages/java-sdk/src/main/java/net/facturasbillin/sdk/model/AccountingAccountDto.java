@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -147,8 +145,6 @@ public class AccountingAccountDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -168,8 +164,6 @@ public class AccountingAccountDto implements Serializable {
    * @return alias
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getAlias() {
     return alias;
   }
@@ -189,8 +183,6 @@ public class AccountingAccountDto implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }
@@ -210,7 +202,6 @@ public class AccountingAccountDto implements Serializable {
    * @return IBAN
   **/
   @javax.annotation.Nullable
-
   public String getIBAN() {
     return IBAN;
   }
@@ -230,7 +221,6 @@ public class AccountingAccountDto implements Serializable {
    * @return swiftCode
   **/
   @javax.annotation.Nullable
-
   public String getSwiftCode() {
     return swiftCode;
   }
@@ -250,7 +240,6 @@ public class AccountingAccountDto implements Serializable {
    * @return creditCardNumber
   **/
   @javax.annotation.Nullable
-
   public String getCreditCardNumber() {
     return creditCardNumber;
   }

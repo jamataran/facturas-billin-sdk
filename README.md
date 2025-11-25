@@ -135,6 +135,24 @@ facturas-billin-sdk/
 └── README.md
 ```
 
+## 🧪 Testing
+
+Para ejecutar los tests de todos los paquetes:
+
+```bash
+npm test
+```
+
+Para ejecutar tests de un paquete específico:
+
+```bash
+turbo run test --filter=@facturas-billin-sdk/java
+```
+
+**Requisito**: Asegúrate de tener un archivo `.env.local` en el directorio del SDK con las credenciales de prueba.
+
+Para más detalles, ver [TESTING.md](./TESTING.md)
+
 ## 🛠️ Desarrollo
 
 ### Agregar un Nuevo Lenguaje

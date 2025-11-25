@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import net.facturasbillin.sdk.model.TaxAuthorityDescriptionErrorDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -78,8 +76,6 @@ public class TaxAuthorityErrorDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getCode() {
     return code;
   }
@@ -99,9 +95,6 @@ public class TaxAuthorityErrorDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public TaxAuthorityDescriptionErrorDto getDescription() {
     return description;
   }

@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import net.facturasbillin.sdk.model.GetAddressAnswerDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,8 +80,6 @@ public class BusinessBaseAnswerDto implements Serializable {
    * @return fiscalName
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getFiscalName() {
     return fiscalName;
   }
@@ -103,8 +99,6 @@ public class BusinessBaseAnswerDto implements Serializable {
    * @return vatNumber
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getVatNumber() {
     return vatNumber;
   }
@@ -124,9 +118,6 @@ public class BusinessBaseAnswerDto implements Serializable {
    * @return address
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public GetAddressAnswerDto getAddress() {
     return address;
   }

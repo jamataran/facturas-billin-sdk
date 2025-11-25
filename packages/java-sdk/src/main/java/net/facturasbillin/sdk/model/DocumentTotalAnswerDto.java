@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -90,9 +88,6 @@ public class DocumentTotalAnswerDto implements Serializable {
    * @return subtotal
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSubtotal() {
     return subtotal;
   }
@@ -112,9 +107,6 @@ public class DocumentTotalAnswerDto implements Serializable {
    * @return discountPercentage
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getDiscountPercentage() {
     return discountPercentage;
   }
@@ -134,9 +126,6 @@ public class DocumentTotalAnswerDto implements Serializable {
    * @return discountAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getDiscountAmount() {
     return discountAmount;
   }
@@ -156,9 +145,6 @@ public class DocumentTotalAnswerDto implements Serializable {
    * @return totalAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTotalAmount() {
     return totalAmount;
   }
@@ -178,9 +164,6 @@ public class DocumentTotalAnswerDto implements Serializable {
    * @return amountDue
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getAmountDue() {
     return amountDue;
   }

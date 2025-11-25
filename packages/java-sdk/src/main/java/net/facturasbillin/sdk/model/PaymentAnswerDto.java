@@ -30,8 +30,6 @@ import net.facturasbillin.sdk.model.PaymentAnswerDtoContact;
 import net.facturasbillin.sdk.model.PaymentAnswerDtoRemittance;
 import net.facturasbillin.sdk.model.PaymentDocumentDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -274,7 +272,7 @@ public class PaymentAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_DOCUMENTS = "documents";
   @SerializedName(SERIALIZED_NAME_DOCUMENTS)
-  private List<@Valid PaymentDocumentDto> documents = new ArrayList<>();
+  private List<PaymentDocumentDto> documents = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ACCOUNTING_ACCOUNT = "accountingAccount";
   @SerializedName(SERIALIZED_NAME_ACCOUNTING_ACCOUNT)
@@ -301,8 +299,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -322,9 +318,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -344,9 +337,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -366,9 +356,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return operationDate
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getOperationDate() {
     return operationDate;
   }
@@ -388,9 +375,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return amount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getAmount() {
     return amount;
   }
@@ -410,8 +394,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return method
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public MethodEnum getMethod() {
     return method;
   }
@@ -431,8 +413,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }
@@ -452,8 +432,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return status
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public StatusEnum getStatus() {
     return status;
   }
@@ -473,9 +451,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return contact
   **/
   @javax.annotation.Nullable
-  @NotNull
-  @Valid
-
   public PaymentAnswerDtoContact getContact() {
     return contact;
   }
@@ -485,7 +460,7 @@ public class PaymentAnswerDto implements Serializable {
   }
 
 
-  public PaymentAnswerDto documents(List<@Valid PaymentDocumentDto> documents) {
+  public PaymentAnswerDto documents(List<PaymentDocumentDto> documents) {
     this.documents = documents;
     return this;
   }
@@ -503,14 +478,11 @@ public class PaymentAnswerDto implements Serializable {
    * @return documents
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
-  public List<@Valid PaymentDocumentDto> getDocuments() {
+  public List<PaymentDocumentDto> getDocuments() {
     return documents;
   }
 
-  public void setDocuments(List<@Valid PaymentDocumentDto> documents) {
+  public void setDocuments(List<PaymentDocumentDto> documents) {
     this.documents = documents;
   }
 
@@ -525,9 +497,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return accountingAccount
   **/
   @javax.annotation.Nullable
-  @NotNull
-  @Valid
-
   public PaymentAnswerDtoAccountingAccount getAccountingAccount() {
     return accountingAccount;
   }
@@ -547,7 +516,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nullable
-
   public String getDescription() {
     return description;
   }
@@ -567,9 +535,6 @@ public class PaymentAnswerDto implements Serializable {
    * @return remittance
   **/
   @javax.annotation.Nullable
-  @NotNull
-  @Valid
-
   public PaymentAnswerDtoRemittance getRemittance() {
     return remittance;
   }

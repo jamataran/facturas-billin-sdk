@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -94,8 +92,6 @@ public class DocumentTaxLineBaseDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getTaxKey() {
     return taxKey;
   }
@@ -115,9 +111,6 @@ public class DocumentTaxLineBaseDto implements Serializable {
    * @return taxBase
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxBase() {
     return taxBase;
   }
@@ -137,8 +130,6 @@ public class DocumentTaxLineBaseDto implements Serializable {
    * @return taxPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getTaxPercentage() {
     return taxPercentage;
   }
@@ -158,9 +149,6 @@ public class DocumentTaxLineBaseDto implements Serializable {
    * @return taxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxAmount() {
     return taxAmount;
   }
@@ -180,8 +168,6 @@ public class DocumentTaxLineBaseDto implements Serializable {
    * @return salesEqTaxPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getSalesEqTaxPercentage() {
     return salesEqTaxPercentage;
   }
@@ -201,9 +187,6 @@ public class DocumentTaxLineBaseDto implements Serializable {
    * @return salesEqTaxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSalesEqTaxAmount() {
     return salesEqTaxAmount;
   }

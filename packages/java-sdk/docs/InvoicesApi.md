@@ -11,7 +11,7 @@ All URIs are relative to *https://api.billin.net*
 
 <a id="createInvoice"></a>
 # **createInvoice**
-> InvoiceDocumentAnswerDto createInvoice(createInvoiceRequest)
+> InvoiceDocumentAnswerDto createInvoice(invoiceCreateDto)
 
 Create an invoice
 
@@ -37,9 +37,9 @@ public class Example {
     bearer.setBearerToken("BEARER TOKEN");
 
     InvoicesApi apiInstance = new InvoicesApi(defaultClient);
-    CreateInvoiceRequest createInvoiceRequest = new CreateInvoiceRequest(); // CreateInvoiceRequest | - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country.
+    InvoiceCreateDto invoiceCreateDto = new InvoiceCreateDto(); // InvoiceCreateDto | - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country.
     try {
-      InvoiceDocumentAnswerDto result = apiInstance.createInvoice(createInvoiceRequest);
+      InvoiceDocumentAnswerDto result = apiInstance.createInvoice(invoiceCreateDto);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InvoicesApi#createInvoice");
@@ -56,7 +56,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **createInvoiceRequest** | [**CreateInvoiceRequest**](CreateInvoiceRequest.md)| - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. | [optional] |
+| **invoiceCreateDto** | [**InvoiceCreateDto**](InvoiceCreateDto.md)| - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. | [optional] |
 
 ### Return type
 

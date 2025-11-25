@@ -27,8 +27,6 @@ import java.util.List;
 import net.facturasbillin.sdk.model.QueryDto;
 import net.facturasbillin.sdk.model.SortDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -99,8 +97,6 @@ public class GetExpenseListQueryDto implements Serializable {
    * @return offset
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0")
   public BigDecimal getOffset() {
     return offset;
   }
@@ -122,8 +118,6 @@ public class GetExpenseListQueryDto implements Serializable {
    * @return limit
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("100")
   public BigDecimal getLimit() {
     return limit;
   }
@@ -143,8 +137,6 @@ public class GetExpenseListQueryDto implements Serializable {
    * @return query
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public QueryDto getQuery() {
     return query;
   }
@@ -164,8 +156,6 @@ public class GetExpenseListQueryDto implements Serializable {
    * @return sort
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public SortDto getSort() {
     return sort;
   }
@@ -193,7 +183,6 @@ public class GetExpenseListQueryDto implements Serializable {
    * @return fields
   **/
   @javax.annotation.Nullable
-
   public List<String> getFields() {
     return fields;
   }
@@ -221,7 +210,6 @@ public class GetExpenseListQueryDto implements Serializable {
    * @return customSearchFields
   **/
   @javax.annotation.Nullable
-
   public List<String> getCustomSearchFields() {
     return customSearchFields;
   }

@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -136,8 +134,6 @@ public class VisualLineDto implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }
@@ -157,8 +153,6 @@ public class VisualLineDto implements Serializable {
    * @return text
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(max=250)
   public String getText() {
     return text;
   }
@@ -178,9 +172,6 @@ public class VisualLineDto implements Serializable {
    * @return order
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getOrder() {
     return order;
   }
@@ -200,7 +191,6 @@ public class VisualLineDto implements Serializable {
    * @return groupName
   **/
   @javax.annotation.Nullable
-
   public String getGroupName() {
     return groupName;
   }

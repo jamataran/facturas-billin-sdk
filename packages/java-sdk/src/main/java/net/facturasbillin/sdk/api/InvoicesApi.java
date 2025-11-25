@@ -26,15 +26,13 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import net.facturasbillin.sdk.model.ApiBadRequestException;
 import net.facturasbillin.sdk.model.ApiUnauthorizedException;
 import java.math.BigDecimal;
-import net.facturasbillin.sdk.model.CreateInvoiceRequest;
 import net.facturasbillin.sdk.model.GetInvoice200Response;
 import net.facturasbillin.sdk.model.GetInvoicesListAnswerDto;
+import net.facturasbillin.sdk.model.InvoiceCreateDto;
 import net.facturasbillin.sdk.model.InvoiceDocumentAnswerDto;
 
 import java.lang.reflect.Type;
@@ -82,7 +80,7 @@ public class InvoicesApi {
 
     /**
      * Build call for createInvoice
-     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -94,7 +92,7 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInvoiceCall(CreateInvoiceRequest createInvoiceRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createInvoiceCall(InvoiceCreateDto invoiceCreateDto, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -108,7 +106,7 @@ public class InvoicesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = createInvoiceRequest;
+        Object localVarPostBody = invoiceCreateDto;
 
         // create path and map variables
         String localVarPath = "/v1/invoices";
@@ -140,15 +138,15 @@ public class InvoicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createInvoiceValidateBeforeCall(CreateInvoiceRequest createInvoiceRequest, final ApiCallback _callback) throws ApiException {
-        return createInvoiceCall(createInvoiceRequest, _callback);
+    private okhttp3.Call createInvoiceValidateBeforeCall(InvoiceCreateDto invoiceCreateDto, final ApiCallback _callback) throws ApiException {
+        return createInvoiceCall(invoiceCreateDto, _callback);
 
     }
 
     /**
      * Create an invoice
      * Endpoint to create an invoice
-     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @return InvoiceDocumentAnswerDto
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -159,15 +157,15 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InvoiceDocumentAnswerDto createInvoice(CreateInvoiceRequest createInvoiceRequest) throws ApiException {
-        ApiResponse<InvoiceDocumentAnswerDto> localVarResp = createInvoiceWithHttpInfo(createInvoiceRequest);
+    public InvoiceDocumentAnswerDto createInvoice(InvoiceCreateDto invoiceCreateDto) throws ApiException {
+        ApiResponse<InvoiceDocumentAnswerDto> localVarResp = createInvoiceWithHttpInfo(invoiceCreateDto);
         return localVarResp.getData();
     }
 
     /**
      * Create an invoice
      * Endpoint to create an invoice
-     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @return ApiResponse&lt;InvoiceDocumentAnswerDto&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -178,8 +176,8 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvoiceDocumentAnswerDto> createInvoiceWithHttpInfo(CreateInvoiceRequest createInvoiceRequest) throws ApiException {
-        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(createInvoiceRequest, null);
+    public ApiResponse<InvoiceDocumentAnswerDto> createInvoiceWithHttpInfo(InvoiceCreateDto invoiceCreateDto) throws ApiException {
+        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(invoiceCreateDto, null);
         Type localVarReturnType = new TypeToken<InvoiceDocumentAnswerDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -187,7 +185,7 @@ public class InvoicesApi {
     /**
      * Create an invoice (asynchronously)
      * Endpoint to create an invoice
-     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -199,9 +197,9 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInvoiceAsync(CreateInvoiceRequest createInvoiceRequest, final ApiCallback<InvoiceDocumentAnswerDto> _callback) throws ApiException {
+    public okhttp3.Call createInvoiceAsync(InvoiceCreateDto invoiceCreateDto, final ApiCallback<InvoiceDocumentAnswerDto> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(createInvoiceRequest, _callback);
+        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(invoiceCreateDto, _callback);
         Type localVarReturnType = new TypeToken<InvoiceDocumentAnswerDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -309,7 +307,7 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetInvoice200Response> getInvoiceWithHttpInfo( @NotNull String id) throws ApiException {
+    public ApiResponse<GetInvoice200Response> getInvoiceWithHttpInfo(String id) throws ApiException {
         okhttp3.Call localVarCall = getInvoiceValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<GetInvoice200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -564,7 +562,7 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetInvoicesListAnswerDto> getInvoicesListWithHttpInfo(List<String> queryDocumentType, List<String> queryStatus, String queryIssuedDate, String queryCreatedAt, String queryUpdatedAt, String querySerialCode, BigDecimal queryCode, Boolean queryIsPaid, String queryContactVatNumber, String queryReference, Boolean queryGetVerifactuInvoices, String sortIssuedDate, String sortCreatedAt, String sortUpdatedAt, String sortSerialCode, String sortCode, String sortReference,  @DecimalMin("0") @DecimalMax("100")BigDecimal limit, BigDecimal offset) throws ApiException {
+    public ApiResponse<GetInvoicesListAnswerDto> getInvoicesListWithHttpInfo(List<String> queryDocumentType, List<String> queryStatus, String queryIssuedDate, String queryCreatedAt, String queryUpdatedAt, String querySerialCode, BigDecimal queryCode, Boolean queryIsPaid, String queryContactVatNumber, String queryReference, Boolean queryGetVerifactuInvoices, String sortIssuedDate, String sortCreatedAt, String sortUpdatedAt, String sortSerialCode, String sortCode, String sortReference, BigDecimal limit, BigDecimal offset) throws ApiException {
         okhttp3.Call localVarCall = getInvoicesListValidateBeforeCall(queryDocumentType, queryStatus, queryIssuedDate, queryCreatedAt, queryUpdatedAt, querySerialCode, queryCode, queryIsPaid, queryContactVatNumber, queryReference, queryGetVerifactuInvoices, sortIssuedDate, sortCreatedAt, sortUpdatedAt, sortSerialCode, sortCode, sortReference, limit, offset, null);
         Type localVarReturnType = new TypeToken<GetInvoicesListAnswerDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

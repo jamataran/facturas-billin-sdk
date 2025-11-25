@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -137,8 +135,6 @@ public class PaymentDocumentDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -158,7 +154,6 @@ public class PaymentDocumentDto implements Serializable {
    * @return identifier
   **/
   @javax.annotation.Nullable
-
   public String getIdentifier() {
     return identifier;
   }
@@ -178,7 +173,6 @@ public class PaymentDocumentDto implements Serializable {
    * @return receiptStatus
   **/
   @javax.annotation.Nullable
-
   public ReceiptStatusEnum getReceiptStatus() {
     return receiptStatus;
   }
@@ -198,7 +192,6 @@ public class PaymentDocumentDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }

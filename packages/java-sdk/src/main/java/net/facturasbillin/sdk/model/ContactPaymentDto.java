@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,8 +80,6 @@ public class ContactPaymentDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -103,7 +99,6 @@ public class ContactPaymentDto implements Serializable {
    * @return fiscalName
   **/
   @javax.annotation.Nullable
-
   public String getFiscalName() {
     return fiscalName;
   }
@@ -123,7 +118,6 @@ public class ContactPaymentDto implements Serializable {
    * @return vatNumber
   **/
   @javax.annotation.Nullable
-
   public String getVatNumber() {
     return vatNumber;
   }

@@ -12,11 +12,12 @@ groupId: net.facturasbillin
 
 # Code generation options
 serializableModel: true
-useBeanValidation: true
+useBeanValidation: false
 performBeanValidation: false
 useGzipFeature: true
 useRuntimeException: false
 hideGenerationTimestamp: true
+useOpenAPINullable: false
 
 # Documentation
 generateApiDocumentation: true

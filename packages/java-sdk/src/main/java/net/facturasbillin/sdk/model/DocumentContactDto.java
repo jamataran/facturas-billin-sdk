@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import net.facturasbillin.sdk.model.DocumentContactAddressDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -162,8 +160,6 @@ public class DocumentContactDto implements Serializable {
    * @return fiscalName
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(min=1,max=120)
   public String getFiscalName() {
     return fiscalName;
   }
@@ -183,7 +179,6 @@ public class DocumentContactDto implements Serializable {
    * @return vatNumberType
   **/
   @javax.annotation.Nullable
-
   public VatNumberTypeEnum getVatNumberType() {
     return vatNumberType;
   }
@@ -203,7 +198,6 @@ public class DocumentContactDto implements Serializable {
    * @return vatNumber
   **/
   @javax.annotation.Nullable
-
   public String getVatNumber() {
     return vatNumber;
   }
@@ -223,7 +217,6 @@ public class DocumentContactDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nullable
-
   public String getTaxKey() {
     return taxKey;
   }
@@ -243,7 +236,6 @@ public class DocumentContactDto implements Serializable {
    * @return email
   **/
   @javax.annotation.Nullable
- @Size(max=64)
   public String getEmail() {
     return email;
   }
@@ -263,7 +255,6 @@ public class DocumentContactDto implements Serializable {
    * @return phone
   **/
   @javax.annotation.Nullable
- @Size(max=64)
   public String getPhone() {
     return phone;
   }
@@ -283,7 +274,6 @@ public class DocumentContactDto implements Serializable {
    * @return salesEqTaxCheck
   **/
   @javax.annotation.Nullable
-
   public Boolean getSalesEqTaxCheck() {
     return salesEqTaxCheck;
   }
@@ -303,8 +293,6 @@ public class DocumentContactDto implements Serializable {
    * @return address
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public DocumentContactAddressDto getAddress() {
     return address;
   }

@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -86,8 +84,6 @@ public class ApiUnauthorizedException implements Serializable {
    * @return message
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getMessage() {
     return message;
   }
@@ -107,9 +103,6 @@ public class ApiUnauthorizedException implements Serializable {
    * @return statusCode
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getStatusCode() {
     return statusCode;
   }
@@ -129,8 +122,6 @@ public class ApiUnauthorizedException implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getType() {
     return type;
   }
@@ -150,8 +141,6 @@ public class ApiUnauthorizedException implements Serializable {
    * @return description
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getDescription() {
     return description;
   }

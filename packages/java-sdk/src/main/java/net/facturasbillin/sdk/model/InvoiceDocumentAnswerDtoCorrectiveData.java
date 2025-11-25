@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -187,8 +185,6 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
    * @return reason
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public ReasonEnum getReason() {
     return reason;
   }
@@ -208,8 +204,6 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }

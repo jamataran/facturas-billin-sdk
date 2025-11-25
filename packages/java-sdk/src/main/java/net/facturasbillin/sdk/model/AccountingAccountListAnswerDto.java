@@ -26,8 +26,6 @@ import java.util.Arrays;
 import java.util.List;
 import net.facturasbillin.sdk.model.AccountingAccountAnswerDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,7 +64,7 @@ public class AccountingAccountListAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
-  private List<@Valid AccountingAccountAnswerDto> items = new ArrayList<>();
+  private List<AccountingAccountAnswerDto> items = new ArrayList<>();
 
   public AccountingAccountListAnswerDto() {
   }
@@ -81,9 +79,6 @@ public class AccountingAccountListAnswerDto implements Serializable {
    * @return count
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getCount() {
     return count;
   }
@@ -93,7 +88,7 @@ public class AccountingAccountListAnswerDto implements Serializable {
   }
 
 
-  public AccountingAccountListAnswerDto items(List<@Valid AccountingAccountAnswerDto> items) {
+  public AccountingAccountListAnswerDto items(List<AccountingAccountAnswerDto> items) {
     this.items = items;
     return this;
   }
@@ -111,14 +106,11 @@ public class AccountingAccountListAnswerDto implements Serializable {
    * @return items
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
-  public List<@Valid AccountingAccountAnswerDto> getItems() {
+  public List<AccountingAccountAnswerDto> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid AccountingAccountAnswerDto> items) {
+  public void setItems(List<AccountingAccountAnswerDto> items) {
     this.items = items;
   }
 

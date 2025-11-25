@@ -34,8 +34,6 @@ import net.facturasbillin.sdk.model.DocumentTotalAnswerDto;
 import net.facturasbillin.sdk.model.GetPaymentMethodDto;
 import net.facturasbillin.sdk.model.VisualLineDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -400,15 +398,15 @@ public class QuoteDocumentAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private List<@Valid DocumentLineAnswerDto> lines = new ArrayList<>();
+  private List<DocumentLineAnswerDto> lines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VISUAL_LINES = "visualLines";
   @SerializedName(SERIALIZED_NAME_VISUAL_LINES)
-  private List<@Valid VisualLineDto> visualLines = new ArrayList<>();
+  private List<VisualLineDto> visualLines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAX_LINES = "taxLines";
   @SerializedName(SERIALIZED_NAME_TAX_LINES)
-  private List<@Valid DocumentTaxLineAnswerDto> taxLines = new ArrayList<>();
+  private List<DocumentTaxLineAnswerDto> taxLines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ADDITIONAL_EXPENSES = "additionalExpenses";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_EXPENSES)
@@ -695,8 +693,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -716,9 +712,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -738,9 +731,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -760,8 +750,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return issuedDateTime
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public OffsetDateTime getIssuedDateTime() {
     return issuedDateTime;
   }
@@ -781,7 +769,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -801,9 +788,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return ownerInfo
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BusinessBaseAnswerDto getOwnerInfo() {
     return ownerInfo;
   }
@@ -823,8 +807,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return currency
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -844,7 +826,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return comments
   **/
   @javax.annotation.Nullable
-
   public String getComments() {
     return comments;
   }
@@ -864,7 +845,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return serieId
   **/
   @javax.annotation.Nullable
-
   public String getSerieId() {
     return serieId;
   }
@@ -884,7 +864,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return serialCode
   **/
   @javax.annotation.Nullable
-
   public String getSerialCode() {
     return serialCode;
   }
@@ -904,8 +883,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return mask
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getMask() {
     return mask;
   }
@@ -926,8 +903,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0")
   public BigDecimal getCode() {
     return code;
   }
@@ -947,7 +922,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return identifier
   **/
   @javax.annotation.Nullable
-
   public String getIdentifier() {
     return identifier;
   }
@@ -967,8 +941,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return dueDate
   **/
   @javax.annotation.Nullable
-  @NotNull
-
   public String getDueDate() {
     return dueDate;
   }
@@ -988,7 +960,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
-
   public String getReference() {
     return reference;
   }
@@ -1008,9 +979,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return total
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public DocumentTotalAnswerDto getTotal() {
     return total;
   }
@@ -1020,7 +988,7 @@ public class QuoteDocumentAnswerDto implements Serializable {
   }
 
 
-  public QuoteDocumentAnswerDto lines(List<@Valid DocumentLineAnswerDto> lines) {
+  public QuoteDocumentAnswerDto lines(List<DocumentLineAnswerDto> lines) {
     this.lines = lines;
     return this;
   }
@@ -1038,19 +1006,16 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return lines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentLineAnswerDto> getLines() {
+  public List<DocumentLineAnswerDto> getLines() {
     return lines;
   }
 
-  public void setLines(List<@Valid DocumentLineAnswerDto> lines) {
+  public void setLines(List<DocumentLineAnswerDto> lines) {
     this.lines = lines;
   }
 
 
-  public QuoteDocumentAnswerDto visualLines(List<@Valid VisualLineDto> visualLines) {
+  public QuoteDocumentAnswerDto visualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
     return this;
   }
@@ -1068,19 +1033,16 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return visualLines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
-  public List<@Valid VisualLineDto> getVisualLines() {
+  public List<VisualLineDto> getVisualLines() {
     return visualLines;
   }
 
-  public void setVisualLines(List<@Valid VisualLineDto> visualLines) {
+  public void setVisualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
   }
 
 
-  public QuoteDocumentAnswerDto taxLines(List<@Valid DocumentTaxLineAnswerDto> taxLines) {
+  public QuoteDocumentAnswerDto taxLines(List<DocumentTaxLineAnswerDto> taxLines) {
     this.taxLines = taxLines;
     return this;
   }
@@ -1098,14 +1060,11 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return taxLines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentTaxLineAnswerDto> getTaxLines() {
+  public List<DocumentTaxLineAnswerDto> getTaxLines() {
     return taxLines;
   }
 
-  public void setTaxLines(List<@Valid DocumentTaxLineAnswerDto> taxLines) {
+  public void setTaxLines(List<DocumentTaxLineAnswerDto> taxLines) {
     this.taxLines = taxLines;
   }
 
@@ -1120,9 +1079,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return additionalExpenses
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public AdditionalExpenseAnswerDto getAdditionalExpenses() {
     return additionalExpenses;
   }
@@ -1142,9 +1098,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return retentionPercentage
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getRetentionPercentage() {
     return retentionPercentage;
   }
@@ -1164,9 +1117,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return retentionAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getRetentionAmount() {
     return retentionAmount;
   }
@@ -1186,9 +1136,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return paidAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getPaidAmount() {
     return paidAmount;
   }
@@ -1208,7 +1155,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return documentType
   **/
   @javax.annotation.Nullable
-
   public DocumentTypeEnum getDocumentType() {
     return documentType;
   }
@@ -1228,7 +1174,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return category
   **/
   @javax.annotation.Nullable
-
   public CategoryEnum getCategory() {
     return category;
   }
@@ -1248,9 +1193,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return contact
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public DocumentContactAnswerDto getContact() {
     return contact;
   }
@@ -1270,9 +1212,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return paymentMethods
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public GetPaymentMethodDto getPaymentMethods() {
     return paymentMethods;
   }
@@ -1292,8 +1231,6 @@ public class QuoteDocumentAnswerDto implements Serializable {
    * @return status
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public StatusEnum getStatus() {
     return status;
   }

@@ -26,8 +26,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import net.facturasbillin.sdk.model.ApiBadRequestException;
 import net.facturasbillin.sdk.model.ApiUnauthorizedException;
@@ -383,7 +381,7 @@ public class ExpensesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetExpenseListAnswerDto> getExpensesListWithHttpInfo(String queryIssuedDate, String queryCreatedAt, String queryUpdatedAt, String queryIdentifier, Boolean queryIsPaid, String queryContactVatNumber, String sortIssuedDate, String sortCreatedAt, String sortUpdatedAt, String sortIdentifier,  @DecimalMin("0") @DecimalMax("100")BigDecimal limit, BigDecimal offset) throws ApiException {
+    public ApiResponse<GetExpenseListAnswerDto> getExpensesListWithHttpInfo(String queryIssuedDate, String queryCreatedAt, String queryUpdatedAt, String queryIdentifier, Boolean queryIsPaid, String queryContactVatNumber, String sortIssuedDate, String sortCreatedAt, String sortUpdatedAt, String sortIdentifier, BigDecimal limit, BigDecimal offset) throws ApiException {
         okhttp3.Call localVarCall = getExpensesListValidateBeforeCall(queryIssuedDate, queryCreatedAt, queryUpdatedAt, queryIdentifier, queryIsPaid, queryContactVatNumber, sortIssuedDate, sortCreatedAt, sortUpdatedAt, sortIdentifier, limit, offset, null);
         Type localVarReturnType = new TypeToken<GetExpenseListAnswerDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

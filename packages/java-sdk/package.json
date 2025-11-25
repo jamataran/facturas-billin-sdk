@@ -4,9 +4,12 @@
   "private": true,
   "description": "Java/Maven SDK for Facturas Billin API",
   "scripts": {
-    "generate": "mvn org.openapitools:openapi-generator-maven-plugin:generate",
-    "build": "mvn clean package -DskipTests",
-    "test": "mvn test",
-    "clean": "mvn clean && rm -rf src/"
+    "generate": "dotenv -e .env.local -- mvn org.openapitools:openapi-generator-maven-plugin:generate -q",
+    "build": "dotenv -e .env.local -- mvn clean package -DskipTests -q",
+    "test": "dotenv -e .env.local -- mvn test",
+    "clean": "mvn clean"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.1.0"
   }
 }

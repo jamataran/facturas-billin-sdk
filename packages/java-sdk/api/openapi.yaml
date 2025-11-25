@@ -580,7 +580,7 @@ paths:
                       country: ES
                   showPdfLinesWithoutTaxes: false
             schema:
-              $ref: '#/components/schemas/createInvoice_request'
+              $ref: '#/components/schemas/InvoiceCreateDto'
         description: "- If you only send the *lines* field, Billin will **calculate\
           \ the totals**. If, on the other hand, you want to send all the values so\
           \ that Billin **does not calculate anything**, you must send the fields\
@@ -3323,6 +3323,87 @@ components:
       - fiscalName
       type: object
     InvoiceCreateDto:
+      example:
+        issuedDate: 2021-01-01
+        retentionAmount: 0
+        code: 1
+        comments: This is a comment
+        showProductReference: true
+        visualLines:
+        - groupName: groupName
+          text: text
+          type: title
+          order: 0.8008281904610115
+        - groupName: groupName
+          text: text
+          type: title
+          order: 0.8008281904610115
+        dueDate: 2023-01-01
+        showPdfLinesWithoutTaxes: false
+        serieId: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
+        serialCode: F2023
+        templateId: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
+        reference: ALB2023001
+        isPaid: true
+        total: ""
+        additionalExpenses:
+        - description: Additional expense description
+          expense: 0
+        - description: Additional expense description
+          expense: 0
+        contact: ""
+        currency: EUR
+        retentionPercentage: 0
+        lines:
+        - unitPrice: 10
+          quantity: 2
+          productId: ae69f822-12e5-4285-ba1d-22624e32d078
+          taxPercentage: 21
+          description: Product description
+          discountAmount: 2
+          salesEqTaxPercentage: 0
+          productReference: "123"
+          taxBase: 18
+          discountPercentage: 10
+          totalAmount: 21.78
+          salesEqTaxAmount: 0
+          taxKey: IVA_21
+          subtotal: 20
+          name: Product name
+          taxAmount: 3.78
+          order: 0.8008281904610115
+        - unitPrice: 10
+          quantity: 2
+          productId: ae69f822-12e5-4285-ba1d-22624e32d078
+          taxPercentage: 21
+          description: Product description
+          discountAmount: 2
+          salesEqTaxPercentage: 0
+          productReference: "123"
+          taxBase: 18
+          discountPercentage: 10
+          totalAmount: 21.78
+          salesEqTaxAmount: 0
+          taxKey: IVA_21
+          subtotal: 20
+          name: Product name
+          taxAmount: 3.78
+          order: 0.8008281904610115
+        paidAmount: 0
+        taxLines:
+        - salesEqTaxAmount: 0
+          taxKey: IVA_21
+          taxPercentage: 21
+          salesEqTaxPercentage: 0
+          taxAmount: 3.78
+          taxBase: 18
+        - salesEqTaxAmount: 0
+          taxKey: IVA_21
+          taxPercentage: 21
+          salesEqTaxPercentage: 0
+          taxAmount: 3.78
+          taxBase: 18
+        mask: 3
       properties:
         serieId:
           description: "The id of the serie. If provided together with serialCode,\
@@ -10887,10 +10968,9 @@ components:
           example: 624_LOGISTICS
           type: string
         isExpense:
-          default: true
           description: Boolean indicating if the document is an expense
           example: true
-          type: boolean
+          type: object
       required:
       - contact
       - createdAt
@@ -13125,10 +13205,6 @@ components:
       - count
       - items
       type: object
-    createInvoice_request:
-      oneOf:
-      - $ref: '#/components/schemas/InvoiceCreateDto'
-      - $ref: '#/components/schemas/InvoiceBaiCreateDto'
     getInvoice_200_response:
       oneOf:
       - $ref: '#/components/schemas/SalesReceiptDocumentAnswerDto'

@@ -24,8 +24,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -139,8 +137,6 @@ public class DocumentLineDto implements Serializable {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(min=1,max=250)
   public String getName() {
     return name;
   }
@@ -160,7 +156,6 @@ public class DocumentLineDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nullable
- @Size(max=2000)
   public String getDescription() {
     return description;
   }
@@ -180,9 +175,6 @@ public class DocumentLineDto implements Serializable {
    * @return quantity
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getQuantity() {
     return quantity;
   }
@@ -202,9 +194,6 @@ public class DocumentLineDto implements Serializable {
    * @return unitPrice
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getUnitPrice() {
     return unitPrice;
   }
@@ -224,8 +213,6 @@ public class DocumentLineDto implements Serializable {
    * @return subtotal
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getSubtotal() {
     return subtotal;
   }
@@ -245,9 +232,6 @@ public class DocumentLineDto implements Serializable {
    * @return totalAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTotalAmount() {
     return totalAmount;
   }
@@ -267,8 +251,6 @@ public class DocumentLineDto implements Serializable {
    * @return discountPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getDiscountPercentage() {
     return discountPercentage;
   }
@@ -288,9 +270,6 @@ public class DocumentLineDto implements Serializable {
    * @return discountAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getDiscountAmount() {
     return discountAmount;
   }
@@ -310,8 +289,6 @@ public class DocumentLineDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getTaxKey() {
     return taxKey;
   }
@@ -331,8 +308,6 @@ public class DocumentLineDto implements Serializable {
    * @return taxBase
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getTaxBase() {
     return taxBase;
   }
@@ -352,8 +327,6 @@ public class DocumentLineDto implements Serializable {
    * @return taxPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getTaxPercentage() {
     return taxPercentage;
   }
@@ -373,9 +346,6 @@ public class DocumentLineDto implements Serializable {
    * @return taxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxAmount() {
     return taxAmount;
   }
@@ -395,8 +365,6 @@ public class DocumentLineDto implements Serializable {
    * @return salesEqTaxPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getSalesEqTaxPercentage() {
     return salesEqTaxPercentage;
   }
@@ -416,9 +384,6 @@ public class DocumentLineDto implements Serializable {
    * @return salesEqTaxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSalesEqTaxAmount() {
     return salesEqTaxAmount;
   }
@@ -438,7 +403,6 @@ public class DocumentLineDto implements Serializable {
    * @return productId
   **/
   @javax.annotation.Nullable
-
   public String getProductId() {
     return productId;
   }
@@ -458,7 +422,6 @@ public class DocumentLineDto implements Serializable {
    * @return productReference
   **/
   @javax.annotation.Nullable
-
   public String getProductReference() {
     return productReference;
   }
@@ -478,8 +441,6 @@ public class DocumentLineDto implements Serializable {
    * @return order
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getOrder() {
     return order;
   }

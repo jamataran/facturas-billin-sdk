@@ -24,8 +24,6 @@ import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -161,8 +159,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -182,9 +178,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -204,9 +197,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -226,8 +216,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }
@@ -247,8 +235,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return alias
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getAlias() {
     return alias;
   }
@@ -268,7 +254,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return IBAN
   **/
   @javax.annotation.Nullable
-
   public String getIBAN() {
     return IBAN;
   }
@@ -288,7 +273,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return swiftCode
   **/
   @javax.annotation.Nullable
-
   public String getSwiftCode() {
     return swiftCode;
   }
@@ -308,7 +292,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return creditCardNumber
   **/
   @javax.annotation.Nullable
-
   public String getCreditCardNumber() {
     return creditCardNumber;
   }
@@ -328,7 +311,6 @@ public class AccountingAccountAnswerDto implements Serializable {
    * @return creditCardExpireDate
   **/
   @javax.annotation.Nullable
-
   public String getCreditCardExpireDate() {
     return creditCardExpireDate;
   }

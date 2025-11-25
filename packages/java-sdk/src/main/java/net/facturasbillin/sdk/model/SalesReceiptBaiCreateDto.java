@@ -29,8 +29,6 @@ import net.facturasbillin.sdk.model.DocumentTaxLineBaiDto;
 import net.facturasbillin.sdk.model.DocumentTotalDto;
 import net.facturasbillin.sdk.model.VisualLineDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -89,11 +87,11 @@ public class SalesReceiptBaiCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_VISUAL_LINES = "visualLines";
   @SerializedName(SERIALIZED_NAME_VISUAL_LINES)
-  private List<@Valid VisualLineDto> visualLines;
+  private List<VisualLineDto> visualLines;
 
   public static final String SERIALIZED_NAME_TAX_LINES = "taxLines";
   @SerializedName(SERIALIZED_NAME_TAX_LINES)
-  private List<@Valid DocumentTaxLineBaiDto> taxLines;
+  private List<DocumentTaxLineBaiDto> taxLines;
 
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
@@ -2435,7 +2433,7 @@ public class SalesReceiptBaiCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private List<@Valid DocumentLineBaiDto> lines = new ArrayList<>();
+  private List<DocumentLineBaiDto> lines = new ArrayList<>();
 
   public SalesReceiptBaiCreateDto() {
   }
@@ -2450,7 +2448,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return serieId
   **/
   @javax.annotation.Nullable
-
   public String getSerieId() {
     return serieId;
   }
@@ -2470,7 +2467,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return serialCode
   **/
   @javax.annotation.Nullable
-
   public String getSerialCode() {
     return serialCode;
   }
@@ -2492,8 +2488,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("1000000000")
   public BigDecimal getCode() {
     return code;
   }
@@ -2515,8 +2509,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return mask
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("1000000000")
   public BigDecimal getMask() {
     return mask;
   }
@@ -2536,7 +2528,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -2556,7 +2547,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
-
   public String getReference() {
     return reference;
   }
@@ -2566,7 +2556,7 @@ public class SalesReceiptBaiCreateDto implements Serializable {
   }
 
 
-  public SalesReceiptBaiCreateDto visualLines(List<@Valid VisualLineDto> visualLines) {
+  public SalesReceiptBaiCreateDto visualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
     return this;
   }
@@ -2584,18 +2574,16 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return visualLines
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid VisualLineDto> getVisualLines() {
+  public List<VisualLineDto> getVisualLines() {
     return visualLines;
   }
 
-  public void setVisualLines(List<@Valid VisualLineDto> visualLines) {
+  public void setVisualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
   }
 
 
-  public SalesReceiptBaiCreateDto taxLines(List<@Valid DocumentTaxLineBaiDto> taxLines) {
+  public SalesReceiptBaiCreateDto taxLines(List<DocumentTaxLineBaiDto> taxLines) {
     this.taxLines = taxLines;
     return this;
   }
@@ -2613,13 +2601,11 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return taxLines
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid DocumentTaxLineBaiDto> getTaxLines() {
+  public List<DocumentTaxLineBaiDto> getTaxLines() {
     return taxLines;
   }
 
-  public void setTaxLines(List<@Valid DocumentTaxLineBaiDto> taxLines) {
+  public void setTaxLines(List<DocumentTaxLineBaiDto> taxLines) {
     this.taxLines = taxLines;
   }
 
@@ -2634,7 +2620,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return comments
   **/
   @javax.annotation.Nullable
-
   public String getComments() {
     return comments;
   }
@@ -2654,8 +2639,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return currency
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -2675,8 +2658,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return total
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public DocumentTotalDto getTotal() {
     return total;
   }
@@ -2696,7 +2677,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return isPaid
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsPaid() {
     return isPaid;
   }
@@ -2716,8 +2696,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return paidAmount
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getPaidAmount() {
     return paidAmount;
   }
@@ -2737,8 +2715,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return retentionAmount
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getRetentionAmount() {
     return retentionAmount;
   }
@@ -2758,8 +2734,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return retentionPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getRetentionPercentage() {
     return retentionPercentage;
   }
@@ -2779,7 +2753,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return showProductReference
   **/
   @javax.annotation.Nullable
-
   public Boolean getShowProductReference() {
     return showProductReference;
   }
@@ -2799,7 +2772,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return operationDescription
   **/
   @javax.annotation.Nullable
- @Size(max=250)
   public String getOperationDescription() {
     return operationDescription;
   }
@@ -2819,7 +2791,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return operationDate
   **/
   @javax.annotation.Nullable
-
   public String getOperationDate() {
     return operationDate;
   }
@@ -2839,7 +2810,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return taxRegime
   **/
   @javax.annotation.Nullable
- @Size(min=2,max=2)
   public TaxRegimeEnum getTaxRegime() {
     return taxRegime;
   }
@@ -2859,7 +2829,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return naturalPerson
   **/
   @javax.annotation.Nullable
-
   public Boolean getNaturalPerson() {
     return naturalPerson;
   }
@@ -2879,7 +2848,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return epigraphIAE
   **/
   @javax.annotation.Nullable
- @Size(max=7)
   public EpigraphIAEEnum getEpigraphIAE() {
     return epigraphIAE;
   }
@@ -2899,7 +2867,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return chargingCriterionIRPF
   **/
   @javax.annotation.Nullable
-
   public Boolean getChargingCriterionIRPF() {
     return chargingCriterionIRPF;
   }
@@ -2919,8 +2886,6 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return customIRPF
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getCustomIRPF() {
     return customIRPF;
   }
@@ -2930,7 +2895,7 @@ public class SalesReceiptBaiCreateDto implements Serializable {
   }
 
 
-  public SalesReceiptBaiCreateDto lines(List<@Valid DocumentLineBaiDto> lines) {
+  public SalesReceiptBaiCreateDto lines(List<DocumentLineBaiDto> lines) {
     this.lines = lines;
     return this;
   }
@@ -2948,14 +2913,11 @@ public class SalesReceiptBaiCreateDto implements Serializable {
    * @return lines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentLineBaiDto> getLines() {
+  public List<DocumentLineBaiDto> getLines() {
     return lines;
   }
 
-  public void setLines(List<@Valid DocumentLineBaiDto> lines) {
+  public void setLines(List<DocumentLineBaiDto> lines) {
     this.lines = lines;
   }
 

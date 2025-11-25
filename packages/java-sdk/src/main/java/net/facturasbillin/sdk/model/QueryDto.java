@@ -26,8 +26,6 @@ import java.util.Arrays;
 import java.util.List;
 import net.facturasbillin.sdk.model.ContactDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -237,7 +235,6 @@ public class QueryDto implements Serializable {
    * @return documentType
   **/
   @javax.annotation.Nullable
-
   public List<DocumentTypeEnum> getDocumentType() {
     return documentType;
   }
@@ -265,7 +262,6 @@ public class QueryDto implements Serializable {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public List<StatusEnum> getStatus() {
     return status;
   }
@@ -285,7 +281,6 @@ public class QueryDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -305,7 +300,6 @@ public class QueryDto implements Serializable {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public String getCreatedAt() {
     return createdAt;
   }
@@ -325,7 +319,6 @@ public class QueryDto implements Serializable {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public String getUpdatedAt() {
     return updatedAt;
   }
@@ -345,7 +338,6 @@ public class QueryDto implements Serializable {
    * @return serialCode
   **/
   @javax.annotation.Nullable
-
   public String getSerialCode() {
     return serialCode;
   }
@@ -365,8 +357,6 @@ public class QueryDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getCode() {
     return code;
   }
@@ -386,7 +376,6 @@ public class QueryDto implements Serializable {
    * @return isPaid
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsPaid() {
     return isPaid;
   }
@@ -406,8 +395,6 @@ public class QueryDto implements Serializable {
    * @return contact
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public ContactDto getContact() {
     return contact;
   }
@@ -427,7 +414,6 @@ public class QueryDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
-
   public String getReference() {
     return reference;
   }
@@ -447,7 +433,6 @@ public class QueryDto implements Serializable {
    * @return getVerifactuInvoices
   **/
   @javax.annotation.Nullable
-
   public Boolean getGetVerifactuInvoices() {
     return getVerifactuInvoices;
   }

@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -78,9 +76,6 @@ public class AdditionalExpenseAnswerDto implements Serializable {
    * @return expense
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getExpense() {
     return expense;
   }
@@ -100,7 +95,6 @@ public class AdditionalExpenseAnswerDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nullable
- @Size(max=750)
   public String getDescription() {
     return description;
   }

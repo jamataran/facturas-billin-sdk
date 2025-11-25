@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -82,9 +80,6 @@ public class ExpenseTotalDto implements Serializable {
    * @return subtotal
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getSubtotal() {
     return subtotal;
   }
@@ -104,9 +99,6 @@ public class ExpenseTotalDto implements Serializable {
    * @return totalAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTotalAmount() {
     return totalAmount;
   }
@@ -126,9 +118,6 @@ public class ExpenseTotalDto implements Serializable {
    * @return amountDue
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getAmountDue() {
     return amountDue;
   }

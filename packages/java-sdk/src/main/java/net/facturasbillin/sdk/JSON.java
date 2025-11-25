@@ -111,7 +111,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CorrectiveDataAnswerDto.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CreateAccountingAccountDto.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CreateContactDto.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CreateInvoiceRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CreatePaymentDto.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CreateProductDto.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new net.facturasbillin.sdk.model.CreateReceiptRequest.CustomTypeAdapterFactory());

@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import net.facturasbillin.sdk.model.ContactPaymentMethodData;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -128,8 +126,6 @@ public class ContactPaymentMethod implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }
@@ -149,9 +145,6 @@ public class ContactPaymentMethod implements Serializable {
    * @return data
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public ContactPaymentMethodData getData() {
     return data;
   }

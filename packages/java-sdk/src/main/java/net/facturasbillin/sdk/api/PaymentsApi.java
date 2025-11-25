@@ -26,8 +26,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import net.facturasbillin.sdk.model.ApiBadRequestException;
 import net.facturasbillin.sdk.model.ApiUnauthorizedException;
@@ -359,7 +357,7 @@ public class PaymentsApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PaymentListAnswerDto> getPaymentListWithHttpInfo(String sortCreatedAt, String sortOperationDate, String queryType, String queryMethod, String queryOperationDate, String queryContactId, String queryAccountingAccountId,  @DecimalMin("0") @DecimalMax("100")BigDecimal limit, BigDecimal offset) throws ApiException {
+    public ApiResponse<PaymentListAnswerDto> getPaymentListWithHttpInfo(String sortCreatedAt, String sortOperationDate, String queryType, String queryMethod, String queryOperationDate, String queryContactId, String queryAccountingAccountId, BigDecimal limit, BigDecimal offset) throws ApiException {
         okhttp3.Call localVarCall = getPaymentListValidateBeforeCall(sortCreatedAt, sortOperationDate, queryType, queryMethod, queryOperationDate, queryContactId, queryAccountingAccountId, limit, offset, null);
         Type localVarReturnType = new TypeToken<PaymentListAnswerDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

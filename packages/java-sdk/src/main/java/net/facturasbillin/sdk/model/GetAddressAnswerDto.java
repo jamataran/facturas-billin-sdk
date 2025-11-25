@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -781,7 +779,6 @@ public class GetAddressAnswerDto implements Serializable {
    * @return postalAddress
   **/
   @javax.annotation.Nullable
- @Size(max=250)
   public String getPostalAddress() {
     return postalAddress;
   }
@@ -801,7 +798,6 @@ public class GetAddressAnswerDto implements Serializable {
    * @return postalCode
   **/
   @javax.annotation.Nullable
- @Size(max=5)
   public String getPostalCode() {
     return postalCode;
   }
@@ -821,7 +817,6 @@ public class GetAddressAnswerDto implements Serializable {
    * @return province
   **/
   @javax.annotation.Nullable
- @Size(max=50)
   public ProvinceEnum getProvince() {
     return province;
   }
@@ -841,7 +836,6 @@ public class GetAddressAnswerDto implements Serializable {
    * @return country
   **/
   @javax.annotation.Nullable
- @Size(max=2)
   public CountryEnum getCountry() {
     return country;
   }
@@ -861,7 +855,6 @@ public class GetAddressAnswerDto implements Serializable {
    * @return city
   **/
   @javax.annotation.Nullable
- @Size(max=50)
   public String getCity() {
     return city;
   }

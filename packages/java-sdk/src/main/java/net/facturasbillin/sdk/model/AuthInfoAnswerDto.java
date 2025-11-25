@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -93,8 +91,6 @@ public class AuthInfoAnswerDto implements Serializable {
    * @return userId
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getUserId() {
     return userId;
   }
@@ -114,8 +110,6 @@ public class AuthInfoAnswerDto implements Serializable {
    * @return businessId
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getBusinessId() {
     return businessId;
   }
@@ -135,8 +129,6 @@ public class AuthInfoAnswerDto implements Serializable {
    * @return email
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getEmail() {
     return email;
   }
@@ -156,8 +148,6 @@ public class AuthInfoAnswerDto implements Serializable {
    * @return fiscalName
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getFiscalName() {
     return fiscalName;
   }
@@ -177,8 +167,6 @@ public class AuthInfoAnswerDto implements Serializable {
    * @return vatNumber
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getVatNumber() {
     return vatNumber;
   }
@@ -198,8 +186,6 @@ public class AuthInfoAnswerDto implements Serializable {
    * @return role
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getRole() {
     return role;
   }

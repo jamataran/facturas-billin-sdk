@@ -32,8 +32,6 @@ import net.facturasbillin.sdk.model.DocumentTaxLineAnswerDto;
 import net.facturasbillin.sdk.model.DocumentTotalAnswerDto;
 import net.facturasbillin.sdk.model.GetPaymentMethodDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -374,11 +372,11 @@ public class ExpenseDocumentAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private List<@Valid DocumentLineAnswerDto> lines = new ArrayList<>();
+  private List<DocumentLineAnswerDto> lines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TAX_LINES = "taxLines";
   @SerializedName(SERIALIZED_NAME_TAX_LINES)
-  private List<@Valid DocumentTaxLineAnswerDto> taxLines = new ArrayList<>();
+  private List<DocumentTaxLineAnswerDto> taxLines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
@@ -534,7 +532,7 @@ public class ExpenseDocumentAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_IS_EXPENSE = "isExpense";
   @SerializedName(SERIALIZED_NAME_IS_EXPENSE)
-  private Boolean isExpense = true;
+  private Object isExpense;
 
   public ExpenseDocumentAnswerDto() {
   }
@@ -549,8 +547,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -570,9 +566,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return createdAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -592,9 +585,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return updatedAt
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -614,8 +604,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return issuedDateTime
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public OffsetDateTime getIssuedDateTime() {
     return issuedDateTime;
   }
@@ -635,7 +623,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -655,9 +642,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return ownerInfo
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BusinessBaseAnswerDto getOwnerInfo() {
     return ownerInfo;
   }
@@ -677,8 +661,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return currency
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -698,7 +680,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return comments
   **/
   @javax.annotation.Nullable
-
   public String getComments() {
     return comments;
   }
@@ -718,7 +699,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return identifier
   **/
   @javax.annotation.Nullable
-
   public String getIdentifier() {
     return identifier;
   }
@@ -738,9 +718,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return contact
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public DocumentContactAnswerDto getContact() {
     return contact;
   }
@@ -750,7 +727,7 @@ public class ExpenseDocumentAnswerDto implements Serializable {
   }
 
 
-  public ExpenseDocumentAnswerDto lines(List<@Valid DocumentLineAnswerDto> lines) {
+  public ExpenseDocumentAnswerDto lines(List<DocumentLineAnswerDto> lines) {
     this.lines = lines;
     return this;
   }
@@ -768,19 +745,16 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return lines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentLineAnswerDto> getLines() {
+  public List<DocumentLineAnswerDto> getLines() {
     return lines;
   }
 
-  public void setLines(List<@Valid DocumentLineAnswerDto> lines) {
+  public void setLines(List<DocumentLineAnswerDto> lines) {
     this.lines = lines;
   }
 
 
-  public ExpenseDocumentAnswerDto taxLines(List<@Valid DocumentTaxLineAnswerDto> taxLines) {
+  public ExpenseDocumentAnswerDto taxLines(List<DocumentTaxLineAnswerDto> taxLines) {
     this.taxLines = taxLines;
     return this;
   }
@@ -798,14 +772,11 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return taxLines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentTaxLineAnswerDto> getTaxLines() {
+  public List<DocumentTaxLineAnswerDto> getTaxLines() {
     return taxLines;
   }
 
-  public void setTaxLines(List<@Valid DocumentTaxLineAnswerDto> taxLines) {
+  public void setTaxLines(List<DocumentTaxLineAnswerDto> taxLines) {
     this.taxLines = taxLines;
   }
 
@@ -820,9 +791,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return total
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public DocumentTotalAnswerDto getTotal() {
     return total;
   }
@@ -842,9 +810,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return retentionPercentage
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getRetentionPercentage() {
     return retentionPercentage;
   }
@@ -864,9 +829,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return retentionAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getRetentionAmount() {
     return retentionAmount;
   }
@@ -886,9 +848,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return paidAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getPaidAmount() {
     return paidAmount;
   }
@@ -908,7 +867,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return isPaid
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsPaid() {
     return isPaid;
   }
@@ -928,7 +886,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return dueDate
   **/
   @javax.annotation.Nullable
-
   public String getDueDate() {
     return dueDate;
   }
@@ -948,9 +905,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return paymentMethods
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public GetPaymentMethodDto getPaymentMethods() {
     return paymentMethods;
   }
@@ -970,7 +924,6 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return category
   **/
   @javax.annotation.Nullable
-
   public CategoryEnum getCategory() {
     return category;
   }
@@ -980,7 +933,7 @@ public class ExpenseDocumentAnswerDto implements Serializable {
   }
 
 
-  public ExpenseDocumentAnswerDto isExpense(Boolean isExpense) {
+  public ExpenseDocumentAnswerDto isExpense(Object isExpense) {
     this.isExpense = isExpense;
     return this;
   }
@@ -990,13 +943,11 @@ public class ExpenseDocumentAnswerDto implements Serializable {
    * @return isExpense
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
-  public Boolean getIsExpense() {
+  public Object getIsExpense() {
     return isExpense;
   }
 
-  public void setIsExpense(Boolean isExpense) {
+  public void setIsExpense(Object isExpense) {
     this.isExpense = isExpense;
   }
 

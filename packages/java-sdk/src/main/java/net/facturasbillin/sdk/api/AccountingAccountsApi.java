@@ -26,8 +26,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import net.facturasbillin.sdk.model.AccountingAccountAnswerDto;
 import net.facturasbillin.sdk.model.AccountingAccountListAnswerDto;
@@ -338,7 +336,7 @@ public class AccountingAccountsApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<AccountingAccountListAnswerDto> getAccountingAccountListWithHttpInfo(String queryType, String sortCreatedAt, String sortUpdatedAt, String sortAlias,  @DecimalMin("0") @DecimalMax("100")BigDecimal limit, BigDecimal offset) throws ApiException {
+    public ApiResponse<AccountingAccountListAnswerDto> getAccountingAccountListWithHttpInfo(String queryType, String sortCreatedAt, String sortUpdatedAt, String sortAlias, BigDecimal limit, BigDecimal offset) throws ApiException {
         okhttp3.Call localVarCall = getAccountingAccountListValidateBeforeCall(queryType, sortCreatedAt, sortUpdatedAt, sortAlias, limit, offset, null);
         Type localVarReturnType = new TypeToken<AccountingAccountListAnswerDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);

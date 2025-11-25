@@ -26,8 +26,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import net.facturasbillin.sdk.model.ApiBadRequestException;
 import net.facturasbillin.sdk.model.ApiUnauthorizedException;

@@ -31,8 +31,6 @@ import net.facturasbillin.sdk.model.SalesReceiptBaiCreateDto;
 import net.facturasbillin.sdk.model.SalesReceiptCreateDto;
 import net.facturasbillin.sdk.model.VisualLineDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 
 

@@ -27,7 +27,7 @@
 |**dueDate** | **String** | The due date of the document |  [optional] |
 |**paymentMethods** | [**GetPaymentMethodDto**](GetPaymentMethodDto.md) |  |  |
 |**category** | [**CategoryEnum**](#CategoryEnum) | Type of the document |  [optional] |
-|**isExpense** | **Boolean** | Boolean indicating if the document is an expense |  |
+|**isExpense** | **Object** | Boolean indicating if the document is an expense |  |
 
 
 

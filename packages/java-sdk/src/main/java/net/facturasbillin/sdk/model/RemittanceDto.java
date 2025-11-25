@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -77,8 +75,6 @@ public class RemittanceDto implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getId() {
     return id;
   }
@@ -98,8 +94,6 @@ public class RemittanceDto implements Serializable {
    * @return name
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getName() {
     return name;
   }

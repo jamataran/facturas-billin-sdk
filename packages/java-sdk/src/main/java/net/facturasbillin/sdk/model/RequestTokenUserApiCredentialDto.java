@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -147,7 +145,6 @@ public class RequestTokenUserApiCredentialDto implements Serializable {
    * @return grantType
   **/
   @javax.annotation.Nullable
-
   public GrantTypeEnum getGrantType() {
     return grantType;
   }
@@ -167,8 +164,6 @@ public class RequestTokenUserApiCredentialDto implements Serializable {
    * @return clientId
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getClientId() {
     return clientId;
   }
@@ -188,7 +183,6 @@ public class RequestTokenUserApiCredentialDto implements Serializable {
    * @return clientSecret
   **/
   @javax.annotation.Nullable
-
   public String getClientSecret() {
     return clientSecret;
   }
@@ -208,7 +202,6 @@ public class RequestTokenUserApiCredentialDto implements Serializable {
    * @return refreshToken
   **/
   @javax.annotation.Nullable
-
   public String getRefreshToken() {
     return refreshToken;
   }
@@ -228,7 +221,6 @@ public class RequestTokenUserApiCredentialDto implements Serializable {
    * @return username
   **/
   @javax.annotation.Nullable
-
   public String getUsername() {
     return username;
   }
@@ -248,7 +240,6 @@ public class RequestTokenUserApiCredentialDto implements Serializable {
    * @return password
   **/
   @javax.annotation.Nullable
-
   public String getPassword() {
     return password;
   }

@@ -26,8 +26,6 @@ import java.util.Arrays;
 import java.util.List;
 import net.facturasbillin.sdk.model.InvoiceDocumentAnswerDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,7 +64,7 @@ public class GetInvoicesListAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
-  private List<@Valid InvoiceDocumentAnswerDto> items = new ArrayList<>();
+  private List<InvoiceDocumentAnswerDto> items = new ArrayList<>();
 
   public GetInvoicesListAnswerDto() {
   }
@@ -81,9 +79,6 @@ public class GetInvoicesListAnswerDto implements Serializable {
    * @return count
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getCount() {
     return count;
   }
@@ -93,7 +88,7 @@ public class GetInvoicesListAnswerDto implements Serializable {
   }
 
 
-  public GetInvoicesListAnswerDto items(List<@Valid InvoiceDocumentAnswerDto> items) {
+  public GetInvoicesListAnswerDto items(List<InvoiceDocumentAnswerDto> items) {
     this.items = items;
     return this;
   }
@@ -111,14 +106,11 @@ public class GetInvoicesListAnswerDto implements Serializable {
    * @return items
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
-  public List<@Valid InvoiceDocumentAnswerDto> getItems() {
+  public List<InvoiceDocumentAnswerDto> getItems() {
     return items;
   }
 
-  public void setItems(List<@Valid InvoiceDocumentAnswerDto> items) {
+  public void setItems(List<InvoiceDocumentAnswerDto> items) {
     this.items = items;
   }
 

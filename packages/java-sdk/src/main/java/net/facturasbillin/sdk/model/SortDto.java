@@ -22,8 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -405,7 +403,6 @@ public class SortDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public IssuedDateEnum getIssuedDate() {
     return issuedDate;
   }
@@ -425,7 +422,6 @@ public class SortDto implements Serializable {
    * @return createdAt
   **/
   @javax.annotation.Nullable
-
   public CreatedAtEnum getCreatedAt() {
     return createdAt;
   }
@@ -445,7 +441,6 @@ public class SortDto implements Serializable {
    * @return updatedAt
   **/
   @javax.annotation.Nullable
-
   public UpdatedAtEnum getUpdatedAt() {
     return updatedAt;
   }
@@ -465,7 +460,6 @@ public class SortDto implements Serializable {
    * @return serialCode
   **/
   @javax.annotation.Nullable
-
   public SerialCodeEnum getSerialCode() {
     return serialCode;
   }
@@ -485,7 +479,6 @@ public class SortDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nullable
-
   public CodeEnum getCode() {
     return code;
   }
@@ -505,7 +498,6 @@ public class SortDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
-
   public ReferenceEnum getReference() {
     return reference;
   }

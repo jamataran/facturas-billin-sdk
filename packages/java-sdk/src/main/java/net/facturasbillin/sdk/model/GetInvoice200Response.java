@@ -40,8 +40,6 @@ import net.facturasbillin.sdk.model.TaxAuthorityErrorDto;
 import net.facturasbillin.sdk.model.VisualLineDto;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 
 

@@ -25,8 +25,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -222,8 +220,6 @@ public class CreatePaymentDto implements Serializable {
    * @return operationDate
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getOperationDate() {
     return operationDate;
   }
@@ -244,9 +240,6 @@ public class CreatePaymentDto implements Serializable {
    * @return amount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @DecimalMin("0.01")
   public BigDecimal getAmount() {
     return amount;
   }
@@ -266,7 +259,6 @@ public class CreatePaymentDto implements Serializable {
    * @return method
   **/
   @javax.annotation.Nullable
-
   public MethodEnum getMethod() {
     return method;
   }
@@ -286,8 +278,6 @@ public class CreatePaymentDto implements Serializable {
    * @return type
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public TypeEnum getType() {
     return type;
   }
@@ -307,7 +297,6 @@ public class CreatePaymentDto implements Serializable {
    * @return contactId
   **/
   @javax.annotation.Nullable
-
   public String getContactId() {
     return contactId;
   }
@@ -335,7 +324,6 @@ public class CreatePaymentDto implements Serializable {
    * @return documentsIds
   **/
   @javax.annotation.Nullable
- @Size(max=1)
   public List<String> getDocumentsIds() {
     return documentsIds;
   }
@@ -355,7 +343,6 @@ public class CreatePaymentDto implements Serializable {
    * @return accountingAccountId
   **/
   @javax.annotation.Nullable
-
   public String getAccountingAccountId() {
     return accountingAccountId;
   }
@@ -375,7 +362,6 @@ public class CreatePaymentDto implements Serializable {
    * @return description
   **/
   @javax.annotation.Nullable
- @Size(max=250)
   public String getDescription() {
     return description;
   }

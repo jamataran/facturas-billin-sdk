@@ -26,8 +26,6 @@ import java.util.List;
 import net.facturasbillin.sdk.model.DocumentContactAddressDto;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -150,7 +148,7 @@ public class DocumentContactAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_EMAILS = "additionalEmails";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_EMAILS)
-  private List<@Email String> additionalEmails;
+  private List<String> additionalEmails;
 
   public static final String SERIALIZED_NAME_PHONE = "phone";
   @SerializedName(SERIALIZED_NAME_PHONE)
@@ -181,8 +179,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return fiscalName
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(max=120)
   public String getFiscalName() {
     return fiscalName;
   }
@@ -202,7 +198,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return vatNumberType
   **/
   @javax.annotation.Nullable
-
   public VatNumberTypeEnum getVatNumberType() {
     return vatNumberType;
   }
@@ -222,7 +217,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return vatNumber
   **/
   @javax.annotation.Nullable
-
   public String getVatNumber() {
     return vatNumber;
   }
@@ -242,7 +236,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return isCustomer
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsCustomer() {
     return isCustomer;
   }
@@ -262,7 +255,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return isProvider
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsProvider() {
     return isProvider;
   }
@@ -282,7 +274,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nullable
-
   public Object getTaxKey() {
     return taxKey;
   }
@@ -302,7 +293,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return email
   **/
   @javax.annotation.Nullable
-
   public String getEmail() {
     return email;
   }
@@ -312,7 +302,7 @@ public class DocumentContactAnswerDto implements Serializable {
   }
 
 
-  public DocumentContactAnswerDto additionalEmails(List<@Email String> additionalEmails) {
+  public DocumentContactAnswerDto additionalEmails(List<String> additionalEmails) {
     this.additionalEmails = additionalEmails;
     return this;
   }
@@ -330,12 +320,11 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return additionalEmails
   **/
   @javax.annotation.Nullable
-
-  public List<@Email String> getAdditionalEmails() {
+  public List<String> getAdditionalEmails() {
     return additionalEmails;
   }
 
-  public void setAdditionalEmails(List<@Email String> additionalEmails) {
+  public void setAdditionalEmails(List<String> additionalEmails) {
     this.additionalEmails = additionalEmails;
   }
 
@@ -350,7 +339,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return phone
   **/
   @javax.annotation.Nullable
-
   public String getPhone() {
     return phone;
   }
@@ -370,7 +358,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return salesEqTaxCheck
   **/
   @javax.annotation.Nullable
-
   public Boolean getSalesEqTaxCheck() {
     return salesEqTaxCheck;
   }
@@ -390,8 +377,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return address
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public DocumentContactAddressDto getAddress() {
     return address;
   }
@@ -411,7 +396,6 @@ public class DocumentContactAnswerDto implements Serializable {
    * @return isTest
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsTest() {
     return isTest;
   }

@@ -31,8 +31,6 @@ import net.facturasbillin.sdk.model.DocumentTaxLineBaseDto;
 import net.facturasbillin.sdk.model.DocumentTotalDto;
 import net.facturasbillin.sdk.model.VisualLineDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -91,11 +89,11 @@ public class QuoteCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_VISUAL_LINES = "visualLines";
   @SerializedName(SERIALIZED_NAME_VISUAL_LINES)
-  private List<@Valid VisualLineDto> visualLines;
+  private List<VisualLineDto> visualLines;
 
   public static final String SERIALIZED_NAME_TAX_LINES = "taxLines";
   @SerializedName(SERIALIZED_NAME_TAX_LINES)
-  private List<@Valid DocumentTaxLineBaseDto> taxLines;
+  private List<DocumentTaxLineBaseDto> taxLines;
 
   public static final String SERIALIZED_NAME_COMMENTS = "comments";
   @SerializedName(SERIALIZED_NAME_COMMENTS)
@@ -393,7 +391,7 @@ public class QuoteCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private List<@Valid DocumentLineDto> lines = new ArrayList<>();
+  private List<DocumentLineDto> lines = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_DUE_DATE = "dueDate";
   @SerializedName(SERIALIZED_NAME_DUE_DATE)
@@ -401,7 +399,7 @@ public class QuoteCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_EXPENSES = "additionalExpenses";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_EXPENSES)
-  private List<@Valid AdditionalExpenseDto> additionalExpenses = new ArrayList<>();
+  private List<AdditionalExpenseDto> additionalExpenses = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TEMPLATE_ID = "templateId";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_ID)
@@ -486,7 +484,6 @@ public class QuoteCreateDto implements Serializable {
    * @return serieId
   **/
   @javax.annotation.Nullable
-
   public String getSerieId() {
     return serieId;
   }
@@ -506,7 +503,6 @@ public class QuoteCreateDto implements Serializable {
    * @return serialCode
   **/
   @javax.annotation.Nullable
-
   public String getSerialCode() {
     return serialCode;
   }
@@ -528,8 +524,6 @@ public class QuoteCreateDto implements Serializable {
    * @return code
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("1000000000")
   public BigDecimal getCode() {
     return code;
   }
@@ -551,8 +545,6 @@ public class QuoteCreateDto implements Serializable {
    * @return mask
   **/
   @javax.annotation.Nullable
-  @Valid
- @DecimalMin("0") @DecimalMax("1000000000")
   public BigDecimal getMask() {
     return mask;
   }
@@ -572,7 +564,6 @@ public class QuoteCreateDto implements Serializable {
    * @return issuedDate
   **/
   @javax.annotation.Nullable
-
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -592,7 +583,6 @@ public class QuoteCreateDto implements Serializable {
    * @return reference
   **/
   @javax.annotation.Nullable
-
   public String getReference() {
     return reference;
   }
@@ -602,7 +592,7 @@ public class QuoteCreateDto implements Serializable {
   }
 
 
-  public QuoteCreateDto visualLines(List<@Valid VisualLineDto> visualLines) {
+  public QuoteCreateDto visualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
     return this;
   }
@@ -620,18 +610,16 @@ public class QuoteCreateDto implements Serializable {
    * @return visualLines
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid VisualLineDto> getVisualLines() {
+  public List<VisualLineDto> getVisualLines() {
     return visualLines;
   }
 
-  public void setVisualLines(List<@Valid VisualLineDto> visualLines) {
+  public void setVisualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
   }
 
 
-  public QuoteCreateDto taxLines(List<@Valid DocumentTaxLineBaseDto> taxLines) {
+  public QuoteCreateDto taxLines(List<DocumentTaxLineBaseDto> taxLines) {
     this.taxLines = taxLines;
     return this;
   }
@@ -649,13 +637,11 @@ public class QuoteCreateDto implements Serializable {
    * @return taxLines
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid DocumentTaxLineBaseDto> getTaxLines() {
+  public List<DocumentTaxLineBaseDto> getTaxLines() {
     return taxLines;
   }
 
-  public void setTaxLines(List<@Valid DocumentTaxLineBaseDto> taxLines) {
+  public void setTaxLines(List<DocumentTaxLineBaseDto> taxLines) {
     this.taxLines = taxLines;
   }
 
@@ -670,7 +656,6 @@ public class QuoteCreateDto implements Serializable {
    * @return comments
   **/
   @javax.annotation.Nullable
-
   public String getComments() {
     return comments;
   }
@@ -690,8 +675,6 @@ public class QuoteCreateDto implements Serializable {
    * @return currency
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -711,8 +694,6 @@ public class QuoteCreateDto implements Serializable {
    * @return total
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public DocumentTotalDto getTotal() {
     return total;
   }
@@ -732,8 +713,6 @@ public class QuoteCreateDto implements Serializable {
    * @return paidAmount
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getPaidAmount() {
     return paidAmount;
   }
@@ -753,8 +732,6 @@ public class QuoteCreateDto implements Serializable {
    * @return retentionAmount
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getRetentionAmount() {
     return retentionAmount;
   }
@@ -774,8 +751,6 @@ public class QuoteCreateDto implements Serializable {
    * @return retentionPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getRetentionPercentage() {
     return retentionPercentage;
   }
@@ -795,7 +770,6 @@ public class QuoteCreateDto implements Serializable {
    * @return showProductReference
   **/
   @javax.annotation.Nullable
-
   public Boolean getShowProductReference() {
     return showProductReference;
   }
@@ -805,7 +779,7 @@ public class QuoteCreateDto implements Serializable {
   }
 
 
-  public QuoteCreateDto lines(List<@Valid DocumentLineDto> lines) {
+  public QuoteCreateDto lines(List<DocumentLineDto> lines) {
     this.lines = lines;
     return this;
   }
@@ -823,14 +797,11 @@ public class QuoteCreateDto implements Serializable {
    * @return lines
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
- @Size(min=1)
-  public List<@Valid DocumentLineDto> getLines() {
+  public List<DocumentLineDto> getLines() {
     return lines;
   }
 
-  public void setLines(List<@Valid DocumentLineDto> lines) {
+  public void setLines(List<DocumentLineDto> lines) {
     this.lines = lines;
   }
 
@@ -845,7 +816,6 @@ public class QuoteCreateDto implements Serializable {
    * @return dueDate
   **/
   @javax.annotation.Nullable
-
   public String getDueDate() {
     return dueDate;
   }
@@ -855,7 +825,7 @@ public class QuoteCreateDto implements Serializable {
   }
 
 
-  public QuoteCreateDto additionalExpenses(List<@Valid AdditionalExpenseDto> additionalExpenses) {
+  public QuoteCreateDto additionalExpenses(List<AdditionalExpenseDto> additionalExpenses) {
     this.additionalExpenses = additionalExpenses;
     return this;
   }
@@ -873,13 +843,11 @@ public class QuoteCreateDto implements Serializable {
    * @return additionalExpenses
   **/
   @javax.annotation.Nullable
-  @Valid
-
-  public List<@Valid AdditionalExpenseDto> getAdditionalExpenses() {
+  public List<AdditionalExpenseDto> getAdditionalExpenses() {
     return additionalExpenses;
   }
 
-  public void setAdditionalExpenses(List<@Valid AdditionalExpenseDto> additionalExpenses) {
+  public void setAdditionalExpenses(List<AdditionalExpenseDto> additionalExpenses) {
     this.additionalExpenses = additionalExpenses;
   }
 
@@ -894,7 +862,6 @@ public class QuoteCreateDto implements Serializable {
    * @return templateId
   **/
   @javax.annotation.Nullable
-
   public String getTemplateId() {
     return templateId;
   }
@@ -914,9 +881,6 @@ public class QuoteCreateDto implements Serializable {
    * @return contact
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public DocumentContactDto getContact() {
     return contact;
   }
@@ -936,7 +900,6 @@ public class QuoteCreateDto implements Serializable {
    * @return showPdfLinesWithoutTaxes
   **/
   @javax.annotation.Nullable
-
   public Boolean getShowPdfLinesWithoutTaxes() {
     return showPdfLinesWithoutTaxes;
   }
@@ -956,7 +919,6 @@ public class QuoteCreateDto implements Serializable {
    * @return status
   **/
   @javax.annotation.Nullable
-
   public StatusEnum getStatus() {
     return status;
   }

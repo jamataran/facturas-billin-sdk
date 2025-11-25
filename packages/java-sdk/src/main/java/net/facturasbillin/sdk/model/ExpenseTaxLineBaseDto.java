@@ -23,8 +23,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -86,8 +84,6 @@ public class ExpenseTaxLineBaseDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nonnull
-  @NotNull
-
   public String getTaxKey() {
     return taxKey;
   }
@@ -107,9 +103,6 @@ public class ExpenseTaxLineBaseDto implements Serializable {
    * @return taxBase
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxBase() {
     return taxBase;
   }
@@ -129,8 +122,6 @@ public class ExpenseTaxLineBaseDto implements Serializable {
    * @return taxPercentage
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public BigDecimal getTaxPercentage() {
     return taxPercentage;
   }
@@ -150,9 +141,6 @@ public class ExpenseTaxLineBaseDto implements Serializable {
    * @return taxAmount
   **/
   @javax.annotation.Nonnull
-  @NotNull
-  @Valid
-
   public BigDecimal getTaxAmount() {
     return taxAmount;
   }

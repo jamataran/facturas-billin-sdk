@@ -26,8 +26,6 @@ import java.util.List;
 import net.facturasbillin.sdk.model.ContactPaymentMethod;
 import net.facturasbillin.sdk.model.DocumentContactAddressDto;
 import java.io.Serializable;
-import javax.validation.constraints.*;
-import javax.validation.Valid;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -166,7 +164,7 @@ public class CreateContactDto implements Serializable {
 
   public static final String SERIALIZED_NAME_PAYMENT_METHODS = "paymentMethods";
   @SerializedName(SERIALIZED_NAME_PAYMENT_METHODS)
-  private List<@Valid ContactPaymentMethod> paymentMethods;
+  private List<ContactPaymentMethod> paymentMethods;
 
   public CreateContactDto() {
   }
@@ -181,8 +179,6 @@ public class CreateContactDto implements Serializable {
    * @return fiscalName
   **/
   @javax.annotation.Nonnull
-  @NotNull
- @Size(min=1,max=120)
   public String getFiscalName() {
     return fiscalName;
   }
@@ -202,7 +198,6 @@ public class CreateContactDto implements Serializable {
    * @return vatNumberType
   **/
   @javax.annotation.Nullable
-
   public VatNumberTypeEnum getVatNumberType() {
     return vatNumberType;
   }
@@ -222,7 +217,6 @@ public class CreateContactDto implements Serializable {
    * @return vatNumber
   **/
   @javax.annotation.Nullable
-
   public String getVatNumber() {
     return vatNumber;
   }
@@ -242,7 +236,6 @@ public class CreateContactDto implements Serializable {
    * @return taxKey
   **/
   @javax.annotation.Nullable
-
   public String getTaxKey() {
     return taxKey;
   }
@@ -262,7 +255,6 @@ public class CreateContactDto implements Serializable {
    * @return email
   **/
   @javax.annotation.Nullable
- @Size(max=64)
   public String getEmail() {
     return email;
   }
@@ -282,7 +274,6 @@ public class CreateContactDto implements Serializable {
    * @return phone
   **/
   @javax.annotation.Nullable
- @Size(max=64)
   public String getPhone() {
     return phone;
   }
@@ -302,7 +293,6 @@ public class CreateContactDto implements Serializable {
    * @return salesEqTaxCheck
   **/
   @javax.annotation.Nullable
-
   public Boolean getSalesEqTaxCheck() {
     return salesEqTaxCheck;
   }
@@ -322,8 +312,6 @@ public class CreateContactDto implements Serializable {
    * @return address
   **/
   @javax.annotation.Nullable
-  @Valid
-
   public DocumentContactAddressDto getAddress() {
     return address;
   }
@@ -343,7 +331,6 @@ public class CreateContactDto implements Serializable {
    * @return isCustomer
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsCustomer() {
     return isCustomer;
   }
@@ -363,7 +350,6 @@ public class CreateContactDto implements Serializable {
    * @return isProvider
   **/
   @javax.annotation.Nullable
-
   public Boolean getIsProvider() {
     return isProvider;
   }
@@ -383,7 +369,6 @@ public class CreateContactDto implements Serializable {
    * @return notes
   **/
   @javax.annotation.Nullable
- @Size(max=2000)
   public String getNotes() {
     return notes;
   }
@@ -393,7 +378,7 @@ public class CreateContactDto implements Serializable {
   }
 
 
-  public CreateContactDto paymentMethods(List<@Valid ContactPaymentMethod> paymentMethods) {
+  public CreateContactDto paymentMethods(List<ContactPaymentMethod> paymentMethods) {
     this.paymentMethods = paymentMethods;
     return this;
   }
@@ -411,13 +396,11 @@ public class CreateContactDto implements Serializable {
    * @return paymentMethods
   **/
   @javax.annotation.Nullable
-  @Valid
- @Size(max=1)
-  public List<@Valid ContactPaymentMethod> getPaymentMethods() {
+  public List<ContactPaymentMethod> getPaymentMethods() {
     return paymentMethods;
   }
 
-  public void setPaymentMethods(List<@Valid ContactPaymentMethod> paymentMethods) {
+  public void setPaymentMethods(List<ContactPaymentMethod> paymentMethods) {
     this.paymentMethods = paymentMethods;
   }
 
