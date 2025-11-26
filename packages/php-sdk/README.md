@@ -34,6 +34,8 @@ Para regenerar el código, necesitas tener instalado [OpenAPI Generator CLI](htt
 npm run generate
 ```
 
+**Nota**: El comando de generación utiliza la bandera `--skip-validate-spec` debido a un problema de validación menor en la especificación OpenAPI (el atributo `components.schemas.ExpenseDocumentAnswerDto.default` no es de tipo `object`). Esto no afecta a la funcionalidad del SDK generado.
+
 ## Uso
 
 ### Opción 1: Usando BillinProvider (Recomendado)

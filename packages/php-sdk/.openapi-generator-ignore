@@ -1,4 +1,7 @@
 # OpenAPI Generator Ignore
+# This file lists files that should NOT be overwritten when regenerating the SDK.
+# Custom configuration and implementation files are excluded to preserve manual changes.
+
 # Ignore our custom configuration files
 composer.json
 package.json
@@ -15,7 +18,11 @@ git_push.sh
 phpunit.xml.dist
 
 # Ignore custom classes
+# BillinProvider.php is a custom wrapper class that provides a simplified interface
+# to the Billin API. It offers factory methods for OAuth2 authentication and
+# convenient access to all API clients. This class is NOT auto-generated.
 lib/BillinProvider.php
 
 # Ignore custom test files
+# Integration tests contain custom test logic that should not be overwritten
 test/Integration/
