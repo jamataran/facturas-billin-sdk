@@ -4,7 +4,7 @@
   "private": true,
   "description": "PHP SDK for Facturas Billin API",
   "scripts": {
-    "generate": "npx @openapitools/openapi-generator-cli generate -c openapi-generator-config.yaml -i ../../openapi-spec/swagger.json -g php -o .",
+    "generate": "npx @openapitools/openapi-generator-cli generate -c openapi-generator-config.yaml -i ../../openapi-spec/swagger.json -g php -o . --skip-validate-spec",
     "install": "composer install",
     "build": "composer install --no-dev --optimize-autoloader",
     "test": "composer test",

@@ -13,3 +13,9 @@ git_push.sh
 .php_cs.dist
 .php-cs-fixer.dist.php
 phpunit.xml.dist
+
+# Ignore custom classes
+lib/BillinProvider.php
+
+# Ignore custom test files
+test/Integration/

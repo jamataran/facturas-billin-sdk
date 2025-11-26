@@ -7,7 +7,30 @@ on:
     branches: [main, develop]
 
 jobs:
-  build:
+  # Detect which packages have changed
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      java: ${{ steps.filter.outputs.java }}
+      php: ${{ steps.filter.outputs.php }}
+      openapi: ${{ steps.filter.outputs.openapi }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            java:
+              - 'packages/java-sdk/**'
+            php:
+              - 'packages/php-sdk/**'
+            openapi:
+              - 'openapi-spec/**'
+
+  # Build and test Java SDK
+  build-java:
+    needs: changes
+    if: ${{ needs.changes.outputs.java == 'true' || needs.changes.outputs.openapi == 'true' || github.event_name == 'push' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,21 +52,59 @@ jobs:
           java-version: '11'
           cache: 'maven'
           
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Generate Java SDK
+        run: npm run generate:java
+        
+      - name: Build Java SDK
+        run: npm run build:java
+        
+      - name: Run Java tests
+        env:
+          BILLIN_CLIENT_ID: ${{ secrets.BILLIN_CLIENT_ID }}
+          BILLIN_CLIENT_SECRET: ${{ secrets.BILLIN_CLIENT_SECRET }}
+        run: npm run test:java
+        continue-on-error: true
+
+  # Build and test PHP SDK
+  build-php:
+    needs: changes
+    if: ${{ needs.changes.outputs.php == 'true' || needs.changes.outputs.openapi == 'true' || github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
           extensions: curl, json, mbstring
+          tools: composer:v2
           
       - name: Install dependencies
         run: npm ci
         
-      - name: Generate SDKs
-        run: npm run generate
+      - name: Generate PHP SDK
+        run: npm run generate:php
         
-      - name: Build all packages
-        run: npm run build
+      - name: Build PHP SDK
+        run: npm run build:php
         
-      - name: Run tests
-        run: npm run test
+      - name: Run PHP tests
+        env:
+          BILLIN_CLIENT_ID: ${{ secrets.BILLIN_CLIENT_ID }}
+          BILLIN_CLIENT_SECRET: ${{ secrets.BILLIN_CLIENT_SECRET }}
+        run: npm run test:php
         continue-on-error: true

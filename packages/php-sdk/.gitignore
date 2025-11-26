@@ -29,6 +29,7 @@ Thumbs.db
 
 # OpenAPI Generator metadata
 .openapi-generator/
+openapitools.json
 
 # Build
 build/
