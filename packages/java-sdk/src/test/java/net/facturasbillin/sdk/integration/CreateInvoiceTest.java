@@ -90,7 +90,7 @@ public class CreateInvoiceTest {
             address.setCountry(DocumentContactAddressDto.CountryEnum.ES);
 
             DocumentContactDto contact = new DocumentContactDto();
-            contact.setFiscalName("_Pruebas API");
+            contact.setFiscalName(LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME).toString().concat(" Pruebas API"));
             contact.setVatNumberType(DocumentContactDto.VatNumberTypeEnum.NIF);
             contact.setVatNumber("B12345678");
             contact.setTaxKey("IVA_7_5");

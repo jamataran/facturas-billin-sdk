@@ -26,7 +26,7 @@
 |**lines** | [**List&lt;DocumentLineAnswerDto&gt;**](DocumentLineAnswerDto.md) | Lines of the document |  |
 |**visualLines** | [**List&lt;VisualLineDto&gt;**](VisualLineDto.md) | Visual Lines of the document |  |
 |**taxLines** | [**List&lt;DocumentTaxLineAnswerDto&gt;**](DocumentTaxLineAnswerDto.md) | Tax lines of the document |  |
-|**additionalExpenses** | [**AdditionalExpenseAnswerDto**](AdditionalExpenseAnswerDto.md) |  |  |
+|**additionalExpenses** | [**List&lt;AdditionalExpenseAnswerDto&gt;**](AdditionalExpenseAnswerDto.md) | Additional expenses of the invoice |  |
 |**retentionPercentage** | **BigDecimal** | Percentage of retention |  |
 |**retentionAmount** | **BigDecimal** | Retention amount |  |
 |**paidAmount** | **BigDecimal** | Paid amount |  |
@@ -49,7 +49,7 @@
 |**correctedInvoices** | [**List&lt;CorrectedInvoicesAnswerDto&gt;**](CorrectedInvoicesAnswerDto.md) | Invoices corrected by this invoice. |  [optional] |
 |**correctiveData** | [**InvoiceDocumentAnswerDtoCorrectiveData**](InvoiceDocumentAnswerDtoCorrectiveData.md) |  |  [optional] |
 |**contact** | [**DocumentContactAnswerDto**](DocumentContactAnswerDto.md) |  |  |
-|**paymentMethods** | [**GetPaymentMethodDto**](GetPaymentMethodDto.md) |  |  |
+|**paymentMethods** | [**GetPaymentMethodDto**](GetPaymentMethodDto.md) |  |  [optional] |
 
 
 

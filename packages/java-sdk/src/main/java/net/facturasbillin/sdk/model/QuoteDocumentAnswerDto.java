@@ -410,7 +410,7 @@ public class QuoteDocumentAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_EXPENSES = "additionalExpenses";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_EXPENSES)
-  private AdditionalExpenseAnswerDto additionalExpenses;
+  private List<AdditionalExpenseAnswerDto> additionalExpenses = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_RETENTION_PERCENTAGE = "retentionPercentage";
   @SerializedName(SERIALIZED_NAME_RETENTION_PERCENTAGE)
@@ -1069,21 +1069,29 @@ public class QuoteDocumentAnswerDto implements Serializable {
   }
 
 
-  public QuoteDocumentAnswerDto additionalExpenses(AdditionalExpenseAnswerDto additionalExpenses) {
+  public QuoteDocumentAnswerDto additionalExpenses(List<AdditionalExpenseAnswerDto> additionalExpenses) {
     this.additionalExpenses = additionalExpenses;
     return this;
   }
 
+  public QuoteDocumentAnswerDto addAdditionalExpensesItem(AdditionalExpenseAnswerDto additionalExpensesItem) {
+    if (this.additionalExpenses == null) {
+      this.additionalExpenses = new ArrayList<>();
+    }
+    this.additionalExpenses.add(additionalExpensesItem);
+    return this;
+  }
+
    /**
-   * Get additionalExpenses
+   * Additional expenses of the quote
    * @return additionalExpenses
   **/
   @javax.annotation.Nonnull
-  public AdditionalExpenseAnswerDto getAdditionalExpenses() {
+  public List<AdditionalExpenseAnswerDto> getAdditionalExpenses() {
     return additionalExpenses;
   }
 
-  public void setAdditionalExpenses(AdditionalExpenseAnswerDto additionalExpenses) {
+  public void setAdditionalExpenses(List<AdditionalExpenseAnswerDto> additionalExpenses) {
     this.additionalExpenses = additionalExpenses;
   }
 
@@ -1480,8 +1488,16 @@ public class QuoteDocumentAnswerDto implements Serializable {
       for (int i = 0; i < jsonArraytaxLines.size(); i++) {
         DocumentTaxLineAnswerDto.validateJsonElement(jsonArraytaxLines.get(i));
       };
-      // validate the required field `additionalExpenses`
-      AdditionalExpenseAnswerDto.validateJsonElement(jsonObj.get("additionalExpenses"));
+      // ensure the json data is an array
+      if (!jsonObj.get("additionalExpenses").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `additionalExpenses` to be an array in the JSON string but got `%s`", jsonObj.get("additionalExpenses").toString()));
+      }
+
+      JsonArray jsonArrayadditionalExpenses = jsonObj.getAsJsonArray("additionalExpenses");
+      // validate the required field `additionalExpenses` (array)
+      for (int i = 0; i < jsonArrayadditionalExpenses.size(); i++) {
+        AdditionalExpenseAnswerDto.validateJsonElement(jsonArrayadditionalExpenses.get(i));
+      };
       if ((jsonObj.get("documentType") != null && !jsonObj.get("documentType").isJsonNull()) && !jsonObj.get("documentType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `documentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentType").toString()));
       }

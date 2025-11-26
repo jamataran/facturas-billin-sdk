@@ -6812,13 +6812,12 @@
             }
           },
           "additionalExpenses": {
+            "type": "array",
             "minItems": 0,
             "description": "Additional expenses of the invoice",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
-              }
-            ]
+            "items": {
+              "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
+            }
           },
           "retentionPercentage": {
             "type": "number",
@@ -7998,10 +7997,9 @@
           "paidAmount",
           "isReceipt",
           "status",
-          "contact",
-          "paymentMethods"
-        ]
-      },
+            "contact"
+          ]
+        },
       "SalesReceiptDocumentAnswerDto": {
         "type": "object",
         "properties": {
@@ -12235,13 +12233,12 @@
             }
           },
           "additionalExpenses": {
+            "type": "array",
             "minItems": 0,
             "description": "Additional expenses of the quote",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
-              }
-            ]
+            "items": {
+              "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
+            }
           },
           "retentionPercentage": {
             "type": "number",

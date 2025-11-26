@@ -26,7 +26,7 @@
 |**lines** | [**List&lt;DocumentLineAnswerDto&gt;**](DocumentLineAnswerDto.md) | Lines of the quote |  |
 |**visualLines** | [**List&lt;VisualLineDto&gt;**](VisualLineDto.md) | Visual Lines of the document |  |
 |**taxLines** | [**List&lt;DocumentTaxLineAnswerDto&gt;**](DocumentTaxLineAnswerDto.md) | Tax lines of the quote |  |
-|**additionalExpenses** | [**AdditionalExpenseAnswerDto**](AdditionalExpenseAnswerDto.md) |  |  |
+|**additionalExpenses** | [**List&lt;AdditionalExpenseAnswerDto&gt;**](AdditionalExpenseAnswerDto.md) | Additional expenses of the quote |  |
 |**retentionPercentage** | **BigDecimal** | Percentage of retention |  |
 |**retentionAmount** | **BigDecimal** | Retention amount |  |
 |**paidAmount** | **BigDecimal** | Paid amount |  |
