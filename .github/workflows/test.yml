@@ -33,8 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run unit tests (skip integration tests)
-        run: npm test
+      - name: Generate Java SDK only
+        run: npm run generate:java
+
+      - name: Run Java unit tests (skip integration tests)
+        working-directory: packages/java-sdk
+        run: mvn -B test
 
       - name: Upload test results
         if: always()
@@ -43,4 +47,3 @@ jobs:
           name: test-results-java-${{ matrix.java-version }}
           path: packages/java-sdk/target/surefire-reports/
           retention-days: 30
-

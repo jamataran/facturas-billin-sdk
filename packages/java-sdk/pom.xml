@@ -21,6 +21,29 @@
         </license>
     </licenses>
 
+    <!-- Añadido: información de desarrollador, SCM y distribución para despliegue -->
+    <developers>
+        <developer>
+            <id>jamataran</id>
+            <name>Jose Antonio Matarán</name>
+            <url>https://github.com/jamataran</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/jamataran/facturas-billin-sdk.git</connection>
+        <developerConnection>scm:git:ssh://github.com:jamataran/facturas-billin-sdk.git</developerConnection>
+        <url>https://github.com/jamataran/facturas-billin-sdk</url>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/jamataran/facturas-billin-sdk</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
