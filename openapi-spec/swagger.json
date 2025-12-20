@@ -12925,9 +12925,7 @@
           "type",
           "status",
           "contact",
-          "documents",
-          "accountingAccount",
-          "remittance"
+          "documents"
         ]
       },
       "GetPaymentListQueryDto": {

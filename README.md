@@ -2,117 +2,94 @@
 
 Repositorio **NO OFICIAL** con SDKs para consumir la API REST de [Facturas Billin](https://www.facturasbillin.net/) en diferentes lenguajes de programación.
 
-Este proyecto utiliza [Turborepo](https://turbo.build/) para gestionar múltiples paquetes de SDKs generados automáticamente a partir de la especificación OpenAPI/Swagger de la API de Facturas Billin.
+[![CI](https://github.com/jamataran/facturas-billin-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/jamataran/facturas-billin-sdk/actions/workflows/ci.yml)
+[![Tests](https://github.com/jamataran/facturas-billin-sdk/actions/workflows/test.yml/badge.svg)](https://github.com/jamataran/facturas-billin-sdk/actions/workflows/test.yml)
+[![Publish](https://github.com/jamataran/facturas-billin-sdk/actions/workflows/publish.yml/badge.svg)](https://github.com/jamataran/facturas-billin-sdk/actions/workflows/publish.yml)
 
 ## 📦 Paquetes Disponibles
 
-- **[Java/Maven SDK](./packages/java-sdk)** - SDK para aplicaciones Java
-- **[PHP SDK](./packages/php-sdk)** - SDK para aplicaciones PHP
+| SDK | Versión | Estado |
+|-----|---------|--------|
+| [Java/Maven SDK](./packages/java-sdk) | 1.0.0 | ✅ Disponible |
+| [PHP SDK](./packages/php-sdk) | 1.0.0 | 🚧 En desarrollo |
 
-## 🚀 Inicio Rápido
+---
 
-### Requisitos Previos
+## 🚀 Uso Rápido - Java SDK
 
-- Node.js 18.0 o superior
-- npm 10.0 o superior
-- Para Java SDK: Java 11+ y Maven 3.6+
-- Para PHP SDK: PHP 7.4+ y Composer
+### 1. Añadir el repositorio de GitHub Packages
 
-### Instalación
+En tu `pom.xml`, añade el repositorio:
 
-1. Clona el repositorio:
-```bash
-git clone https://github.com/jamataran/facturas-billin-sdk.git
-cd facturas-billin-sdk
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <url>https://maven.pkg.github.com/jamataran/facturas-billin-sdk</url>
+    </repository>
+</repositories>
 ```
 
-2. Instala las dependencias:
-```bash
-npm install
+### 2. Añadir la dependencia
+
+```xml
+<dependency>
+    <groupId>net.facturasbillin</groupId>
+    <artifactId>facturas-billin-java-sdk</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
-3. **IMPORTANTE**: Actualiza la especificación OpenAPI en `openapi-spec/swagger.json` con el archivo oficial de Facturas Billin.
+### 3. Configurar autenticación a GitHub Packages
 
-4. Genera los SDKs:
-```bash
-npm run generate
+Crea o edita tu `~/.m2/settings.xml`:
+
+```xml
+<settings>
+  <servers>
+    <server>
+      <id>github</id>
+      <username>TU_USUARIO_GITHUB</username>
+      <password>TU_TOKEN_GITHUB</password>
+    </server>
+  </servers>
+</settings>
 ```
 
-5. Compila todos los paquetes:
-```bash
-npm run build
-```
+> 💡 Genera un token en [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens) con el permiso `read:packages`.
 
-## 🔧 Comandos Disponibles
-
-Desde la raíz del proyecto (usando Turborepo):
-
-```bash
-# Genera todos los SDKs a partir de la especificación OpenAPI
-npm run generate
-
-# Compila todos los paquetes
-npm run build
-
-# Ejecuta los tests de todos los paquetes
-npm run test
-
-# Limpia los archivos generados y artefactos de compilación
-npm run clean
-```
-
-## 📖 Uso de los SDKs
-
-### Java SDK
+### 4. Usar el SDK
 
 ```java
 import net.facturasbillin.sdk.ApiClient;
-import net.facturasbillin.sdk.api.*;
+import net.facturasbillin.sdk.api.AuthApi;
+import net.facturasbillin.sdk.api.InvoicesApi;
 import net.facturasbillin.sdk.model.*;
 
 public class Example {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // Configurar cliente
         ApiClient client = new ApiClient();
-        client.setApiKey("YOUR_API_KEY");
         
-        // Usa las APIs generadas según la especificación
-        // DefaultApi api = new DefaultApi(client);
+        // Autenticarse
+        AuthApi authApi = new AuthApi(client);
+        AuthInfoAnswerDto auth = authApi.login("tu_client_id", "tu_client_secret");
+        
+        // Usar el token en las siguientes peticiones
+        client.setAccessToken(auth.getData().getAccessToken());
+        
+        // Obtener facturas
+        InvoicesApi invoicesApi = new InvoicesApi(client);
+        GetInvoicesListAnswerDto invoices = invoicesApi.getInvoices(null, null, null, null);
+        
+        System.out.println("Facturas: " + invoices.getData().size());
     }
 }
 ```
 
-Ver [documentación completa del Java SDK](./packages/java-sdk/README.md)
+📖 Para documentación completa, ver [Java SDK README](./packages/java-sdk/README.md)
 
-### PHP SDK
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-use FacturasBillin\SDK\Configuration;
-use FacturasBillin\SDK\Api\DefaultApi;
-
-$config = Configuration::getDefaultConfiguration()
-    ->setApiKey('Authorization', 'YOUR_API_KEY');
-
-$apiInstance = new DefaultApi(
-    new GuzzleHttp\Client(),
-    $config
-);
-
-// Usa las APIs generadas según la especificación
-?>
-```
-
-Ver [documentación completa del PHP SDK](./packages/php-sdk/README.md)
-
-## 🔑 Especificación OpenAPI
-
-La especificación OpenAPI/Swagger debe ubicarse en `openapi-spec/swagger.json`. Este archivo es la fuente de verdad para generar todos los SDKs.
-
-**Nota**: El archivo actual es un placeholder. Debes reemplazarlo con la especificación oficial de Facturas Billin.
-
-Ver [documentación de la especificación](./openapi-spec/README.md)
+---
 
 ## 🏗️ Estructura del Proyecto
 
@@ -120,79 +97,76 @@ Ver [documentación de la especificación](./openapi-spec/README.md)
 facturas-billin-sdk/
 ├── packages/
 │   ├── java-sdk/           # SDK para Java/Maven
-│   │   ├── pom.xml
-│   │   ├── openapi-generator-config.yaml
-│   │   └── README.md
-│   └── php-sdk/            # SDK para PHP
-│       ├── composer.json
-│       ├── openapi-generator-config.yaml
-│       └── README.md
+│   └── php-sdk/            # SDK para PHP (en desarrollo)
 ├── openapi-spec/
-│   ├── swagger.json        # Especificación OpenAPI (PLACEHOLDER)
-│   └── README.md
-├── package.json            # Configuración del monorepo
-├── turbo.json              # Configuración de Turborepo
+│   └── swagger.json        # Especificación OpenAPI
+├── .github/workflows/
+│   ├── ci.yml              # CI: build y validación
+│   ├── test.yml            # Tests en múltiples versiones Java
+│   └── publish.yml         # Publicación a GitHub Packages
 └── README.md
 ```
 
-## 🧪 Testing
+## 🔄 CI/CD
 
-Para ejecutar los tests de todos los paquetes:
+El proyecto utiliza GitHub Actions para automatizar:
+
+| Workflow | Trigger | Descripción |
+|----------|---------|-------------|
+| **CI** | Push/PR a `main`, `develop` | Compila y valida todos los SDKs |
+| **Tests** | Push/PR a `main`, `develop` | Ejecuta tests en Java 11, 17, 21 |
+| **Publish** | Push a `main` | Publica el SDK a GitHub Packages |
+
+### Publicación Automática
+
+Cuando se hace push a `main`:
+1. ✅ Se genera el SDK desde la especificación OpenAPI
+2. ✅ Se compila y ejecutan los tests
+3. ✅ Se publica a GitHub Packages
+4. ✅ Se genera el JAR como artifact descargable
+
+---
+
+## 🛠️ Desarrollo Local
+
+### Requisitos
+
+- Node.js 18+
+- Java 11+ y Maven 3.6+
+- PHP 7.4+ y Composer (para PHP SDK)
+
+### Instalación
 
 ```bash
-npm test
+git clone https://github.com/jamataran/facturas-billin-sdk.git
+cd facturas-billin-sdk
+npm install
 ```
 
-Para ejecutar tests de un paquete específico:
+### Comandos
 
 ```bash
-turbo run test --filter=@facturas-billin-sdk/java
+npm run generate    # Genera SDKs desde OpenAPI
+npm run build       # Compila todos los paquetes
+npm run test        # Ejecuta tests
+npm run clean       # Limpia artefactos
 ```
 
-**Requisito**: Asegúrate de tener un archivo `.env.local` en el directorio del SDK con las credenciales de prueba.
-
-Para más detalles, ver [TESTING.md](./TESTING.md)
-
-## 🛠️ Desarrollo
-
-### Agregar un Nuevo Lenguaje
-
-1. Crea un nuevo paquete en `packages/<language>-sdk/`
-2. Añade un `package.json` con los scripts de generación, build y test
-3. Configura OpenAPI Generator para el lenguaje objetivo
-4. Actualiza la documentación
-
-### Regenerar los SDKs
-
-Después de actualizar la especificación OpenAPI:
-
-```bash
-npm run clean
-npm run generate
-npm run build
-npm run test
-```
+---
 
 ## 📝 Licencia
 
-Este proyecto es **NO OFICIAL** y se distribuye bajo la Licencia Apache 2.0. Ver el archivo [LICENSE](./LICENSE) para más detalles.
+Este proyecto se distribuye bajo la [Licencia Apache 2.0](./LICENSE).
 
 ## ⚠️ Disclaimer
 
-Este es un proyecto **no oficial** y no está afiliado, asociado, autorizado, respaldado por, ni de ninguna manera oficialmente conectado con Facturas Billin o cualquiera de sus subsidiarias o afiliadas.
+Este es un proyecto **no oficial** y no está afiliado con Facturas Billin.
 
 ## 🤝 Contribuciones
 
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/amazing-feature`)
-3. Commit tus cambios (`git commit -m 'Add amazing feature'`)
-4. Push a la rama (`git push origin feature/amazing-feature`)
-5. Abre un Pull Request
+¡Las contribuciones son bienvenidas! Ver [CONTRIBUTING.md](./CONTRIBUTING.md) para más detalles.
 
 ## 📞 Soporte
 
-Para soporte oficial de la API de Facturas Billin, visita [https://www.facturasbillin.net/](https://www.facturasbillin.net/)
-
-Para issues relacionados con este SDK, por favor abre un issue en este repositorio.
+- **API oficial**: [facturasbillin.net](https://www.facturasbillin.net/)
+- **Issues del SDK**: [GitHub Issues](https://github.com/jamataran/facturas-billin-sdk/issues)

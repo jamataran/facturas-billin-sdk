@@ -17,9 +17,9 @@
 |**status** | [**StatusEnum**](#StatusEnum) | Status of the payment |  |
 |**contact** | [**PaymentAnswerDtoContact**](PaymentAnswerDtoContact.md) |  |  |
 |**documents** | [**List&lt;PaymentDocumentDto&gt;**](PaymentDocumentDto.md) | Documents that are related to the payment |  |
-|**accountingAccount** | [**PaymentAnswerDtoAccountingAccount**](PaymentAnswerDtoAccountingAccount.md) |  |  |
+|**accountingAccount** | [**PaymentAnswerDtoAccountingAccount**](PaymentAnswerDtoAccountingAccount.md) |  |  [optional] |
 |**description** | **String** | Description of the payment |  [optional] |
-|**remittance** | [**PaymentAnswerDtoRemittance**](PaymentAnswerDtoRemittance.md) |  |  |
+|**remittance** | [**PaymentAnswerDtoRemittance**](PaymentAnswerDtoRemittance.md) |  |  [optional] |
 
 
 

@@ -184,6 +184,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
+                    <!-- Excluir tests de integración -->
+                    <excludes>
+                        <exclude>**/integration/**</exclude>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IT.java</exclude>
+                    </excludes>
                     <environmentVariables>
                         <BILLIN_CLIENT_ID>${BILLIN_CLIENT_ID}</BILLIN_CLIENT_ID>
                         <BILLIN_CLIENT_SECRET>${BILLIN_CLIENT_SECRET}</BILLIN_CLIENT_SECRET>

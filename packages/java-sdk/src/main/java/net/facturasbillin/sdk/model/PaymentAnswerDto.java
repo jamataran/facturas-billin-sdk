@@ -29,6 +29,7 @@ import net.facturasbillin.sdk.model.PaymentAnswerDtoAccountingAccount;
 import net.facturasbillin.sdk.model.PaymentAnswerDtoContact;
 import net.facturasbillin.sdk.model.PaymentAnswerDtoRemittance;
 import net.facturasbillin.sdk.model.PaymentDocumentDto;
+import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -569,9 +570,20 @@ public class PaymentAnswerDto implements Serializable {
         Objects.equals(this.remittance, paymentAnswerDto.remittance);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
     return Objects.hash(id, createdAt, updatedAt, operationDate, amount, method, type, status, contact, documents, accountingAccount, description, remittance);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -639,8 +651,6 @@ public class PaymentAnswerDto implements Serializable {
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("contact");
     openapiRequiredFields.add("documents");
-    openapiRequiredFields.add("accountingAccount");
-    openapiRequiredFields.add("remittance");
   }
 
  /**
@@ -701,13 +711,17 @@ public class PaymentAnswerDto implements Serializable {
       for (int i = 0; i < jsonArraydocuments.size(); i++) {
         PaymentDocumentDto.validateJsonElement(jsonArraydocuments.get(i));
       };
-      // validate the required field `accountingAccount`
-      PaymentAnswerDtoAccountingAccount.validateJsonElement(jsonObj.get("accountingAccount"));
+      // validate the optional field `accountingAccount`
+      if (jsonObj.get("accountingAccount") != null && !jsonObj.get("accountingAccount").isJsonNull()) {
+        PaymentAnswerDtoAccountingAccount.validateJsonElement(jsonObj.get("accountingAccount"));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the required field `remittance`
-      PaymentAnswerDtoRemittance.validateJsonElement(jsonObj.get("remittance"));
+      // validate the optional field `remittance`
+      if (jsonObj.get("remittance") != null && !jsonObj.get("remittance").isJsonNull()) {
+        PaymentAnswerDtoRemittance.validateJsonElement(jsonObj.get("remittance"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

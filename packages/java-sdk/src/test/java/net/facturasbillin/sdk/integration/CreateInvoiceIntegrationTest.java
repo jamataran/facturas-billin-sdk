@@ -14,13 +14,12 @@ import net.facturasbillin.sdk.auth.HttpBearerAuth;
 import net.facturasbillin.sdk.model.*;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 @DisplayName("Invoices Integration Tests")
-public class CreateInvoiceTest {
+public class CreateInvoiceIntegrationTest {
 
     private static InvoicesApi invoicesApi;
     private static String testInvoiceId;

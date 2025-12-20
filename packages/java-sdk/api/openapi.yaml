@@ -12776,7 +12776,6 @@ components:
         remittance:
           $ref: '#/components/schemas/PaymentAnswerDto_remittance'
       required:
-      - accountingAccount
       - amount
       - contact
       - createdAt
@@ -12784,7 +12783,6 @@ components:
       - id
       - method
       - operationDate
-      - remittance
       - status
       - type
       - updatedAt
