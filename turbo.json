@@ -8,10 +8,13 @@
     },
     "build": {
       "dependsOn": ["generate", "^build"],
-      "outputs": ["dist/**", "target/**", "vendor/**"]
+      "outputs": ["dist/**", "target/**", "vendor/**"],
+      "cache": true
     },
     "test": {
-      "dependsOn": ["build"]
+      "dependsOn": ["build"],
+      "cache": false,
+      "outputs": ["**/target/surefire-reports/**", "**/coverage/**"]
     },
     "clean": {
       "cache": false

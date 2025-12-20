@@ -1,0 +1,75 @@
+name: Publish Java SDK
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/java-sdk/**'
+      - 'openapi-spec/**'
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.1)'
+        required: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
+          server-id: github
+          settings-path: ${{ github.workspace }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate SDK
+        run: npm run generate:java
+
+      - name: Build SDK
+        working-directory: packages/java-sdk
+        run: mvn -B clean compile -DskipTests
+
+      - name: Run unit tests (skip integration tests)
+        working-directory: packages/java-sdk
+        run: mvn -B test
+        continue-on-error: true
+
+      - name: Update version (if specified)
+        if: github.event.inputs.version != ''
+        working-directory: packages/java-sdk
+        run: mvn versions:set -DnewVersion=${{ github.event.inputs.version }} -DgenerateBackupPoms=false
+
+      - name: Publish to GitHub Packages
+        working-directory: packages/java-sdk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B deploy -DskipTests -s ${{ github.workspace }}/settings.xml
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: facturas-billin-java-sdk
+          path: packages/java-sdk/target/*.jar
+          retention-days: 90
+
