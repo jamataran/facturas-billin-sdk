@@ -130,7 +130,7 @@ class CreateInvoiceTest extends TestCase
             $address->setCountry(DocumentContactAddressDto::COUNTRY_ES);
 
             $contact = new DocumentContactDto();
-            $contact->setFiscalName('_Pruebas API');
+            $contact->setFiscalName('PACO_DD');
             $contact->setVatNumberType(DocumentContactDto::VAT_NUMBER_TYPE_NIF);
             $contact->setVatNumber('B12345678');
             $contact->setTaxKey('IVA_7_5');
