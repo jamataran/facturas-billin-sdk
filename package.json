@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "generate": "turbo run generate",
+    "generate": "npm run generate:java",
+    "generate:all": "turbo run generate",
     "clean": "turbo run clean",
     "test": "turbo run test",
     "test:java": "turbo run test --filter=@facturas-billin-sdk/java",
