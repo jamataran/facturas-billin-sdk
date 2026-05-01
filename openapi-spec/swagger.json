@@ -157,7 +157,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/InvoiceCreateDto"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/InvoiceCreateDto"
+                  },
+                  {
+                    "$ref": "#/components/schemas/InvoiceBaiCreateDto"
+                  }
+                ]
               },
               "examples": {
                 "Create invoice (only required fields)": {
@@ -636,7 +643,7 @@
         ]
       },
       "get": {
-        "description": "Endpoint to get the invoices and sales receipts list",
+        "description": "Endpoint to get the invoices and sales receipts list \n\n**Important limitation:**\n\nSwagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.\n\nTo use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).\n\nThe API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.",
         "operationId": "getInvoicesList",
         "parameters": [
           {
@@ -697,7 +704,7 @@
             "name": "query[issuedDate]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -706,7 +713,7 @@
             "name": "query[createdAt]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -715,7 +722,7 @@
             "name": "query[updatedAt]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -1525,14 +1532,14 @@
     },
     "/v1/expenses": {
       "get": {
-        "description": "Endpoint to get the expenses list",
+        "description": "Endpoint to get the expenses list\n\n**Important limitation:**\n\nSwagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.\n\nTo use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).\n\nThe API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.",
         "operationId": "getExpensesList",
         "parameters": [
           {
             "name": "query[issuedDate]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -1541,7 +1548,7 @@
             "name": "query[createdAt]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -1550,7 +1557,7 @@
             "name": "query[updatedAt]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -2321,6 +2328,159 @@
       }
     },
     "/v1/contacts": {
+      "get": {
+        "description": "Endpoint to get the list of contacts for the business.\n\n**Important limitation:**\n\nSwagger UI does not correctly serialize nested query parameters with brackets when using the \"Try it out\" feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.\n\nTo use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, curl, etc.).",
+        "operationId": "getContactsList",
+        "parameters": [
+          {
+            "name": "query[vatNumber]",
+            "required": false,
+            "in": "query",
+            "description": "Filter by exact VAT number",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "query[isCustomer]",
+            "required": false,
+            "in": "query",
+            "description": "Filter by customer flag",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "query[isProvider]",
+            "required": false,
+            "in": "query",
+            "description": "Filter by provider flag",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "sort[fiscalName]",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "ASC",
+                "DESC"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort[vatNumber]",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "ASC",
+                "DESC"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort[updatedAt]",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "ASC",
+                "DESC"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort[createdAt]",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "ASC",
+                "DESC"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 0,
+              "maximum": 100,
+              "default": 10,
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": 0,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactListAnswerDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiBadRequestException"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiUnauthorizedException"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiForbiddenException"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Get the contacts list",
+        "tags": [
+          "Contacts"
+        ]
+      },
       "post": {
         "description": "Endpoint to create a contact",
         "operationId": "createContact",
@@ -2711,7 +2871,7 @@
         ]
       },
       "get": {
-        "description": "Endpoint to get the payment list",
+        "description": "Endpoint to get the payment list\n\n**Important limitation:**\n\nSwagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.\n\nTo use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).\n\nThe API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.",
         "operationId": "getPaymentList",
         "parameters": [
           {
@@ -2773,7 +2933,7 @@
             "name": "query[operationDate]",
             "required": false,
             "in": "query",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01",
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime",
             "schema": {
               "type": "string"
             }
@@ -3430,7 +3590,7 @@
         "properties": {
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_21"
           },
           "taxBase": {
@@ -3551,8 +3711,74 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
-            "example": "IVA_21"
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "example": "IVA_21",
+            "enum": [
+              "IVA_Exempt_0",
+              "IVA_NotSubject_0",
+              "IVA_ReverseCharge_0",
+              "IGIC_Exempt_0",
+              "IGIC_NotSubject_0",
+              "IGIC_ReverseCharge_0",
+              "IPSI_Exempt_0",
+              "IPSI_NotSubject_0",
+              "IPSI_ReverseCharge_0",
+              "IVA_27",
+              "IVA_25_5",
+              "IVA_25",
+              "IVA_24",
+              "IVA_23",
+              "IVA_22",
+              "IVA_21",
+              "IVA_20",
+              "IVA_19",
+              "IVA_18",
+              "IVA_17",
+              "IVA_16",
+              "IVA_15",
+              "IVA_14",
+              "IVA_13_5",
+              "IVA_13",
+              "IVA_12",
+              "IVA_10",
+              "IVA_9_5",
+              "IVA_9",
+              "IVA_8_5",
+              "IVA_8",
+              "IVA_7_5",
+              "IVA_7",
+              "IVA_6",
+              "IVA_5_5",
+              "IVA_5",
+              "IVA_4_8",
+              "IVA_4",
+              "IVA_3",
+              "IVA_2_1",
+              "IVA_2",
+              "IVA_0",
+              "IGIC_35",
+              "IGIC_20",
+              "IGIC_15",
+              "IGIC_13_5",
+              "IGIC_9_5",
+              "IGIC_7",
+              "IGIC_5",
+              "IGIC_3",
+              "IGIC_0",
+              "IPSI_10",
+              "IPSI_9",
+              "IPSI_8",
+              "IPSI_7",
+              "IPSI_6",
+              "IPSI_5",
+              "IPSI_4",
+              "IPSI_3_5",
+              "IPSI_3",
+              "IPSI_2",
+              "IPSI_1",
+              "IPSI_0_5",
+              "IPSI_0"
+            ]
           },
           "taxBase": {
             "type": "number",
@@ -3946,7 +4172,7 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_7_5"
           },
           "email": {
@@ -4238,7 +4464,7 @@
         "properties": {
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_21"
           },
           "taxBase": {
@@ -4348,8 +4574,74 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
-            "example": "IVA_21"
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "example": "IVA_21",
+            "enum": [
+              "IVA_Exempt_0",
+              "IVA_NotSubject_0",
+              "IVA_ReverseCharge_0",
+              "IGIC_Exempt_0",
+              "IGIC_NotSubject_0",
+              "IGIC_ReverseCharge_0",
+              "IPSI_Exempt_0",
+              "IPSI_NotSubject_0",
+              "IPSI_ReverseCharge_0",
+              "IVA_27",
+              "IVA_25_5",
+              "IVA_25",
+              "IVA_24",
+              "IVA_23",
+              "IVA_22",
+              "IVA_21",
+              "IVA_20",
+              "IVA_19",
+              "IVA_18",
+              "IVA_17",
+              "IVA_16",
+              "IVA_15",
+              "IVA_14",
+              "IVA_13_5",
+              "IVA_13",
+              "IVA_12",
+              "IVA_10",
+              "IVA_9_5",
+              "IVA_9",
+              "IVA_8_5",
+              "IVA_8",
+              "IVA_7_5",
+              "IVA_7",
+              "IVA_6",
+              "IVA_5_5",
+              "IVA_5",
+              "IVA_4_8",
+              "IVA_4",
+              "IVA_3",
+              "IVA_2_1",
+              "IVA_2",
+              "IVA_0",
+              "IGIC_35",
+              "IGIC_20",
+              "IGIC_15",
+              "IGIC_13_5",
+              "IGIC_9_5",
+              "IGIC_7",
+              "IGIC_5",
+              "IGIC_3",
+              "IGIC_0",
+              "IPSI_10",
+              "IPSI_9",
+              "IPSI_8",
+              "IPSI_7",
+              "IPSI_6",
+              "IPSI_5",
+              "IPSI_4",
+              "IPSI_3_5",
+              "IPSI_3",
+              "IPSI_2",
+              "IPSI_1",
+              "IPSI_0_5",
+              "IPSI_0"
+            ]
           },
           "taxBase": {
             "type": "number",
@@ -4441,7 +4733,7 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_7_5"
           },
           "email": {
@@ -4734,7 +5026,9 @@
               "03",
               "04",
               "05",
+              "06",
               "07",
+              "08",
               "09"
             ],
             "description": "The tax regime of the operation"
@@ -4755,12 +5049,15 @@
               "102100",
               "102200",
               "102300",
-              "102400",
+              "1024000",
+              "1024001",
+              "1024002",
               "103100",
               "103200",
               "103300",
               "104110",
-              "104120",
+              "1041200",
+              "1041201",
               "104210",
               "104220",
               "104230",
@@ -4769,7 +5066,9 @@
               "105100",
               "106100",
               "106200",
-              "106900",
+              "1069001",
+              "1069002",
+              "1069003",
               "107100",
               "111110",
               "111120",
@@ -4988,7 +5287,8 @@
               "142310",
               "142320",
               "142330",
-              "142390",
+              "1423901",
+              "1423902",
               "142410",
               "142420",
               "142430",
@@ -5241,6 +5541,7 @@
               "166110",
               "166120",
               "166130",
+              "166190",
               "166210",
               "166220",
               "166310",
@@ -5250,6 +5551,7 @@
               "166390",
               "166411",
               "166412",
+              "166420",
               "166491",
               "166492",
               "166500",
@@ -5270,7 +5572,8 @@
               "167450",
               "167460",
               "167470",
-              "167510",
+              "1675100",
+              "1675101",
               "167520",
               "167600",
               "167710",
@@ -5278,7 +5581,8 @@
               "168100",
               "168200",
               "168310",
-              "168320",
+              "1683200",
+              "1683201",
               "168400",
               "168500",
               "168600",
@@ -5289,6 +5593,7 @@
               "169110",
               "169120",
               "1691900",
+              "1691901",
               "169200",
               "169900",
               "171100",
@@ -5382,7 +5687,8 @@
               "184500",
               "184600",
               "184700",
-              "184800",
+              "184810",
+              "184820",
               "184910",
               "184920",
               "184930",
@@ -5635,6 +5941,8 @@
               "286100",
               "286200",
               "286300",
+              "286400",
+              "286900",
               "287100",
               "287200",
               "287300",
@@ -5646,6 +5954,7 @@
               "288600",
               "288700",
               "288800",
+              "288900",
               "289900",
               "301100",
               "301200",
@@ -5662,6 +5971,7 @@
               "303100",
               "303200",
               "303300",
+              "303400",
               "303900",
               "304100",
               "304200",
@@ -5681,12 +5991,16 @@
               "451000",
               "452000",
               "453000",
-              "454000",
-              "455000",
+              "4540001",
+              "4540002",
+              "4550000",
+              "4550001",
               "456001",
               "456002",
               "456003",
-              "457000",
+              "4570001",
+              "4570002",
+              "4570003",
               "458000",
               "459000",
               "490000"
@@ -6812,12 +7126,13 @@
             }
           },
           "additionalExpenses": {
-            "type": "array",
             "minItems": 0,
             "description": "Additional expenses of the invoice",
-            "items": {
-              "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
-            }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
+              }
+            ]
           },
           "retentionPercentage": {
             "type": "number",
@@ -6857,6 +7172,17 @@
             "type": "string",
             "description": "Type of the document",
             "enum": [
+              "206_SOFTWARE_APPLICATIONS",
+              "210_LAND_AND_NATURAL_RESOURCES",
+              "211_BUILDINGS",
+              "212_TECHNICAL_INSTALLATIONS",
+              "213_MACHINERY",
+              "214_TOOLS",
+              "215_OTHER_INSTALLATIONS",
+              "216_FURNITURE",
+              "217_INFORMATION_PROCESSING_EQUIPMENT",
+              "218_TRANSPORT_ELEMENTS",
+              "219_OTHER_TANGIBLE_ASSETS",
               "600_WARE",
               "601_RAW_MATERIALS",
               "602_SUPPLIES",
@@ -6927,7 +7253,9 @@
               "03",
               "04",
               "05",
+              "06",
               "07",
+              "08",
               "09"
             ],
             "description": "Is the Vat Taxation Key that is applied in issuing an invoice. You can consult the differents VAT Taxation Systems on the [Tax Agency page](https://sede.agenciatributaria.gob.es/Sede/iva/regimenes-tributacion-iva.html)."
@@ -6950,12 +7278,15 @@
               "102100",
               "102200",
               "102300",
-              "102400",
+              "1024000",
+              "1024001",
+              "1024002",
               "103100",
               "103200",
               "103300",
               "104110",
-              "104120",
+              "1041200",
+              "1041201",
               "104210",
               "104220",
               "104230",
@@ -6964,7 +7295,9 @@
               "105100",
               "106100",
               "106200",
-              "106900",
+              "1069001",
+              "1069002",
+              "1069003",
               "107100",
               "111110",
               "111120",
@@ -7183,7 +7516,8 @@
               "142310",
               "142320",
               "142330",
-              "142390",
+              "1423901",
+              "1423902",
               "142410",
               "142420",
               "142430",
@@ -7436,6 +7770,7 @@
               "166110",
               "166120",
               "166130",
+              "166190",
               "166210",
               "166220",
               "166310",
@@ -7445,6 +7780,7 @@
               "166390",
               "166411",
               "166412",
+              "166420",
               "166491",
               "166492",
               "166500",
@@ -7465,7 +7801,8 @@
               "167450",
               "167460",
               "167470",
-              "167510",
+              "1675100",
+              "1675101",
               "167520",
               "167600",
               "167710",
@@ -7473,7 +7810,8 @@
               "168100",
               "168200",
               "168310",
-              "168320",
+              "1683200",
+              "1683201",
               "168400",
               "168500",
               "168600",
@@ -7484,6 +7822,7 @@
               "169110",
               "169120",
               "1691900",
+              "1691901",
               "169200",
               "169900",
               "171100",
@@ -7577,7 +7916,8 @@
               "184500",
               "184600",
               "184700",
-              "184800",
+              "184810",
+              "184820",
               "184910",
               "184920",
               "184930",
@@ -7830,6 +8170,8 @@
               "286100",
               "286200",
               "286300",
+              "286400",
+              "286900",
               "287100",
               "287200",
               "287300",
@@ -7841,6 +8183,7 @@
               "288600",
               "288700",
               "288800",
+              "288900",
               "289900",
               "301100",
               "301200",
@@ -7857,6 +8200,7 @@
               "303100",
               "303200",
               "303300",
+              "303400",
               "303900",
               "304100",
               "304200",
@@ -7876,12 +8220,16 @@
               "451000",
               "452000",
               "453000",
-              "454000",
-              "455000",
+              "4540001",
+              "4540002",
+              "4550000",
+              "4550001",
               "456001",
               "456002",
               "456003",
-              "457000",
+              "4570001",
+              "4570002",
+              "4570003",
               "458000",
               "459000",
               "490000"
@@ -7997,9 +8345,10 @@
           "paidAmount",
           "isReceipt",
           "status",
-            "contact"
-          ]
-        },
+          "contact",
+          "paymentMethods"
+        ]
+      },
       "SalesReceiptDocumentAnswerDto": {
         "type": "object",
         "properties": {
@@ -8274,6 +8623,17 @@
             "type": "string",
             "description": "Type of the document",
             "enum": [
+              "206_SOFTWARE_APPLICATIONS",
+              "210_LAND_AND_NATURAL_RESOURCES",
+              "211_BUILDINGS",
+              "212_TECHNICAL_INSTALLATIONS",
+              "213_MACHINERY",
+              "214_TOOLS",
+              "215_OTHER_INSTALLATIONS",
+              "216_FURNITURE",
+              "217_INFORMATION_PROCESSING_EQUIPMENT",
+              "218_TRANSPORT_ELEMENTS",
+              "219_OTHER_TANGIBLE_ASSETS",
               "600_WARE",
               "601_RAW_MATERIALS",
               "602_SUPPLIES",
@@ -8344,7 +8704,9 @@
               "03",
               "04",
               "05",
+              "06",
               "07",
+              "08",
               "09"
             ],
             "description": "Is the Vat Taxation Key that is applied in issuing an invoice. You can consult the differents VAT Taxation Systems on the [Tax Agency page](https://sede.agenciatributaria.gob.es/Sede/iva/regimenes-tributacion-iva.html)."
@@ -8367,12 +8729,15 @@
               "102100",
               "102200",
               "102300",
-              "102400",
+              "1024000",
+              "1024001",
+              "1024002",
               "103100",
               "103200",
               "103300",
               "104110",
-              "104120",
+              "1041200",
+              "1041201",
               "104210",
               "104220",
               "104230",
@@ -8381,7 +8746,9 @@
               "105100",
               "106100",
               "106200",
-              "106900",
+              "1069001",
+              "1069002",
+              "1069003",
               "107100",
               "111110",
               "111120",
@@ -8600,7 +8967,8 @@
               "142310",
               "142320",
               "142330",
-              "142390",
+              "1423901",
+              "1423902",
               "142410",
               "142420",
               "142430",
@@ -8853,6 +9221,7 @@
               "166110",
               "166120",
               "166130",
+              "166190",
               "166210",
               "166220",
               "166310",
@@ -8862,6 +9231,7 @@
               "166390",
               "166411",
               "166412",
+              "166420",
               "166491",
               "166492",
               "166500",
@@ -8882,7 +9252,8 @@
               "167450",
               "167460",
               "167470",
-              "167510",
+              "1675100",
+              "1675101",
               "167520",
               "167600",
               "167710",
@@ -8890,7 +9261,8 @@
               "168100",
               "168200",
               "168310",
-              "168320",
+              "1683200",
+              "1683201",
               "168400",
               "168500",
               "168600",
@@ -8901,6 +9273,7 @@
               "169110",
               "169120",
               "1691900",
+              "1691901",
               "169200",
               "169900",
               "171100",
@@ -8994,7 +9367,8 @@
               "184500",
               "184600",
               "184700",
-              "184800",
+              "184810",
+              "184820",
               "184910",
               "184920",
               "184930",
@@ -9247,6 +9621,8 @@
               "286100",
               "286200",
               "286300",
+              "286400",
+              "286900",
               "287100",
               "287200",
               "287300",
@@ -9258,6 +9634,7 @@
               "288600",
               "288700",
               "288800",
+              "288900",
               "289900",
               "301100",
               "301200",
@@ -9274,6 +9651,7 @@
               "303100",
               "303200",
               "303300",
+              "303400",
               "303900",
               "304100",
               "304200",
@@ -9293,12 +9671,16 @@
               "451000",
               "452000",
               "453000",
-              "454000",
-              "455000",
+              "4540001",
+              "4540002",
+              "4550000",
+              "4550001",
               "456001",
               "456002",
               "456003",
-              "457000",
+              "4570001",
+              "4570002",
+              "4570003",
               "458000",
               "459000",
               "490000"
@@ -9456,15 +9838,15 @@
           },
           "issuedDate": {
             "type": "string",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01"
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime"
           },
           "createdAt": {
             "type": "string",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01"
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime"
           },
           "updatedAt": {
             "type": "string",
-            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01"
+            "description": "You can filter by a date range using one of the following operators:\n\n- $gt: greater than\n\n- $gte: greater than or equal\n\n- $lt: lower than\n\n- $lte: lower than or equal\n\n- ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.\n\nExample: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01\n\nAccepts ISO-8601 datetime"
           },
           "serialCode": {
             "type": "string"
@@ -9832,7 +10214,9 @@
               "03",
               "04",
               "05",
+              "06",
               "07",
+              "08",
               "09"
             ],
             "description": "The tax regime of the operation"
@@ -9853,12 +10237,15 @@
               "102100",
               "102200",
               "102300",
-              "102400",
+              "1024000",
+              "1024001",
+              "1024002",
               "103100",
               "103200",
               "103300",
               "104110",
-              "104120",
+              "1041200",
+              "1041201",
               "104210",
               "104220",
               "104230",
@@ -9867,7 +10254,9 @@
               "105100",
               "106100",
               "106200",
-              "106900",
+              "1069001",
+              "1069002",
+              "1069003",
               "107100",
               "111110",
               "111120",
@@ -10086,7 +10475,8 @@
               "142310",
               "142320",
               "142330",
-              "142390",
+              "1423901",
+              "1423902",
               "142410",
               "142420",
               "142430",
@@ -10339,6 +10729,7 @@
               "166110",
               "166120",
               "166130",
+              "166190",
               "166210",
               "166220",
               "166310",
@@ -10348,6 +10739,7 @@
               "166390",
               "166411",
               "166412",
+              "166420",
               "166491",
               "166492",
               "166500",
@@ -10368,7 +10760,8 @@
               "167450",
               "167460",
               "167470",
-              "167510",
+              "1675100",
+              "1675101",
               "167520",
               "167600",
               "167710",
@@ -10376,7 +10769,8 @@
               "168100",
               "168200",
               "168310",
-              "168320",
+              "1683200",
+              "1683201",
               "168400",
               "168500",
               "168600",
@@ -10387,6 +10781,7 @@
               "169110",
               "169120",
               "1691900",
+              "1691901",
               "169200",
               "169900",
               "171100",
@@ -10480,7 +10875,8 @@
               "184500",
               "184600",
               "184700",
-              "184800",
+              "184810",
+              "184820",
               "184910",
               "184920",
               "184930",
@@ -10733,6 +11129,8 @@
               "286100",
               "286200",
               "286300",
+              "286400",
+              "286900",
               "287100",
               "287200",
               "287300",
@@ -10744,6 +11142,7 @@
               "288600",
               "288700",
               "288800",
+              "288900",
               "289900",
               "301100",
               "301200",
@@ -10760,6 +11159,7 @@
               "303100",
               "303200",
               "303300",
+              "303400",
               "303900",
               "304100",
               "304200",
@@ -10779,12 +11179,16 @@
               "451000",
               "452000",
               "453000",
-              "454000",
-              "455000",
+              "4540001",
+              "4540002",
+              "4550000",
+              "4550001",
               "456001",
               "456002",
               "456003",
-              "457000",
+              "4570001",
+              "4570002",
+              "4570003",
               "458000",
               "459000",
               "490000"
@@ -11308,6 +11712,17 @@
             "type": "string",
             "description": "Type of the document",
             "enum": [
+              "206_SOFTWARE_APPLICATIONS",
+              "210_LAND_AND_NATURAL_RESOURCES",
+              "211_BUILDINGS",
+              "212_TECHNICAL_INSTALLATIONS",
+              "213_MACHINERY",
+              "214_TOOLS",
+              "215_OTHER_INSTALLATIONS",
+              "216_FURNITURE",
+              "217_INFORMATION_PROCESSING_EQUIPMENT",
+              "218_TRANSPORT_ELEMENTS",
+              "219_OTHER_TANGIBLE_ASSETS",
               "600_WARE",
               "601_RAW_MATERIALS",
               "602_SUPPLIES",
@@ -11415,8 +11830,74 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
-            "example": "IVA_21"
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "example": "IVA_21",
+            "enum": [
+              "IVA_Exempt_0",
+              "IVA_NotSubject_0",
+              "IVA_ReverseCharge_0",
+              "IGIC_Exempt_0",
+              "IGIC_NotSubject_0",
+              "IGIC_ReverseCharge_0",
+              "IPSI_Exempt_0",
+              "IPSI_NotSubject_0",
+              "IPSI_ReverseCharge_0",
+              "IVA_27",
+              "IVA_25_5",
+              "IVA_25",
+              "IVA_24",
+              "IVA_23",
+              "IVA_22",
+              "IVA_21",
+              "IVA_20",
+              "IVA_19",
+              "IVA_18",
+              "IVA_17",
+              "IVA_16",
+              "IVA_15",
+              "IVA_14",
+              "IVA_13_5",
+              "IVA_13",
+              "IVA_12",
+              "IVA_10",
+              "IVA_9_5",
+              "IVA_9",
+              "IVA_8_5",
+              "IVA_8",
+              "IVA_7_5",
+              "IVA_7",
+              "IVA_6",
+              "IVA_5_5",
+              "IVA_5",
+              "IVA_4_8",
+              "IVA_4",
+              "IVA_3",
+              "IVA_2_1",
+              "IVA_2",
+              "IVA_0",
+              "IGIC_35",
+              "IGIC_20",
+              "IGIC_15",
+              "IGIC_13_5",
+              "IGIC_9_5",
+              "IGIC_7",
+              "IGIC_5",
+              "IGIC_3",
+              "IGIC_0",
+              "IPSI_10",
+              "IPSI_9",
+              "IPSI_8",
+              "IPSI_7",
+              "IPSI_6",
+              "IPSI_5",
+              "IPSI_4",
+              "IPSI_3_5",
+              "IPSI_3",
+              "IPSI_2",
+              "IPSI_1",
+              "IPSI_0_5",
+              "IPSI_0"
+            ]
           },
           "taxPercentage": {
             "type": "number",
@@ -11450,7 +11931,7 @@
         "properties": {
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_21"
           },
           "taxBase": {
@@ -11503,6 +11984,16 @@
       "ExpenseCreateDto": {
         "type": "object",
         "properties": {
+          "serieId": {
+            "type": "string",
+            "description": "The id of the serie. If provided together with serialCode, the serieId will be used",
+            "example": "5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b"
+          },
+          "serialCode": {
+            "type": "string",
+            "description": "Serial Code of the document. If provided together with serieId, the serieId will be used",
+            "example": "F2023"
+          },
           "visualLines": {
             "description": "Visual Lines of the document",
             "type": "array",
@@ -11688,6 +12179,17 @@
           },
           "category": {
             "enum": [
+              "206_SOFTWARE_APPLICATIONS",
+              "210_LAND_AND_NATURAL_RESOURCES",
+              "211_BUILDINGS",
+              "212_TECHNICAL_INSTALLATIONS",
+              "213_MACHINERY",
+              "214_TOOLS",
+              "215_OTHER_INSTALLATIONS",
+              "216_FURNITURE",
+              "217_INFORMATION_PROCESSING_EQUIPMENT",
+              "218_TRANSPORT_ELEMENTS",
+              "219_OTHER_TANGIBLE_ASSETS",
               "600_WARE",
               "601_RAW_MATERIALS",
               "602_SUPPLIES",
@@ -12233,12 +12735,13 @@
             }
           },
           "additionalExpenses": {
-            "type": "array",
             "minItems": 0,
             "description": "Additional expenses of the quote",
-            "items": {
-              "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
-            }
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AdditionalExpenseAnswerDto"
+              }
+            ]
           },
           "retentionPercentage": {
             "type": "number",
@@ -12273,6 +12776,17 @@
             "type": "string",
             "description": "Type of the document",
             "enum": [
+              "206_SOFTWARE_APPLICATIONS",
+              "210_LAND_AND_NATURAL_RESOURCES",
+              "211_BUILDINGS",
+              "212_TECHNICAL_INSTALLATIONS",
+              "213_MACHINERY",
+              "214_TOOLS",
+              "215_OTHER_INSTALLATIONS",
+              "216_FURNITURE",
+              "217_INFORMATION_PROCESSING_EQUIPMENT",
+              "218_TRANSPORT_ELEMENTS",
+              "219_OTHER_TANGIBLE_ASSETS",
               "600_WARE",
               "601_RAW_MATERIALS",
               "602_SUPPLIES",
@@ -12359,142 +12873,113 @@
           "status"
         ]
       },
-      "ContactPaymentMethodData": {
+      "ContactListQueryDto": {
         "type": "object",
         "properties": {
-          "IBAN": {
+          "vatNumber": {
             "type": "string",
-            "pattern": "ibanRegex",
-            "description": "The bank account number in IBAN format. We validate that it complies with the standard IBAN format, which starts with two letters followed by 22 numbers.",
-            "example": "ES1801249021325578279827"
+            "description": "Filter by exact VAT number"
+          },
+          "isCustomer": {
+            "type": "boolean",
+            "description": "Filter by customer flag"
+          },
+          "isProvider": {
+            "type": "boolean",
+            "description": "Filter by provider flag"
           }
-        },
-        "required": [
-          "IBAN"
-        ]
+        }
+      },
+      "ContactListSortDto": {
+        "type": "object",
+        "properties": {
+          "fiscalName": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "type": "string"
+          },
+          "vatNumber": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "type": "string"
+          },
+          "updatedAt": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "type": "string"
+          },
+          "createdAt": {
+            "enum": [
+              "ASC",
+              "DESC"
+            ],
+            "type": "string"
+          }
+        }
+      },
+      "GetContactListQueryDto": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "number",
+            "default": 0,
+            "minimum": 0,
+            "example": 0
+          },
+          "limit": {
+            "type": "number",
+            "default": 10,
+            "minimum": 0,
+            "maximum": 100,
+            "example": 10
+          },
+          "query": {
+            "$ref": "#/components/schemas/ContactListQueryDto"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/ContactListSortDto"
+          },
+          "fields": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "customSearchFields": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "ContactPaymentMethod": {
         "type": "object",
         "properties": {
           "type": {
             "type": "string",
-            "enum": [
-              "DIRECT_DEBIT"
-            ],
             "description": "A string indicating the payment method type. For now, the only accepted value is \"DIRECT_DEBIT\", which corresponds to a bank transfer.",
             "example": "DIRECT_DEBIT"
           },
           "data": {
+            "type": "object",
             "description": "An object containing the data required for the payment method. For the DIRECT_DEBIT type, it includes the IBAN number.",
             "example": {
               "IBAN": "ES1801249021325578279827"
-            },
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/ContactPaymentMethodData"
-              }
-            ]
+            }
           }
         },
         "required": [
           "type",
           "data"
-        ]
-      },
-      "CreateContactDto": {
-        "type": "object",
-        "properties": {
-          "fiscalName": {
-            "type": "string",
-            "maxLength": 120,
-            "example": "Contact S.L.",
-            "description": "The fiscal name of the contact",
-            "minLength": 1
-          },
-          "vatNumberType": {
-            "enum": [
-              "NIF",
-              "NIF-IVA",
-              "PASSPORT",
-              "ORIGIN",
-              "CERTIFICATE",
-              "OTHER"
-            ],
-            "type": "string",
-            "example": "NIF",
-            "description": "The type of the VAT Identification number of the contact"
-          },
-          "vatNumber": {
-            "type": "string",
-            "description": "Fiscal identification of the contact",
-            "example": "B12345678"
-          },
-          "taxKey": {
-            "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
-            "example": "IVA_7_5"
-          },
-          "email": {
-            "type": "string",
-            "maxLength": 64,
-            "format": "email",
-            "example": "info@billin.eu",
-            "description": "The email of the contact"
-          },
-          "phone": {
-            "type": "string",
-            "maxLength": 64,
-            "description": "Phone of the contact",
-            "example": "916726763"
-          },
-          "salesEqTaxCheck": {
-            "type": "boolean",
-            "example": true,
-            "description": "Boolean indicating if the sales equivalent tax should be checked"
-          },
-          "address": {
-            "description": "The address of the contact",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/DocumentContactAddressDto"
-              }
-            ]
-          },
-          "isCustomer": {
-            "type": "boolean",
-            "description": "Is the contact a customer?",
-            "example": true
-          },
-          "isProvider": {
-            "type": "boolean",
-            "description": "Is the contact a provider?",
-            "example": true
-          },
-          "notes": {
-            "type": "string",
-            "maxLength": 2000,
-            "description": "Notes about the contact",
-            "example": "This contact has a special discount"
-          },
-          "paymentMethods": {
-            "maxItems": 1,
-            "description": "An array of objects, where each object represents a payment method to be associated with the contact. Currently, only the DIRECT_DEBIT type is supported.",
-            "example": [
-              {
-                "type": "DIRECT_DEBIT",
-                "data": {
-                  "IBAN": "ES1801249021325578279827"
-                }
-              }
-            ],
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContactPaymentMethod"
-            }
-          }
-        },
-        "required": [
-          "fiscalName"
         ]
       },
       "ContactAnswerDto": {
@@ -12527,7 +13012,7 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_7_5"
           },
           "email": {
@@ -12610,6 +13095,150 @@
           "id",
           "createdAt",
           "updatedAt"
+        ]
+      },
+      "ContactListAnswerDto": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "number",
+            "description": "Total number of contacts with the query filter and without pagination",
+            "example": 1
+          },
+          "items": {
+            "description": "Paginated list of contacts with the query filter",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactAnswerDto"
+            }
+          }
+        },
+        "required": [
+          "count",
+          "items"
+        ]
+      },
+      "ApiForbiddenException": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "ForbiddenException"
+          },
+          "statusCode": {
+            "type": "number",
+            "example": "403"
+          },
+          "type": {
+            "type": "string",
+            "example": "forbidden-error"
+          },
+          "description": {
+            "type": "string",
+            "example": "Forbidden"
+          }
+        },
+        "required": [
+          "message",
+          "statusCode",
+          "type",
+          "description"
+        ]
+      },
+      "CreateContactDto": {
+        "type": "object",
+        "properties": {
+          "fiscalName": {
+            "type": "string",
+            "maxLength": 120,
+            "example": "Contact S.L.",
+            "description": "The fiscal name of the contact",
+            "minLength": 1
+          },
+          "vatNumberType": {
+            "enum": [
+              "NIF",
+              "NIF-IVA",
+              "PASSPORT",
+              "ORIGIN",
+              "CERTIFICATE",
+              "OTHER"
+            ],
+            "type": "string",
+            "example": "NIF",
+            "description": "The type of the VAT Identification number of the contact"
+          },
+          "vatNumber": {
+            "type": "string",
+            "description": "Fiscal identification of the contact",
+            "example": "B12345678"
+          },
+          "taxKey": {
+            "type": "string",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "example": "IVA_7_5"
+          },
+          "email": {
+            "type": "string",
+            "maxLength": 64,
+            "format": "email",
+            "example": "info@billin.eu",
+            "description": "The email of the contact"
+          },
+          "phone": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "Phone of the contact",
+            "example": "916726763"
+          },
+          "salesEqTaxCheck": {
+            "type": "boolean",
+            "example": true,
+            "description": "Boolean indicating if the sales equivalent tax should be checked"
+          },
+          "address": {
+            "description": "The address of the contact",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DocumentContactAddressDto"
+              }
+            ]
+          },
+          "isCustomer": {
+            "type": "boolean",
+            "description": "Is the contact a customer?",
+            "example": true
+          },
+          "isProvider": {
+            "type": "boolean",
+            "description": "Is the contact a provider?",
+            "example": true
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "Notes about the contact",
+            "example": "This contact has a special discount"
+          },
+          "paymentMethods": {
+            "maxItems": 1,
+            "description": "An array of objects, where each object represents a payment method to be associated with the contact. Currently, only the DIRECT_DEBIT type is supported.",
+            "example": [
+              {
+                "type": "DIRECT_DEBIT",
+                "data": {
+                  "IBAN": "ES1801249021325578279827"
+                }
+              }
+            ],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactPaymentMethod"
+            }
+          }
+        },
+        "required": [
+          "fiscalName"
         ]
       },
       "ForbiddenException": {
@@ -12913,6 +13542,11 @@
                 "$ref": "#/components/schemas/RemittanceDto"
               }
             ]
+          },
+          "isReconciled": {
+            "type": "boolean",
+            "description": "Whether the payment was created through bank transaction reconciliation",
+            "example": false
           }
         },
         "required": [
@@ -12925,7 +13559,10 @@
           "type",
           "status",
           "contact",
-          "documents"
+          "documents",
+          "accountingAccount",
+          "remittance",
+          "isReconciled"
         ]
       },
       "GetPaymentListQueryDto": {
@@ -13012,7 +13649,7 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_7_5"
           },
           "buyingPrice": {
@@ -13074,7 +13711,7 @@
           },
           "taxKey": {
             "type": "string",
-            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
+            "description": "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT. \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE the INT must be 0.\nOnly spanish or european tax keys are allowed.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5",
             "example": "IVA_7_5"
           },
           "buyingPrice": {
@@ -13242,6 +13879,35 @@
             "nullable": true,
             "description": "Expiration date of the credit card in case it has the credit card type",
             "example": "01/2023"
+          },
+          "isAutomaticConnected": {
+            "type": "boolean",
+            "description": "Whether the account is automatically connected (true) or manual (false)",
+            "example": false
+          },
+          "lastSync": {
+            "type": "string",
+            "nullable": true,
+            "description": "Date and time of the last sync (ISO 8601)",
+            "example": "2024-03-04T12:00:00.000Z"
+          },
+          "pendingReconciliationCount": {
+            "type": "number",
+            "nullable": true,
+            "description": "Count of imported transactions pending reconciliation",
+            "example": 0
+          },
+          "bankName": {
+            "type": "string",
+            "nullable": true,
+            "description": "Bank name",
+            "example": "Banco Popular"
+          },
+          "balance": {
+            "type": "number",
+            "nullable": true,
+            "description": "Current balance",
+            "example": 1234.56
           }
         },
         "required": [
@@ -13249,7 +13915,8 @@
           "createdAt",
           "updatedAt",
           "type",
-          "alias"
+          "alias",
+          "isAutomaticConnected"
         ]
       },
       "GetAccountingAccountListQueryDto": {
