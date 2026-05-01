@@ -501,6 +501,28 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
    */
   @JsonAdapter(CategoryEnum.Adapter.class)
   public enum CategoryEnum {
+    _206_SOFTWARE_APPLICATIONS("206_SOFTWARE_APPLICATIONS"),
+    
+    _210_LAND_AND_NATURAL_RESOURCES("210_LAND_AND_NATURAL_RESOURCES"),
+    
+    _211_BUILDINGS("211_BUILDINGS"),
+    
+    _212_TECHNICAL_INSTALLATIONS("212_TECHNICAL_INSTALLATIONS"),
+    
+    _213_MACHINERY("213_MACHINERY"),
+    
+    _214_TOOLS("214_TOOLS"),
+    
+    _215_OTHER_INSTALLATIONS("215_OTHER_INSTALLATIONS"),
+    
+    _216_FURNITURE("216_FURNITURE"),
+    
+    _217_INFORMATION_PROCESSING_EQUIPMENT("217_INFORMATION_PROCESSING_EQUIPMENT"),
+    
+    _218_TRANSPORT_ELEMENTS("218_TRANSPORT_ELEMENTS"),
+    
+    _219_OTHER_TANGIBLE_ASSETS("219_OTHER_TANGIBLE_ASSETS"),
+    
     _600_WARE("600_WARE"),
     
     _601_RAW_MATERIALS("601_RAW_MATERIALS"),
@@ -663,7 +685,11 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _05("05"),
     
+    _06("06"),
+    
     _07("07"),
+    
+    _08("08"),
     
     _09("09");
 
@@ -735,7 +761,11 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _102300("102300"),
     
-    _102400("102400"),
+    _1024000("1024000"),
+    
+    _1024001("1024001"),
+    
+    _1024002("1024002"),
     
     _103100("103100"),
     
@@ -745,7 +775,9 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _104110("104110"),
     
-    _104120("104120"),
+    _1041200("1041200"),
+    
+    _1041201("1041201"),
     
     _104210("104210"),
     
@@ -763,7 +795,11 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _106200("106200"),
     
-    _106900("106900"),
+    _1069001("1069001"),
+    
+    _1069002("1069002"),
+    
+    _1069003("1069003"),
     
     _107100("107100"),
     
@@ -1201,7 +1237,9 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _142330("142330"),
     
-    _142390("142390"),
+    _1423901("1423901"),
+    
+    _1423902("1423902"),
     
     _142410("142410"),
     
@@ -1707,6 +1745,8 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _166130("166130"),
     
+    _166190("166190"),
+    
     _166210("166210"),
     
     _166220("166220"),
@@ -1724,6 +1764,8 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     _166411("166411"),
     
     _166412("166412"),
+    
+    _166420("166420"),
     
     _166491("166491"),
     
@@ -1765,7 +1807,9 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _167470("167470"),
     
-    _167510("167510"),
+    _1675100("1675100"),
+    
+    _1675101("1675101"),
     
     _167520("167520"),
     
@@ -1781,7 +1825,9 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _168310("168310"),
     
-    _168320("168320"),
+    _1683200("1683200"),
+    
+    _1683201("1683201"),
     
     _168400("168400"),
     
@@ -1802,6 +1848,8 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     _169120("169120"),
     
     _1691900("1691900"),
+    
+    _1691901("1691901"),
     
     _169200("169200"),
     
@@ -1989,7 +2037,9 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _184700("184700"),
     
-    _184800("184800"),
+    _184810("184810"),
+    
+    _184820("184820"),
     
     _184910("184910"),
     
@@ -2495,6 +2545,10 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _286300("286300"),
     
+    _286400("286400"),
+    
+    _286900("286900"),
+    
     _287100("287100"),
     
     _287200("287200"),
@@ -2516,6 +2570,8 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     _288700("288700"),
     
     _288800("288800"),
+    
+    _288900("288900"),
     
     _289900("289900"),
     
@@ -2548,6 +2604,8 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     _303200("303200"),
     
     _303300("303300"),
+    
+    _303400("303400"),
     
     _303900("303900"),
     
@@ -2587,9 +2645,13 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _453000("453000"),
     
-    _454000("454000"),
+    _4540001("4540001"),
     
-    _455000("455000"),
+    _4540002("4540002"),
+    
+    _4550000("4550000"),
+    
+    _4550001("4550001"),
     
     _456001("456001"),
     
@@ -2597,7 +2659,11 @@ public class SalesReceiptDocumentAnswerDto implements Serializable {
     
     _456003("456003"),
     
-    _457000("457000"),
+    _4570001("4570001"),
+    
+    _4570002("4570002"),
+    
+    _4570003("4570003"),
     
     _458000("458000"),
     

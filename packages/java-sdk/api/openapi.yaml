@@ -112,7 +112,14 @@ paths:
       x-accepts: application/json
   /v1/invoices:
     get:
-      description: Endpoint to get the invoices and sales receipts list
+      description: "Endpoint to get the invoices and sales receipts list \n\n**Important\
+        \ limitation:**\n\nSwagger UI does not correctly serialize nested query parameters\
+        \ with brackets when using the “Try it out” feature. As a result, requests\
+        \ built through the Swagger interface may not match the expected format and\
+        \ may return incorrect results.\n\nTo use advanced filters reliably, construct\
+        \ the URL manually or use an external HTTP client (Postman, Insomnia, curl,\
+        \ etc.).\n\nThe API fully supports bracket-based query syntax; this limitation\
+        \ applies only to Swagger UI presentation, not to the API behavior."
       operationId: getInvoicesList
       parameters:
       - explode: true
@@ -173,7 +180,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[issuedDate]"
@@ -192,7 +203,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[createdAt]"
@@ -211,7 +226,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[updatedAt]"
@@ -580,7 +599,7 @@ paths:
                       country: ES
                   showPdfLinesWithoutTaxes: false
             schema:
-              $ref: '#/components/schemas/InvoiceCreateDto'
+              $ref: '#/components/schemas/createInvoice_request'
         description: "- If you only send the *lines* field, Billin will **calculate\
           \ the totals**. If, on the other hand, you want to send all the values so\
           \ that Billin **does not calculate anything**, you must send the fields\
@@ -1249,7 +1268,16 @@ paths:
       x-accepts: application/json
   /v1/expenses:
     get:
-      description: Endpoint to get the expenses list
+      description: |-
+        Endpoint to get the expenses list
+
+        **Important limitation:**
+
+        Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.
+
+        To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).
+
+        The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
       operationId: getExpensesList
       parameters:
       - description: |-
@@ -1263,7 +1291,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[issuedDate]"
@@ -1282,7 +1314,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[createdAt]"
@@ -1301,7 +1337,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[updatedAt]"
@@ -1914,6 +1954,131 @@ paths:
       x-content-type: application/json
       x-accepts: application/json
   /v1/contacts:
+    get:
+      description: |-
+        Endpoint to get the list of contacts for the business.
+
+        **Important limitation:**
+
+        Swagger UI does not correctly serialize nested query parameters with brackets when using the "Try it out" feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.
+
+        To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, curl, etc.).
+      operationId: getContactsList
+      parameters:
+      - description: Filter by exact VAT number
+        explode: true
+        in: query
+        name: "query[vatNumber]"
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Filter by customer flag
+        explode: true
+        in: query
+        name: "query[isCustomer]"
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Filter by provider flag
+        explode: true
+        in: query
+        name: "query[isProvider]"
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: "sort[fiscalName]"
+        required: false
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: "sort[vatNumber]"
+        required: false
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: "sort[updatedAt]"
+        required: false
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: "sort[createdAt]"
+        required: false
+        schema:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: offset
+        required: false
+        schema:
+          example: 0
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactListAnswerDto'
+          description: ""
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiBadRequestException'
+          description: ""
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiUnauthorizedException'
+          description: ""
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiForbiddenException'
+          description: ""
+      security:
+      - bearer: []
+      summary: Get the contacts list
+      tags:
+      - Contacts
+      x-accepts: application/json
     post:
       description: Endpoint to create a contact
       operationId: createContact
@@ -2071,7 +2236,16 @@ paths:
       x-accepts: application/json
   /v1/payments:
     get:
-      description: Endpoint to get the payment list
+      description: |-
+        Endpoint to get the payment list
+
+        **Important limitation:**
+
+        Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.
+
+        To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).
+
+        The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
       operationId: getPaymentList
       parameters:
       - explode: true
@@ -2132,7 +2306,11 @@ paths:
 
           - $lte: lower than or equal
 
+          - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
           Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+          Accepts ISO-8601 datetime
         explode: true
         in: query
         name: "query[operationDate]"
@@ -2797,8 +2975,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_21
           type: string
         taxBase:
@@ -2920,8 +3098,73 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
+          enum:
+          - IVA_Exempt_0
+          - IVA_NotSubject_0
+          - IVA_ReverseCharge_0
+          - IGIC_Exempt_0
+          - IGIC_NotSubject_0
+          - IGIC_ReverseCharge_0
+          - IPSI_Exempt_0
+          - IPSI_NotSubject_0
+          - IPSI_ReverseCharge_0
+          - IVA_27
+          - IVA_25_5
+          - IVA_25
+          - IVA_24
+          - IVA_23
+          - IVA_22
+          - IVA_21
+          - IVA_20
+          - IVA_19
+          - IVA_18
+          - IVA_17
+          - IVA_16
+          - IVA_15
+          - IVA_14
+          - IVA_13_5
+          - IVA_13
+          - IVA_12
+          - IVA_10
+          - IVA_9_5
+          - IVA_9
+          - IVA_8_5
+          - IVA_8
+          - IVA_7_5
+          - IVA_7
+          - IVA_6
+          - IVA_5_5
+          - IVA_5
+          - IVA_4_8
+          - IVA_4
+          - IVA_3
+          - IVA_2_1
+          - IVA_2
+          - IVA_0
+          - IGIC_35
+          - IGIC_20
+          - IGIC_15
+          - IGIC_13_5
+          - IGIC_9_5
+          - IGIC_7
+          - IGIC_5
+          - IGIC_3
+          - IGIC_0
+          - IPSI_10
+          - IPSI_9
+          - IPSI_8
+          - IPSI_7
+          - IPSI_6
+          - IPSI_5
+          - IPSI_4
+          - IPSI_3_5
+          - IPSI_3
+          - IPSI_2
+          - IPSI_1
+          - IPSI_0_5
+          - IPSI_0
           example: IVA_21
           type: string
         taxBase:
@@ -3296,8 +3539,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_7_5
           type: string
         email:
@@ -3323,87 +3566,6 @@ components:
       - fiscalName
       type: object
     InvoiceCreateDto:
-      example:
-        issuedDate: 2021-01-01
-        retentionAmount: 0
-        code: 1
-        comments: This is a comment
-        showProductReference: true
-        visualLines:
-        - groupName: groupName
-          text: text
-          type: title
-          order: 0.8008281904610115
-        - groupName: groupName
-          text: text
-          type: title
-          order: 0.8008281904610115
-        dueDate: 2023-01-01
-        showPdfLinesWithoutTaxes: false
-        serieId: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
-        serialCode: F2023
-        templateId: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
-        reference: ALB2023001
-        isPaid: true
-        total: ""
-        additionalExpenses:
-        - description: Additional expense description
-          expense: 0
-        - description: Additional expense description
-          expense: 0
-        contact: ""
-        currency: EUR
-        retentionPercentage: 0
-        lines:
-        - unitPrice: 10
-          quantity: 2
-          productId: ae69f822-12e5-4285-ba1d-22624e32d078
-          taxPercentage: 21
-          description: Product description
-          discountAmount: 2
-          salesEqTaxPercentage: 0
-          productReference: "123"
-          taxBase: 18
-          discountPercentage: 10
-          totalAmount: 21.78
-          salesEqTaxAmount: 0
-          taxKey: IVA_21
-          subtotal: 20
-          name: Product name
-          taxAmount: 3.78
-          order: 0.8008281904610115
-        - unitPrice: 10
-          quantity: 2
-          productId: ae69f822-12e5-4285-ba1d-22624e32d078
-          taxPercentage: 21
-          description: Product description
-          discountAmount: 2
-          salesEqTaxPercentage: 0
-          productReference: "123"
-          taxBase: 18
-          discountPercentage: 10
-          totalAmount: 21.78
-          salesEqTaxAmount: 0
-          taxKey: IVA_21
-          subtotal: 20
-          name: Product name
-          taxAmount: 3.78
-          order: 0.8008281904610115
-        paidAmount: 0
-        taxLines:
-        - salesEqTaxAmount: 0
-          taxKey: IVA_21
-          taxPercentage: 21
-          salesEqTaxPercentage: 0
-          taxAmount: 3.78
-          taxBase: 18
-        - salesEqTaxAmount: 0
-          taxKey: IVA_21
-          taxPercentage: 21
-          salesEqTaxPercentage: 0
-          taxAmount: 3.78
-          taxBase: 18
-        mask: 3
       properties:
         serieId:
           description: "The id of the serie. If provided together with serialCode,\
@@ -3640,8 +3802,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_21
           type: string
         taxBase:
@@ -3738,8 +3900,73 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
+          enum:
+          - IVA_Exempt_0
+          - IVA_NotSubject_0
+          - IVA_ReverseCharge_0
+          - IGIC_Exempt_0
+          - IGIC_NotSubject_0
+          - IGIC_ReverseCharge_0
+          - IPSI_Exempt_0
+          - IPSI_NotSubject_0
+          - IPSI_ReverseCharge_0
+          - IVA_27
+          - IVA_25_5
+          - IVA_25
+          - IVA_24
+          - IVA_23
+          - IVA_22
+          - IVA_21
+          - IVA_20
+          - IVA_19
+          - IVA_18
+          - IVA_17
+          - IVA_16
+          - IVA_15
+          - IVA_14
+          - IVA_13_5
+          - IVA_13
+          - IVA_12
+          - IVA_10
+          - IVA_9_5
+          - IVA_9
+          - IVA_8_5
+          - IVA_8
+          - IVA_7_5
+          - IVA_7
+          - IVA_6
+          - IVA_5_5
+          - IVA_5
+          - IVA_4_8
+          - IVA_4
+          - IVA_3
+          - IVA_2_1
+          - IVA_2
+          - IVA_0
+          - IGIC_35
+          - IGIC_20
+          - IGIC_15
+          - IGIC_13_5
+          - IGIC_9_5
+          - IGIC_7
+          - IGIC_5
+          - IGIC_3
+          - IGIC_0
+          - IPSI_10
+          - IPSI_9
+          - IPSI_8
+          - IPSI_7
+          - IPSI_6
+          - IPSI_5
+          - IPSI_4
+          - IPSI_3_5
+          - IPSI_3
+          - IPSI_2
+          - IPSI_1
+          - IPSI_0_5
+          - IPSI_0
           example: IVA_21
           type: string
         taxBase:
@@ -3822,8 +4049,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_7_5
           type: string
         email:
@@ -4088,7 +4315,9 @@ components:
           - "03"
           - "04"
           - "05"
+          - "06"
           - "07"
+          - "08"
           - "09"
           example: "01"
           maxLength: 2
@@ -4107,12 +4336,15 @@ components:
           - "102100"
           - "102200"
           - "102300"
-          - "102400"
+          - "1024000"
+          - "1024001"
+          - "1024002"
           - "103100"
           - "103200"
           - "103300"
           - "104110"
-          - "104120"
+          - "1041200"
+          - "1041201"
           - "104210"
           - "104220"
           - "104230"
@@ -4121,7 +4353,9 @@ components:
           - "105100"
           - "106100"
           - "106200"
-          - "106900"
+          - "1069001"
+          - "1069002"
+          - "1069003"
           - "107100"
           - "111110"
           - "111120"
@@ -4340,7 +4574,8 @@ components:
           - "142310"
           - "142320"
           - "142330"
-          - "142390"
+          - "1423901"
+          - "1423902"
           - "142410"
           - "142420"
           - "142430"
@@ -4593,6 +4828,7 @@ components:
           - "166110"
           - "166120"
           - "166130"
+          - "166190"
           - "166210"
           - "166220"
           - "166310"
@@ -4602,6 +4838,7 @@ components:
           - "166390"
           - "166411"
           - "166412"
+          - "166420"
           - "166491"
           - "166492"
           - "166500"
@@ -4622,7 +4859,8 @@ components:
           - "167450"
           - "167460"
           - "167470"
-          - "167510"
+          - "1675100"
+          - "1675101"
           - "167520"
           - "167600"
           - "167710"
@@ -4630,7 +4868,8 @@ components:
           - "168100"
           - "168200"
           - "168310"
-          - "168320"
+          - "1683200"
+          - "1683201"
           - "168400"
           - "168500"
           - "168600"
@@ -4641,6 +4880,7 @@ components:
           - "169110"
           - "169120"
           - "1691900"
+          - "1691901"
           - "169200"
           - "169900"
           - "171100"
@@ -4734,7 +4974,8 @@ components:
           - "184500"
           - "184600"
           - "184700"
-          - "184800"
+          - "184810"
+          - "184820"
           - "184910"
           - "184920"
           - "184930"
@@ -4987,6 +5228,8 @@ components:
           - "286100"
           - "286200"
           - "286300"
+          - "286400"
+          - "286900"
           - "287100"
           - "287200"
           - "287300"
@@ -4998,6 +5241,7 @@ components:
           - "288600"
           - "288700"
           - "288800"
+          - "288900"
           - "289900"
           - "301100"
           - "301200"
@@ -5014,6 +5258,7 @@ components:
           - "303100"
           - "303200"
           - "303300"
+          - "303400"
           - "303900"
           - "304100"
           - "304200"
@@ -5033,12 +5278,16 @@ components:
           - "451000"
           - "452000"
           - "453000"
-          - "454000"
-          - "455000"
+          - "4540001"
+          - "4540002"
+          - "4550000"
+          - "4550001"
           - "456001"
           - "456002"
           - "456003"
-          - "457000"
+          - "4570001"
+          - "4570002"
+          - "4570003"
           - "458000"
           - "459000"
           - "490000"
@@ -5934,11 +6183,7 @@ components:
         customIRPF: 0
         chargingCriterionIRPF: false
         isPaid: true
-        additionalExpenses:
-        - description: Additional expense description
-          expense: 0
-        - description: Additional expense description
-          expense: 0
+        additionalExpenses: ""
         issuedDateTime: 2021-01-01T00:00:00Z
         retentionPercentage: 10
         taxAuthorityValidations:
@@ -6178,11 +6423,10 @@ components:
           minItems: 1
           type: array
         additionalExpenses:
+          allOf:
+          - $ref: '#/components/schemas/AdditionalExpenseAnswerDto'
           description: Additional expenses of the invoice
-          items:
-            $ref: '#/components/schemas/AdditionalExpenseAnswerDto'
           minItems: 0
-          type: array
         retentionPercentage:
           description: Percentage of retention
           example: 10
@@ -6214,6 +6458,17 @@ components:
         category:
           description: Type of the document
           enum:
+          - 206_SOFTWARE_APPLICATIONS
+          - 210_LAND_AND_NATURAL_RESOURCES
+          - 211_BUILDINGS
+          - 212_TECHNICAL_INSTALLATIONS
+          - 213_MACHINERY
+          - 214_TOOLS
+          - 215_OTHER_INSTALLATIONS
+          - 216_FURNITURE
+          - 217_INFORMATION_PROCESSING_EQUIPMENT
+          - 218_TRANSPORT_ELEMENTS
+          - 219_OTHER_TANGIBLE_ASSETS
           - 600_WARE
           - 601_RAW_MATERIALS
           - 602_SUPPLIES
@@ -6280,7 +6535,9 @@ components:
           - "03"
           - "04"
           - "05"
+          - "06"
           - "07"
+          - "08"
           - "09"
           example: "01"
           maxLength: 2
@@ -6305,12 +6562,15 @@ components:
           - "102100"
           - "102200"
           - "102300"
-          - "102400"
+          - "1024000"
+          - "1024001"
+          - "1024002"
           - "103100"
           - "103200"
           - "103300"
           - "104110"
-          - "104120"
+          - "1041200"
+          - "1041201"
           - "104210"
           - "104220"
           - "104230"
@@ -6319,7 +6579,9 @@ components:
           - "105100"
           - "106100"
           - "106200"
-          - "106900"
+          - "1069001"
+          - "1069002"
+          - "1069003"
           - "107100"
           - "111110"
           - "111120"
@@ -6538,7 +6800,8 @@ components:
           - "142310"
           - "142320"
           - "142330"
-          - "142390"
+          - "1423901"
+          - "1423902"
           - "142410"
           - "142420"
           - "142430"
@@ -6791,6 +7054,7 @@ components:
           - "166110"
           - "166120"
           - "166130"
+          - "166190"
           - "166210"
           - "166220"
           - "166310"
@@ -6800,6 +7064,7 @@ components:
           - "166390"
           - "166411"
           - "166412"
+          - "166420"
           - "166491"
           - "166492"
           - "166500"
@@ -6820,7 +7085,8 @@ components:
           - "167450"
           - "167460"
           - "167470"
-          - "167510"
+          - "1675100"
+          - "1675101"
           - "167520"
           - "167600"
           - "167710"
@@ -6828,7 +7094,8 @@ components:
           - "168100"
           - "168200"
           - "168310"
-          - "168320"
+          - "1683200"
+          - "1683201"
           - "168400"
           - "168500"
           - "168600"
@@ -6839,6 +7106,7 @@ components:
           - "169110"
           - "169120"
           - "1691900"
+          - "1691901"
           - "169200"
           - "169900"
           - "171100"
@@ -6932,7 +7200,8 @@ components:
           - "184500"
           - "184600"
           - "184700"
-          - "184800"
+          - "184810"
+          - "184820"
           - "184910"
           - "184920"
           - "184930"
@@ -7185,6 +7454,8 @@ components:
           - "286100"
           - "286200"
           - "286300"
+          - "286400"
+          - "286900"
           - "287100"
           - "287200"
           - "287300"
@@ -7196,6 +7467,7 @@ components:
           - "288600"
           - "288700"
           - "288800"
+          - "288900"
           - "289900"
           - "301100"
           - "301200"
@@ -7212,6 +7484,7 @@ components:
           - "303100"
           - "303200"
           - "303300"
+          - "303400"
           - "303900"
           - "304100"
           - "304200"
@@ -7231,12 +7504,16 @@ components:
           - "451000"
           - "452000"
           - "453000"
-          - "454000"
-          - "455000"
+          - "4540001"
+          - "4540002"
+          - "4550000"
+          - "4550001"
           - "456001"
           - "456002"
           - "456003"
-          - "457000"
+          - "4570001"
+          - "4570002"
+          - "4570003"
           - "458000"
           - "459000"
           - "490000"
@@ -7330,6 +7607,7 @@ components:
       - lines
       - ownerInfo
       - paidAmount
+      - paymentMethods
       - retentionAmount
       - retentionPercentage
       - status
@@ -7696,6 +7974,17 @@ components:
         category:
           description: Type of the document
           enum:
+          - 206_SOFTWARE_APPLICATIONS
+          - 210_LAND_AND_NATURAL_RESOURCES
+          - 211_BUILDINGS
+          - 212_TECHNICAL_INSTALLATIONS
+          - 213_MACHINERY
+          - 214_TOOLS
+          - 215_OTHER_INSTALLATIONS
+          - 216_FURNITURE
+          - 217_INFORMATION_PROCESSING_EQUIPMENT
+          - 218_TRANSPORT_ELEMENTS
+          - 219_OTHER_TANGIBLE_ASSETS
           - 600_WARE
           - 601_RAW_MATERIALS
           - 602_SUPPLIES
@@ -7762,7 +8051,9 @@ components:
           - "03"
           - "04"
           - "05"
+          - "06"
           - "07"
+          - "08"
           - "09"
           example: "01"
           maxLength: 2
@@ -7787,12 +8078,15 @@ components:
           - "102100"
           - "102200"
           - "102300"
-          - "102400"
+          - "1024000"
+          - "1024001"
+          - "1024002"
           - "103100"
           - "103200"
           - "103300"
           - "104110"
-          - "104120"
+          - "1041200"
+          - "1041201"
           - "104210"
           - "104220"
           - "104230"
@@ -7801,7 +8095,9 @@ components:
           - "105100"
           - "106100"
           - "106200"
-          - "106900"
+          - "1069001"
+          - "1069002"
+          - "1069003"
           - "107100"
           - "111110"
           - "111120"
@@ -8020,7 +8316,8 @@ components:
           - "142310"
           - "142320"
           - "142330"
-          - "142390"
+          - "1423901"
+          - "1423902"
           - "142410"
           - "142420"
           - "142430"
@@ -8273,6 +8570,7 @@ components:
           - "166110"
           - "166120"
           - "166130"
+          - "166190"
           - "166210"
           - "166220"
           - "166310"
@@ -8282,6 +8580,7 @@ components:
           - "166390"
           - "166411"
           - "166412"
+          - "166420"
           - "166491"
           - "166492"
           - "166500"
@@ -8302,7 +8601,8 @@ components:
           - "167450"
           - "167460"
           - "167470"
-          - "167510"
+          - "1675100"
+          - "1675101"
           - "167520"
           - "167600"
           - "167710"
@@ -8310,7 +8610,8 @@ components:
           - "168100"
           - "168200"
           - "168310"
-          - "168320"
+          - "1683200"
+          - "1683201"
           - "168400"
           - "168500"
           - "168600"
@@ -8321,6 +8622,7 @@ components:
           - "169110"
           - "169120"
           - "1691900"
+          - "1691901"
           - "169200"
           - "169900"
           - "171100"
@@ -8414,7 +8716,8 @@ components:
           - "184500"
           - "184600"
           - "184700"
-          - "184800"
+          - "184810"
+          - "184820"
           - "184910"
           - "184920"
           - "184930"
@@ -8667,6 +8970,8 @@ components:
           - "286100"
           - "286200"
           - "286300"
+          - "286400"
+          - "286900"
           - "287100"
           - "287200"
           - "287300"
@@ -8678,6 +8983,7 @@ components:
           - "288600"
           - "288700"
           - "288800"
+          - "288900"
           - "289900"
           - "301100"
           - "301200"
@@ -8694,6 +9000,7 @@ components:
           - "303100"
           - "303200"
           - "303300"
+          - "303400"
           - "303900"
           - "304100"
           - "304200"
@@ -8713,12 +9020,16 @@ components:
           - "451000"
           - "452000"
           - "453000"
-          - "454000"
-          - "455000"
+          - "4540001"
+          - "4540002"
+          - "4550000"
+          - "4550001"
           - "456001"
           - "456002"
           - "456003"
-          - "457000"
+          - "4570001"
+          - "4570002"
+          - "4570003"
           - "458000"
           - "459000"
           - "490000"
@@ -8866,7 +9177,11 @@ components:
 
             - $lte: lower than or equal
 
+            - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
             Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+            Accepts ISO-8601 datetime
           type: string
         createdAt:
           description: |-
@@ -8880,7 +9195,11 @@ components:
 
             - $lte: lower than or equal
 
+            - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
             Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+            Accepts ISO-8601 datetime
           type: string
         updatedAt:
           description: |-
@@ -8894,7 +9213,11 @@ components:
 
             - $lte: lower than or equal
 
+            - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.
+
             Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+
+            Accepts ISO-8601 datetime
           type: string
         serialCode:
           type: string
@@ -9056,11 +9379,7 @@ components:
           customIRPF: 0
           chargingCriterionIRPF: false
           isPaid: true
-          additionalExpenses:
-          - description: Additional expense description
-            expense: 0
-          - description: Additional expense description
-            expense: 0
+          additionalExpenses: ""
           issuedDateTime: 2021-01-01T00:00:00Z
           retentionPercentage: 10
           taxAuthorityValidations:
@@ -9175,11 +9494,7 @@ components:
           customIRPF: 0
           chargingCriterionIRPF: false
           isPaid: true
-          additionalExpenses:
-          - description: Additional expense description
-            expense: 0
-          - description: Additional expense description
-            expense: 0
+          additionalExpenses: ""
           issuedDateTime: 2021-01-01T00:00:00Z
           retentionPercentage: 10
           taxAuthorityValidations:
@@ -9453,7 +9768,9 @@ components:
           - "03"
           - "04"
           - "05"
+          - "06"
           - "07"
+          - "08"
           - "09"
           example: "01"
           maxLength: 2
@@ -9472,12 +9789,15 @@ components:
           - "102100"
           - "102200"
           - "102300"
-          - "102400"
+          - "1024000"
+          - "1024001"
+          - "1024002"
           - "103100"
           - "103200"
           - "103300"
           - "104110"
-          - "104120"
+          - "1041200"
+          - "1041201"
           - "104210"
           - "104220"
           - "104230"
@@ -9486,7 +9806,9 @@ components:
           - "105100"
           - "106100"
           - "106200"
-          - "106900"
+          - "1069001"
+          - "1069002"
+          - "1069003"
           - "107100"
           - "111110"
           - "111120"
@@ -9705,7 +10027,8 @@ components:
           - "142310"
           - "142320"
           - "142330"
-          - "142390"
+          - "1423901"
+          - "1423902"
           - "142410"
           - "142420"
           - "142430"
@@ -9958,6 +10281,7 @@ components:
           - "166110"
           - "166120"
           - "166130"
+          - "166190"
           - "166210"
           - "166220"
           - "166310"
@@ -9967,6 +10291,7 @@ components:
           - "166390"
           - "166411"
           - "166412"
+          - "166420"
           - "166491"
           - "166492"
           - "166500"
@@ -9987,7 +10312,8 @@ components:
           - "167450"
           - "167460"
           - "167470"
-          - "167510"
+          - "1675100"
+          - "1675101"
           - "167520"
           - "167600"
           - "167710"
@@ -9995,7 +10321,8 @@ components:
           - "168100"
           - "168200"
           - "168310"
-          - "168320"
+          - "1683200"
+          - "1683201"
           - "168400"
           - "168500"
           - "168600"
@@ -10006,6 +10333,7 @@ components:
           - "169110"
           - "169120"
           - "1691900"
+          - "1691901"
           - "169200"
           - "169900"
           - "171100"
@@ -10099,7 +10427,8 @@ components:
           - "184500"
           - "184600"
           - "184700"
-          - "184800"
+          - "184810"
+          - "184820"
           - "184910"
           - "184920"
           - "184930"
@@ -10352,6 +10681,8 @@ components:
           - "286100"
           - "286200"
           - "286300"
+          - "286400"
+          - "286900"
           - "287100"
           - "287200"
           - "287300"
@@ -10363,6 +10694,7 @@ components:
           - "288600"
           - "288700"
           - "288800"
+          - "288900"
           - "289900"
           - "301100"
           - "301200"
@@ -10379,6 +10711,7 @@ components:
           - "303100"
           - "303200"
           - "303300"
+          - "303400"
           - "303900"
           - "304100"
           - "304200"
@@ -10398,12 +10731,16 @@ components:
           - "451000"
           - "452000"
           - "453000"
-          - "454000"
-          - "455000"
+          - "4540001"
+          - "4540002"
+          - "4550000"
+          - "4550001"
           - "456001"
           - "456002"
           - "456003"
-          - "457000"
+          - "4570001"
+          - "4570002"
+          - "4570003"
           - "458000"
           - "459000"
           - "490000"
@@ -10941,6 +11278,17 @@ components:
         category:
           description: Type of the document
           enum:
+          - 206_SOFTWARE_APPLICATIONS
+          - 210_LAND_AND_NATURAL_RESOURCES
+          - 211_BUILDINGS
+          - 212_TECHNICAL_INSTALLATIONS
+          - 213_MACHINERY
+          - 214_TOOLS
+          - 215_OTHER_INSTALLATIONS
+          - 216_FURNITURE
+          - 217_INFORMATION_PROCESSING_EQUIPMENT
+          - 218_TRANSPORT_ELEMENTS
+          - 219_OTHER_TANGIBLE_ASSETS
           - 600_WARE
           - 601_RAW_MATERIALS
           - 602_SUPPLIES
@@ -11200,8 +11548,73 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
+          enum:
+          - IVA_Exempt_0
+          - IVA_NotSubject_0
+          - IVA_ReverseCharge_0
+          - IGIC_Exempt_0
+          - IGIC_NotSubject_0
+          - IGIC_ReverseCharge_0
+          - IPSI_Exempt_0
+          - IPSI_NotSubject_0
+          - IPSI_ReverseCharge_0
+          - IVA_27
+          - IVA_25_5
+          - IVA_25
+          - IVA_24
+          - IVA_23
+          - IVA_22
+          - IVA_21
+          - IVA_20
+          - IVA_19
+          - IVA_18
+          - IVA_17
+          - IVA_16
+          - IVA_15
+          - IVA_14
+          - IVA_13_5
+          - IVA_13
+          - IVA_12
+          - IVA_10
+          - IVA_9_5
+          - IVA_9
+          - IVA_8_5
+          - IVA_8
+          - IVA_7_5
+          - IVA_7
+          - IVA_6
+          - IVA_5_5
+          - IVA_5
+          - IVA_4_8
+          - IVA_4
+          - IVA_3
+          - IVA_2_1
+          - IVA_2
+          - IVA_0
+          - IGIC_35
+          - IGIC_20
+          - IGIC_15
+          - IGIC_13_5
+          - IGIC_9_5
+          - IGIC_7
+          - IGIC_5
+          - IGIC_3
+          - IGIC_0
+          - IPSI_10
+          - IPSI_9
+          - IPSI_8
+          - IPSI_7
+          - IPSI_6
+          - IPSI_5
+          - IPSI_4
+          - IPSI_3_5
+          - IPSI_3
+          - IPSI_2
+          - IPSI_1
+          - IPSI_0_5
+          - IPSI_0
           example: IVA_21
           type: string
         taxPercentage:
@@ -11237,8 +11650,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_21
           type: string
         taxBase:
@@ -11293,6 +11706,8 @@ components:
           type: title
           order: 0.8008281904610115
         dueDate: 2024-04-18
+        serieId: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
+        serialCode: F2023
         isPaid: true
         total: ""
         contact: ""
@@ -11326,6 +11741,16 @@ components:
           taxAmount: 3.78
           taxBase: 18
       properties:
+        serieId:
+          description: "The id of the serie. If provided together with serialCode,\
+            \ the serieId will be used"
+          example: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
+          type: string
+        serialCode:
+          description: "Serial Code of the document. If provided together with serieId,\
+            \ the serieId will be used"
+          example: F2023
+          type: string
         visualLines:
           description: Visual Lines of the document
           items:
@@ -11498,6 +11923,17 @@ components:
         category:
           description: Type of the document
           enum:
+          - 206_SOFTWARE_APPLICATIONS
+          - 210_LAND_AND_NATURAL_RESOURCES
+          - 211_BUILDINGS
+          - 212_TECHNICAL_INSTALLATIONS
+          - 213_MACHINERY
+          - 214_TOOLS
+          - 215_OTHER_INSTALLATIONS
+          - 216_FURNITURE
+          - 217_INFORMATION_PROCESSING_EQUIPMENT
+          - 218_TRANSPORT_ELEMENTS
+          - 219_OTHER_TANGIBLE_ASSETS
           - 600_WARE
           - 601_RAW_MATERIALS
           - 602_SUPPLIES
@@ -11927,11 +12363,7 @@ components:
         identifier: F2023001
         retentionAmount: 10
         comments: This is a comment
-        additionalExpenses:
-        - description: Additional expense description
-          expense: 0
-        - description: Additional expense description
-          expense: 0
+        additionalExpenses: ""
         issuedDateTime: 2021-01-01T00:00:00Z
         retentionPercentage: 10
         category: 624_LOGISTICS
@@ -12159,11 +12591,10 @@ components:
           minItems: 1
           type: array
         additionalExpenses:
+          allOf:
+          - $ref: '#/components/schemas/AdditionalExpenseAnswerDto'
           description: Additional expenses of the quote
-          items:
-            $ref: '#/components/schemas/AdditionalExpenseAnswerDto'
           minItems: 0
-          type: array
         retentionPercentage:
           description: Percentage of retention
           example: 10
@@ -12191,6 +12622,17 @@ components:
         category:
           description: Type of the document
           enum:
+          - 206_SOFTWARE_APPLICATIONS
+          - 210_LAND_AND_NATURAL_RESOURCES
+          - 211_BUILDINGS
+          - 212_TECHNICAL_INSTALLATIONS
+          - 213_MACHINERY
+          - 214_TOOLS
+          - 215_OTHER_INSTALLATIONS
+          - 216_FURNITURE
+          - 217_INFORMATION_PROCESSING_EQUIPMENT
+          - 218_TRANSPORT_ELEMENTS
+          - 219_OTHER_TANGIBLE_ASSETS
           - 600_WARE
           - 601_RAW_MATERIALS
           - 602_SUPPLIES
@@ -12264,17 +12706,68 @@ components:
       - updatedAt
       - visualLines
       type: object
-    ContactPaymentMethodData:
+    ContactListQueryDto:
       properties:
-        IBAN:
-          description: "The bank account number in IBAN format. We validate that it\
-            \ complies with the standard IBAN format, which starts with two letters\
-            \ followed by 22 numbers."
-          example: ES1801249021325578279827
-          pattern: ibanRegex
+        vatNumber:
+          description: Filter by exact VAT number
           type: string
-      required:
-      - IBAN
+        isCustomer:
+          description: Filter by customer flag
+          type: boolean
+        isProvider:
+          description: Filter by provider flag
+          type: boolean
+      type: object
+    ContactListSortDto:
+      properties:
+        fiscalName:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        vatNumber:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        updatedAt:
+          enum:
+          - ASC
+          - DESC
+          type: string
+        createdAt:
+          enum:
+          - ASC
+          - DESC
+          type: string
+      type: object
+    GetContactListQueryDto:
+      properties:
+        offset:
+          default: 0
+          example: 0
+          minimum: 0
+          type: number
+        limit:
+          default: 10
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: number
+        query:
+          $ref: '#/components/schemas/ContactListQueryDto'
+        sort:
+          $ref: '#/components/schemas/ContactListSortDto'
+        fields:
+          default: []
+          items:
+            type: string
+          type: array
+        customSearchFields:
+          default: []
+          items:
+            type: string
+          type: array
       type: object
     ContactPaymentMethod:
       properties:
@@ -12282,115 +12775,17 @@ components:
           description: "A string indicating the payment method type. For now, the\
             \ only accepted value is \"DIRECT_DEBIT\", which corresponds to a bank\
             \ transfer."
-          enum:
-          - DIRECT_DEBIT
           example: DIRECT_DEBIT
           type: string
         data:
-          allOf:
-          - $ref: '#/components/schemas/ContactPaymentMethodData'
           description: "An object containing the data required for the payment method.\
             \ For the DIRECT_DEBIT type, it includes the IBAN number."
           example:
             IBAN: ES1801249021325578279827
+          type: object
       required:
       - data
       - type
-      type: object
-    CreateContactDto:
-      example:
-        isProvider: true
-        isCustomer: true
-        address: ""
-        notes: This contact has a special discount
-        taxKey: IVA_7_5
-        phone: "916726763"
-        paymentMethods:
-        - type: DIRECT_DEBIT
-          data:
-            IBAN: ES1801249021325578279827
-        fiscalName: Contact S.L.
-        vatNumberType: NIF
-        salesEqTaxCheck: true
-        email: info@billin.eu
-        vatNumber: B12345678
-      properties:
-        fiscalName:
-          description: The fiscal name of the contact
-          example: Contact S.L.
-          maxLength: 120
-          minLength: 1
-          type: string
-        vatNumberType:
-          description: The type of the VAT Identification number of the contact
-          enum:
-          - NIF
-          - NIF-IVA
-          - PASSPORT
-          - ORIGIN
-          - CERTIFICATE
-          - OTHER
-          example: NIF
-          type: string
-        vatNumber:
-          description: Fiscal identification of the contact
-          example: B12345678
-          type: string
-        taxKey:
-          description: "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT.\
-            \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
-            \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
-            \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
-          example: IVA_7_5
-          type: string
-        email:
-          description: The email of the contact
-          example: info@billin.eu
-          format: email
-          maxLength: 64
-          type: string
-        phone:
-          description: Phone of the contact
-          example: "916726763"
-          maxLength: 64
-          type: string
-        salesEqTaxCheck:
-          description: Boolean indicating if the sales equivalent tax should be checked
-          example: true
-          type: boolean
-        address:
-          allOf:
-          - $ref: '#/components/schemas/DocumentContactAddressDto'
-          description: The address of the contact
-        isCustomer:
-          description: Is the contact a customer?
-          example: true
-          type: boolean
-        isProvider:
-          description: Is the contact a provider?
-          example: true
-          type: boolean
-        notes:
-          description: Notes about the contact
-          example: This contact has a special discount
-          maxLength: 2000
-          type: string
-        paymentMethods:
-          description: "An array of objects, where each object represents a payment\
-            \ method to be associated with the contact. Currently, only the DIRECT_DEBIT\
-            \ type is supported."
-          example:
-          - type: DIRECT_DEBIT
-            data:
-              IBAN: ES1801249021325578279827
-          items:
-            $ref: '#/components/schemas/ContactPaymentMethod'
-          maxItems: 1
-          type: array
-      required:
-      - fiscalName
       type: object
     ContactAnswerDto:
       example:
@@ -12439,8 +12834,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_7_5
           type: string
         email:
@@ -12505,6 +12900,176 @@ components:
       - fiscalName
       - id
       - updatedAt
+      type: object
+    ContactListAnswerDto:
+      example:
+        count: 1
+        items:
+        - isProvider: true
+          address: ""
+          notes: This contact has a special discount
+          fiscalName: Contact S.L.
+          vatNumberType: NIF
+          salesEqTaxCheck: true
+          isCustomer: true
+          createdAt: 2023-11-14T00:00:00Z
+          taxKey: IVA_7_5
+          phone: "916726763"
+          paymentMethods:
+          - type: DIRECT_DEBIT
+            data:
+              IBAN: ES1801249021325578279827
+          id: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
+          email: info@billin.eu
+          vatNumber: B12345678
+          updatedAt: 2023-11-14T00:00:00Z
+        - isProvider: true
+          address: ""
+          notes: This contact has a special discount
+          fiscalName: Contact S.L.
+          vatNumberType: NIF
+          salesEqTaxCheck: true
+          isCustomer: true
+          createdAt: 2023-11-14T00:00:00Z
+          taxKey: IVA_7_5
+          phone: "916726763"
+          paymentMethods:
+          - type: DIRECT_DEBIT
+            data:
+              IBAN: ES1801249021325578279827
+          id: 5f7b1b3b-5b9a-4b0a-8b0a-0b9a5b7b1f7b
+          email: info@billin.eu
+          vatNumber: B12345678
+          updatedAt: 2023-11-14T00:00:00Z
+      properties:
+        count:
+          description: Total number of contacts with the query filter and without
+            pagination
+          example: 1
+          type: number
+        items:
+          description: Paginated list of contacts with the query filter
+          items:
+            $ref: '#/components/schemas/ContactAnswerDto'
+          type: array
+      required:
+      - count
+      - items
+      type: object
+    ApiForbiddenException:
+      properties:
+        message:
+          example: ForbiddenException
+          type: string
+        statusCode:
+          example: 403
+          type: number
+        type:
+          example: forbidden-error
+          type: string
+        description:
+          example: Forbidden
+          type: string
+      required:
+      - description
+      - message
+      - statusCode
+      - type
+      type: object
+    CreateContactDto:
+      example:
+        isProvider: true
+        isCustomer: true
+        address: ""
+        notes: This contact has a special discount
+        taxKey: IVA_7_5
+        phone: "916726763"
+        paymentMethods:
+        - type: DIRECT_DEBIT
+          data:
+            IBAN: ES1801249021325578279827
+        fiscalName: Contact S.L.
+        vatNumberType: NIF
+        salesEqTaxCheck: true
+        email: info@billin.eu
+        vatNumber: B12345678
+      properties:
+        fiscalName:
+          description: The fiscal name of the contact
+          example: Contact S.L.
+          maxLength: 120
+          minLength: 1
+          type: string
+        vatNumberType:
+          description: The type of the VAT Identification number of the contact
+          enum:
+          - NIF
+          - NIF-IVA
+          - PASSPORT
+          - ORIGIN
+          - CERTIFICATE
+          - OTHER
+          example: NIF
+          type: string
+        vatNumber:
+          description: Fiscal identification of the contact
+          example: B12345678
+          type: string
+        taxKey:
+          description: "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT.\
+            \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
+            \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
+            \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
+          example: IVA_7_5
+          type: string
+        email:
+          description: The email of the contact
+          example: info@billin.eu
+          format: email
+          maxLength: 64
+          type: string
+        phone:
+          description: Phone of the contact
+          example: "916726763"
+          maxLength: 64
+          type: string
+        salesEqTaxCheck:
+          description: Boolean indicating if the sales equivalent tax should be checked
+          example: true
+          type: boolean
+        address:
+          allOf:
+          - $ref: '#/components/schemas/DocumentContactAddressDto'
+          description: The address of the contact
+        isCustomer:
+          description: Is the contact a customer?
+          example: true
+          type: boolean
+        isProvider:
+          description: Is the contact a provider?
+          example: true
+          type: boolean
+        notes:
+          description: Notes about the contact
+          example: This contact has a special discount
+          maxLength: 2000
+          type: string
+        paymentMethods:
+          description: "An array of objects, where each object represents a payment\
+            \ method to be associated with the contact. Currently, only the DIRECT_DEBIT\
+            \ type is supported."
+          example:
+          - type: DIRECT_DEBIT
+            data:
+              IBAN: ES1801249021325578279827
+          items:
+            $ref: '#/components/schemas/ContactPaymentMethod'
+          maxItems: 1
+          type: array
+      required:
+      - fiscalName
       type: object
     ForbiddenException:
       properties: {}
@@ -12685,6 +13250,7 @@ components:
       type: object
     PaymentAnswerDto:
       example:
+        isReconciled: false
         operationDate: 2024-03-04T00:00:00Z
         amount: 50
         method: CREDIT_CARD
@@ -12775,14 +13341,21 @@ components:
           type: string
         remittance:
           $ref: '#/components/schemas/PaymentAnswerDto_remittance'
+        isReconciled:
+          description: Whether the payment was created through bank transaction reconciliation
+          example: false
+          type: boolean
       required:
+      - accountingAccount
       - amount
       - contact
       - createdAt
       - documents
       - id
+      - isReconciled
       - method
       - operationDate
+      - remittance
       - status
       - type
       - updatedAt
@@ -12819,7 +13392,8 @@ components:
       example:
         count: 23
         items:
-        - operationDate: 2024-03-04T00:00:00Z
+        - isReconciled: false
+          operationDate: 2024-03-04T00:00:00Z
           amount: 50
           method: CREDIT_CARD
           documents:
@@ -12840,7 +13414,8 @@ components:
           remittance: null
           updatedAt: 2024-03-04T00:00:00Z
           status: LINKED
-        - operationDate: 2024-03-04T00:00:00Z
+        - isReconciled: false
+          operationDate: 2024-03-04T00:00:00Z
           amount: 50
           method: CREDIT_CARD
           documents:
@@ -12909,8 +13484,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_7_5
           type: string
         buyingPrice:
@@ -12980,8 +13555,8 @@ components:
             \ \nThe TAXTYPE can be IVA, IPSI or IGIC.\nINT is the tax rate and the\
             \ second INT is for the decimal part of the tax rate.\nThe NONTAXABLETAXTYPE\
             \ can be Exempt, NotSubject or ReverseCharge.\nFor the NONTAXABLETAXTYPE\
-            \ the INT must be 0.\nSome examples are: IVA_Exempt_0, IVA_21, IPSI_3,\
-            \ IGIC_7_5"
+            \ the INT must be 0.\nOnly spanish or european tax keys are allowed.\n\
+            Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5"
           example: IVA_7_5
           type: string
         buyingPrice:
@@ -13087,13 +13662,18 @@ components:
       type: object
     AccountingAccountAnswerDto:
       example:
-        createdAt: 2024-03-04T00:00:00Z
+        pendingReconciliationCount: 0
         IBAN: ES7221002792116644245555
+        swiftCode: BBVAESBB620
+        bankName: Banco Popular
+        type: BANK_ACCOUNT
+        isAutomaticConnected: false
+        createdAt: 2024-03-04T00:00:00Z
+        lastSync: 2024-03-04T12:00:00.000Z
+        balance: 1234.56
         creditCardNumber: "4249287503791846"
         alias: Cuenta Banco Popular B
-        swiftCode: BBVAESBB620
         id: fb665a93-752d-4f30-b6ef-2221178243cc
-        type: BANK_ACCOUNT
         creditCardExpireDate: 01/2023
         updatedAt: 2024-03-04T00:00:00Z
       properties:
@@ -13148,10 +13728,36 @@ components:
           example: 01/2023
           nullable: true
           type: string
+        isAutomaticConnected:
+          description: Whether the account is automatically connected (true) or manual
+            (false)
+          example: false
+          type: boolean
+        lastSync:
+          description: Date and time of the last sync (ISO 8601)
+          example: 2024-03-04T12:00:00.000Z
+          nullable: true
+          type: string
+        pendingReconciliationCount:
+          description: Count of imported transactions pending reconciliation
+          example: 0
+          nullable: true
+          type: number
+        bankName:
+          description: Bank name
+          example: Banco Popular
+          nullable: true
+          type: string
+        balance:
+          description: Current balance
+          example: 1234.56
+          nullable: true
+          type: number
       required:
       - alias
       - createdAt
       - id
+      - isAutomaticConnected
       - type
       - updatedAt
       type: object
@@ -13187,22 +13793,32 @@ components:
       example:
         count: 23
         items:
-        - createdAt: 2024-03-04T00:00:00Z
+        - pendingReconciliationCount: 0
           IBAN: ES7221002792116644245555
+          swiftCode: BBVAESBB620
+          bankName: Banco Popular
+          type: BANK_ACCOUNT
+          isAutomaticConnected: false
+          createdAt: 2024-03-04T00:00:00Z
+          lastSync: 2024-03-04T12:00:00.000Z
+          balance: 1234.56
           creditCardNumber: "4249287503791846"
           alias: Cuenta Banco Popular B
-          swiftCode: BBVAESBB620
           id: fb665a93-752d-4f30-b6ef-2221178243cc
-          type: BANK_ACCOUNT
           creditCardExpireDate: 01/2023
           updatedAt: 2024-03-04T00:00:00Z
-        - createdAt: 2024-03-04T00:00:00Z
+        - pendingReconciliationCount: 0
           IBAN: ES7221002792116644245555
+          swiftCode: BBVAESBB620
+          bankName: Banco Popular
+          type: BANK_ACCOUNT
+          isAutomaticConnected: false
+          createdAt: 2024-03-04T00:00:00Z
+          lastSync: 2024-03-04T12:00:00.000Z
+          balance: 1234.56
           creditCardNumber: "4249287503791846"
           alias: Cuenta Banco Popular B
-          swiftCode: BBVAESBB620
           id: fb665a93-752d-4f30-b6ef-2221178243cc
-          type: BANK_ACCOUNT
           creditCardExpireDate: 01/2023
           updatedAt: 2024-03-04T00:00:00Z
       properties:
@@ -13220,6 +13836,10 @@ components:
       - count
       - items
       type: object
+    createInvoice_request:
+      oneOf:
+      - $ref: '#/components/schemas/InvoiceCreateDto'
+      - $ref: '#/components/schemas/InvoiceBaiCreateDto'
     getInvoice_200_response:
       oneOf:
       - $ref: '#/components/schemas/SalesReceiptDocumentAnswerDto'

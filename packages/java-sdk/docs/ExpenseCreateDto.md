@@ -7,6 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
+|**serieId** | **String** | The id of the serie. If provided together with serialCode, the serieId will be used |  [optional] |
+|**serialCode** | **String** | Serial Code of the document. If provided together with serieId, the serieId will be used |  [optional] |
 |**visualLines** | [**List&lt;VisualLineDto&gt;**](VisualLineDto.md) | Visual Lines of the document |  [optional] |
 |**comments** | **String** | Comments of the document |  [optional] |
 |**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  |
@@ -144,6 +146,17 @@
 
 | Name | Value |
 |---- | -----|
+| _206_SOFTWARE_APPLICATIONS | &quot;206_SOFTWARE_APPLICATIONS&quot; |
+| _210_LAND_AND_NATURAL_RESOURCES | &quot;210_LAND_AND_NATURAL_RESOURCES&quot; |
+| _211_BUILDINGS | &quot;211_BUILDINGS&quot; |
+| _212_TECHNICAL_INSTALLATIONS | &quot;212_TECHNICAL_INSTALLATIONS&quot; |
+| _213_MACHINERY | &quot;213_MACHINERY&quot; |
+| _214_TOOLS | &quot;214_TOOLS&quot; |
+| _215_OTHER_INSTALLATIONS | &quot;215_OTHER_INSTALLATIONS&quot; |
+| _216_FURNITURE | &quot;216_FURNITURE&quot; |
+| _217_INFORMATION_PROCESSING_EQUIPMENT | &quot;217_INFORMATION_PROCESSING_EQUIPMENT&quot; |
+| _218_TRANSPORT_ELEMENTS | &quot;218_TRANSPORT_ELEMENTS&quot; |
+| _219_OTHER_TANGIBLE_ASSETS | &quot;219_OTHER_TANGIBLE_ASSETS&quot; |
 | _600_WARE | &quot;600_WARE&quot; |
 | _601_RAW_MATERIALS | &quot;601_RAW_MATERIALS&quot; |
 | _602_SUPPLIES | &quot;602_SUPPLIES&quot; |

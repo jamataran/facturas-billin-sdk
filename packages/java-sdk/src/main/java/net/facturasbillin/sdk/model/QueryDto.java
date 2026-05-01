@@ -277,7 +277,7 @@ public class QueryDto implements Serializable {
   }
 
    /**
-   * You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01
+   * You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime
    * @return issuedDate
   **/
   @javax.annotation.Nullable
@@ -296,7 +296,7 @@ public class QueryDto implements Serializable {
   }
 
    /**
-   * You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01
+   * You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime
    * @return createdAt
   **/
   @javax.annotation.Nullable
@@ -315,7 +315,7 @@ public class QueryDto implements Serializable {
   }
 
    /**
-   * You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01
+   * You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime
    * @return updatedAt
   **/
   @javax.annotation.Nullable

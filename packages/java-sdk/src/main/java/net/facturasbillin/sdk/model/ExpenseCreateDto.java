@@ -62,6 +62,14 @@ import net.facturasbillin.sdk.JSON;
 public class ExpenseCreateDto implements Serializable {
   private static final long serialVersionUID = 1L;
 
+  public static final String SERIALIZED_NAME_SERIE_ID = "serieId";
+  @SerializedName(SERIALIZED_NAME_SERIE_ID)
+  private String serieId;
+
+  public static final String SERIALIZED_NAME_SERIAL_CODE = "serialCode";
+  @SerializedName(SERIALIZED_NAME_SERIAL_CODE)
+  private String serialCode;
+
   public static final String SERIALIZED_NAME_VISUAL_LINES = "visualLines";
   @SerializedName(SERIALIZED_NAME_VISUAL_LINES)
   private List<VisualLineDto> visualLines;
@@ -381,6 +389,28 @@ public class ExpenseCreateDto implements Serializable {
    */
   @JsonAdapter(CategoryEnum.Adapter.class)
   public enum CategoryEnum {
+    _206_SOFTWARE_APPLICATIONS("206_SOFTWARE_APPLICATIONS"),
+    
+    _210_LAND_AND_NATURAL_RESOURCES("210_LAND_AND_NATURAL_RESOURCES"),
+    
+    _211_BUILDINGS("211_BUILDINGS"),
+    
+    _212_TECHNICAL_INSTALLATIONS("212_TECHNICAL_INSTALLATIONS"),
+    
+    _213_MACHINERY("213_MACHINERY"),
+    
+    _214_TOOLS("214_TOOLS"),
+    
+    _215_OTHER_INSTALLATIONS("215_OTHER_INSTALLATIONS"),
+    
+    _216_FURNITURE("216_FURNITURE"),
+    
+    _217_INFORMATION_PROCESSING_EQUIPMENT("217_INFORMATION_PROCESSING_EQUIPMENT"),
+    
+    _218_TRANSPORT_ELEMENTS("218_TRANSPORT_ELEMENTS"),
+    
+    _219_OTHER_TANGIBLE_ASSETS("219_OTHER_TANGIBLE_ASSETS"),
+    
     _600_WARE("600_WARE"),
     
     _601_RAW_MATERIALS("601_RAW_MATERIALS"),
@@ -506,6 +536,44 @@ public class ExpenseCreateDto implements Serializable {
 
   public ExpenseCreateDto() {
   }
+
+  public ExpenseCreateDto serieId(String serieId) {
+    this.serieId = serieId;
+    return this;
+  }
+
+   /**
+   * The id of the serie. If provided together with serialCode, the serieId will be used
+   * @return serieId
+  **/
+  @javax.annotation.Nullable
+  public String getSerieId() {
+    return serieId;
+  }
+
+  public void setSerieId(String serieId) {
+    this.serieId = serieId;
+  }
+
+
+  public ExpenseCreateDto serialCode(String serialCode) {
+    this.serialCode = serialCode;
+    return this;
+  }
+
+   /**
+   * Serial Code of the document. If provided together with serieId, the serieId will be used
+   * @return serialCode
+  **/
+  @javax.annotation.Nullable
+  public String getSerialCode() {
+    return serialCode;
+  }
+
+  public void setSerialCode(String serialCode) {
+    this.serialCode = serialCode;
+  }
+
 
   public ExpenseCreateDto visualLines(List<VisualLineDto> visualLines) {
     this.visualLines = visualLines;
@@ -807,7 +875,9 @@ public class ExpenseCreateDto implements Serializable {
       return false;
     }
     ExpenseCreateDto expenseCreateDto = (ExpenseCreateDto) o;
-    return Objects.equals(this.visualLines, expenseCreateDto.visualLines) &&
+    return Objects.equals(this.serieId, expenseCreateDto.serieId) &&
+        Objects.equals(this.serialCode, expenseCreateDto.serialCode) &&
+        Objects.equals(this.visualLines, expenseCreateDto.visualLines) &&
         Objects.equals(this.comments, expenseCreateDto.comments) &&
         Objects.equals(this.currency, expenseCreateDto.currency) &&
         Objects.equals(this.isPaid, expenseCreateDto.isPaid) &&
@@ -825,13 +895,15 @@ public class ExpenseCreateDto implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(visualLines, comments, currency, isPaid, retentionAmount, retentionPercentage, identifier, issuedDate, dueDate, lines, taxLines, total, category, contact);
+    return Objects.hash(serieId, serialCode, visualLines, comments, currency, isPaid, retentionAmount, retentionPercentage, identifier, issuedDate, dueDate, lines, taxLines, total, category, contact);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ExpenseCreateDto {\n");
+    sb.append("    serieId: ").append(toIndentedString(serieId)).append("\n");
+    sb.append("    serialCode: ").append(toIndentedString(serialCode)).append("\n");
     sb.append("    visualLines: ").append(toIndentedString(visualLines)).append("\n");
     sb.append("    comments: ").append(toIndentedString(comments)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
@@ -868,6 +940,8 @@ public class ExpenseCreateDto implements Serializable {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("serieId");
+    openapiFields.add("serialCode");
     openapiFields.add("visualLines");
     openapiFields.add("comments");
     openapiFields.add("currency");
@@ -920,6 +994,12 @@ public class ExpenseCreateDto implements Serializable {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("serieId") != null && !jsonObj.get("serieId").isJsonNull()) && !jsonObj.get("serieId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `serieId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("serieId").toString()));
+      }
+      if ((jsonObj.get("serialCode") != null && !jsonObj.get("serialCode").isJsonNull()) && !jsonObj.get("serialCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `serialCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("serialCode").toString()));
+      }
       if (jsonObj.get("visualLines") != null && !jsonObj.get("visualLines").isJsonNull()) {
         JsonArray jsonArrayvisualLines = jsonObj.getAsJsonArray("visualLines");
         if (jsonArrayvisualLines != null) {

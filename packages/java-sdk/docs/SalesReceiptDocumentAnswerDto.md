@@ -185,6 +185,17 @@
 
 | Name | Value |
 |---- | -----|
+| _206_SOFTWARE_APPLICATIONS | &quot;206_SOFTWARE_APPLICATIONS&quot; |
+| _210_LAND_AND_NATURAL_RESOURCES | &quot;210_LAND_AND_NATURAL_RESOURCES&quot; |
+| _211_BUILDINGS | &quot;211_BUILDINGS&quot; |
+| _212_TECHNICAL_INSTALLATIONS | &quot;212_TECHNICAL_INSTALLATIONS&quot; |
+| _213_MACHINERY | &quot;213_MACHINERY&quot; |
+| _214_TOOLS | &quot;214_TOOLS&quot; |
+| _215_OTHER_INSTALLATIONS | &quot;215_OTHER_INSTALLATIONS&quot; |
+| _216_FURNITURE | &quot;216_FURNITURE&quot; |
+| _217_INFORMATION_PROCESSING_EQUIPMENT | &quot;217_INFORMATION_PROCESSING_EQUIPMENT&quot; |
+| _218_TRANSPORT_ELEMENTS | &quot;218_TRANSPORT_ELEMENTS&quot; |
+| _219_OTHER_TANGIBLE_ASSETS | &quot;219_OTHER_TANGIBLE_ASSETS&quot; |
 | _600_WARE | &quot;600_WARE&quot; |
 | _601_RAW_MATERIALS | &quot;601_RAW_MATERIALS&quot; |
 | _602_SUPPLIES | &quot;602_SUPPLIES&quot; |
@@ -243,7 +254,9 @@
 | _03 | &quot;03&quot; |
 | _04 | &quot;04&quot; |
 | _05 | &quot;05&quot; |
+| _06 | &quot;06&quot; |
 | _07 | &quot;07&quot; |
+| _08 | &quot;08&quot; |
 | _09 | &quot;09&quot; |
 
 
@@ -258,12 +271,15 @@
 | _102100 | &quot;102100&quot; |
 | _102200 | &quot;102200&quot; |
 | _102300 | &quot;102300&quot; |
-| _102400 | &quot;102400&quot; |
+| _1024000 | &quot;1024000&quot; |
+| _1024001 | &quot;1024001&quot; |
+| _1024002 | &quot;1024002&quot; |
 | _103100 | &quot;103100&quot; |
 | _103200 | &quot;103200&quot; |
 | _103300 | &quot;103300&quot; |
 | _104110 | &quot;104110&quot; |
-| _104120 | &quot;104120&quot; |
+| _1041200 | &quot;1041200&quot; |
+| _1041201 | &quot;1041201&quot; |
 | _104210 | &quot;104210&quot; |
 | _104220 | &quot;104220&quot; |
 | _104230 | &quot;104230&quot; |
@@ -272,7 +288,9 @@
 | _105100 | &quot;105100&quot; |
 | _106100 | &quot;106100&quot; |
 | _106200 | &quot;106200&quot; |
-| _106900 | &quot;106900&quot; |
+| _1069001 | &quot;1069001&quot; |
+| _1069002 | &quot;1069002&quot; |
+| _1069003 | &quot;1069003&quot; |
 | _107100 | &quot;107100&quot; |
 | _111110 | &quot;111110&quot; |
 | _111120 | &quot;111120&quot; |
@@ -491,7 +509,8 @@
 | _142310 | &quot;142310&quot; |
 | _142320 | &quot;142320&quot; |
 | _142330 | &quot;142330&quot; |
-| _142390 | &quot;142390&quot; |
+| _1423901 | &quot;1423901&quot; |
+| _1423902 | &quot;1423902&quot; |
 | _142410 | &quot;142410&quot; |
 | _142420 | &quot;142420&quot; |
 | _142430 | &quot;142430&quot; |
@@ -744,6 +763,7 @@
 | _166110 | &quot;166110&quot; |
 | _166120 | &quot;166120&quot; |
 | _166130 | &quot;166130&quot; |
+| _166190 | &quot;166190&quot; |
 | _166210 | &quot;166210&quot; |
 | _166220 | &quot;166220&quot; |
 | _166310 | &quot;166310&quot; |
@@ -753,6 +773,7 @@
 | _166390 | &quot;166390&quot; |
 | _166411 | &quot;166411&quot; |
 | _166412 | &quot;166412&quot; |
+| _166420 | &quot;166420&quot; |
 | _166491 | &quot;166491&quot; |
 | _166492 | &quot;166492&quot; |
 | _166500 | &quot;166500&quot; |
@@ -773,7 +794,8 @@
 | _167450 | &quot;167450&quot; |
 | _167460 | &quot;167460&quot; |
 | _167470 | &quot;167470&quot; |
-| _167510 | &quot;167510&quot; |
+| _1675100 | &quot;1675100&quot; |
+| _1675101 | &quot;1675101&quot; |
 | _167520 | &quot;167520&quot; |
 | _167600 | &quot;167600&quot; |
 | _167710 | &quot;167710&quot; |
@@ -781,7 +803,8 @@
 | _168100 | &quot;168100&quot; |
 | _168200 | &quot;168200&quot; |
 | _168310 | &quot;168310&quot; |
-| _168320 | &quot;168320&quot; |
+| _1683200 | &quot;1683200&quot; |
+| _1683201 | &quot;1683201&quot; |
 | _168400 | &quot;168400&quot; |
 | _168500 | &quot;168500&quot; |
 | _168600 | &quot;168600&quot; |
@@ -792,6 +815,7 @@
 | _169110 | &quot;169110&quot; |
 | _169120 | &quot;169120&quot; |
 | _1691900 | &quot;1691900&quot; |
+| _1691901 | &quot;1691901&quot; |
 | _169200 | &quot;169200&quot; |
 | _169900 | &quot;169900&quot; |
 | _171100 | &quot;171100&quot; |
@@ -885,7 +909,8 @@
 | _184500 | &quot;184500&quot; |
 | _184600 | &quot;184600&quot; |
 | _184700 | &quot;184700&quot; |
-| _184800 | &quot;184800&quot; |
+| _184810 | &quot;184810&quot; |
+| _184820 | &quot;184820&quot; |
 | _184910 | &quot;184910&quot; |
 | _184920 | &quot;184920&quot; |
 | _184930 | &quot;184930&quot; |
@@ -1138,6 +1163,8 @@
 | _286100 | &quot;286100&quot; |
 | _286200 | &quot;286200&quot; |
 | _286300 | &quot;286300&quot; |
+| _286400 | &quot;286400&quot; |
+| _286900 | &quot;286900&quot; |
 | _287100 | &quot;287100&quot; |
 | _287200 | &quot;287200&quot; |
 | _287300 | &quot;287300&quot; |
@@ -1149,6 +1176,7 @@
 | _288600 | &quot;288600&quot; |
 | _288700 | &quot;288700&quot; |
 | _288800 | &quot;288800&quot; |
+| _288900 | &quot;288900&quot; |
 | _289900 | &quot;289900&quot; |
 | _301100 | &quot;301100&quot; |
 | _301200 | &quot;301200&quot; |
@@ -1165,6 +1193,7 @@
 | _303100 | &quot;303100&quot; |
 | _303200 | &quot;303200&quot; |
 | _303300 | &quot;303300&quot; |
+| _303400 | &quot;303400&quot; |
 | _303900 | &quot;303900&quot; |
 | _304100 | &quot;304100&quot; |
 | _304200 | &quot;304200&quot; |
@@ -1184,12 +1213,16 @@
 | _451000 | &quot;451000&quot; |
 | _452000 | &quot;452000&quot; |
 | _453000 | &quot;453000&quot; |
-| _454000 | &quot;454000&quot; |
-| _455000 | &quot;455000&quot; |
+| _4540001 | &quot;4540001&quot; |
+| _4540002 | &quot;4540002&quot; |
+| _4550000 | &quot;4550000&quot; |
+| _4550001 | &quot;4550001&quot; |
 | _456001 | &quot;456001&quot; |
 | _456002 | &quot;456002&quot; |
 | _456003 | &quot;456003&quot; |
-| _457000 | &quot;457000&quot; |
+| _4570001 | &quot;4570001&quot; |
+| _4570002 | &quot;4570002&quot; |
+| _4570003 | &quot;4570003&quot; |
 | _458000 | &quot;458000&quot; |
 | _459000 | &quot;459000&quot; |
 | _490000 | &quot;490000&quot; |

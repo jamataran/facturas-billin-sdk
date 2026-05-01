@@ -83,7 +83,7 @@ public class Example {
 
 Get the expenses list
 
-Endpoint to get the expenses list
+Endpoint to get the expenses list  **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).  The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
 
 ### Example
 ```java
@@ -105,9 +105,9 @@ public class Example {
     bearer.setBearerToken("BEARER TOKEN");
 
     ExpensesApi apiInstance = new ExpensesApi(defaultClient);
-    String queryIssuedDate = "queryIssuedDate_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
-    String queryCreatedAt = "queryCreatedAt_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
-    String queryUpdatedAt = "queryUpdatedAt_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+    String queryIssuedDate = "queryIssuedDate_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01  Accepts ISO-8601 datetime
+    String queryCreatedAt = "queryCreatedAt_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01  Accepts ISO-8601 datetime
+    String queryUpdatedAt = "queryUpdatedAt_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01  Accepts ISO-8601 datetime
     String queryIdentifier = "queryIdentifier_example"; // String | 
     Boolean queryIsPaid = true; // Boolean | 
     String queryContactVatNumber = "queryContactVatNumber_example"; // String | 
@@ -135,9 +135,9 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **queryIssuedDate** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 | [optional] |
-| **queryCreatedAt** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 | [optional] |
-| **queryUpdatedAt** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 | [optional] |
+| **queryIssuedDate** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime | [optional] |
+| **queryCreatedAt** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime | [optional] |
+| **queryUpdatedAt** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime | [optional] |
 | **queryIdentifier** | **String**|  | [optional] |
 | **queryIsPaid** | **Boolean**|  | [optional] |
 | **queryContactVatNumber** | **String**|  | [optional] |

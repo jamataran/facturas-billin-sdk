@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.io.Serializable;
 
@@ -48,30 +49,76 @@ import java.util.Set;
 import net.facturasbillin.sdk.JSON;
 
 /**
- * ContactPaymentMethod
+ * ApiForbiddenException
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ContactPaymentMethod implements Serializable {
+public class ApiForbiddenException implements Serializable {
   private static final long serialVersionUID = 1L;
+
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  private String message;
+
+  public static final String SERIALIZED_NAME_STATUS_CODE = "statusCode";
+  @SerializedName(SERIALIZED_NAME_STATUS_CODE)
+  private BigDecimal statusCode;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private Object data;
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
-  public ContactPaymentMethod() {
+  public ApiForbiddenException() {
   }
 
-  public ContactPaymentMethod type(String type) {
+  public ApiForbiddenException message(String message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * Get message
+   * @return message
+  **/
+  @javax.annotation.Nonnull
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+
+  public ApiForbiddenException statusCode(BigDecimal statusCode) {
+    this.statusCode = statusCode;
+    return this;
+  }
+
+   /**
+   * Get statusCode
+   * @return statusCode
+  **/
+  @javax.annotation.Nonnull
+  public BigDecimal getStatusCode() {
+    return statusCode;
+  }
+
+  public void setStatusCode(BigDecimal statusCode) {
+    this.statusCode = statusCode;
+  }
+
+
+  public ApiForbiddenException type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * A string indicating the payment method type. For now, the only accepted value is \&quot;DIRECT_DEBIT\&quot;, which corresponds to a bank transfer.
+   * Get type
    * @return type
   **/
   @javax.annotation.Nonnull
@@ -84,22 +131,22 @@ public class ContactPaymentMethod implements Serializable {
   }
 
 
-  public ContactPaymentMethod data(Object data) {
-    this.data = data;
+  public ApiForbiddenException description(String description) {
+    this.description = description;
     return this;
   }
 
    /**
-   * An object containing the data required for the payment method. For the DIRECT_DEBIT type, it includes the IBAN number.
-   * @return data
+   * Get description
+   * @return description
   **/
   @javax.annotation.Nonnull
-  public Object getData() {
-    return data;
+  public String getDescription() {
+    return description;
   }
 
-  public void setData(Object data) {
-    this.data = data;
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -112,22 +159,26 @@ public class ContactPaymentMethod implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ContactPaymentMethod contactPaymentMethod = (ContactPaymentMethod) o;
-    return Objects.equals(this.type, contactPaymentMethod.type) &&
-        Objects.equals(this.data, contactPaymentMethod.data);
+    ApiForbiddenException apiForbiddenException = (ApiForbiddenException) o;
+    return Objects.equals(this.message, apiForbiddenException.message) &&
+        Objects.equals(this.statusCode, apiForbiddenException.statusCode) &&
+        Objects.equals(this.type, apiForbiddenException.type) &&
+        Objects.equals(this.description, apiForbiddenException.description);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, data);
+    return Objects.hash(message, statusCode, type, description);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ContactPaymentMethod {\n");
+    sb.append("class ApiForbiddenException {\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,45 +201,55 @@ public class ContactPaymentMethod implements Serializable {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("message");
+    openapiFields.add("statusCode");
     openapiFields.add("type");
-    openapiFields.add("data");
+    openapiFields.add("description");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
+    openapiRequiredFields.add("message");
+    openapiRequiredFields.add("statusCode");
     openapiRequiredFields.add("type");
-    openapiRequiredFields.add("data");
+    openapiRequiredFields.add("description");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ContactPaymentMethod
+  * @throws IOException if the JSON Element is invalid with respect to ApiForbiddenException
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ContactPaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ContactPaymentMethod is not found in the empty JSON string", ContactPaymentMethod.openapiRequiredFields.toString()));
+        if (!ApiForbiddenException.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ApiForbiddenException is not found in the empty JSON string", ApiForbiddenException.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ContactPaymentMethod.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ContactPaymentMethod` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ApiForbiddenException.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ApiForbiddenException` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ContactPaymentMethod.openapiRequiredFields) {
+      for (String requiredField : ApiForbiddenException.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      }
       if (!jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      }
+      if (!jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
   }
 
@@ -196,22 +257,22 @@ public class ContactPaymentMethod implements Serializable {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ContactPaymentMethod.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ContactPaymentMethod' and its subtypes
+       if (!ApiForbiddenException.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ApiForbiddenException' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ContactPaymentMethod> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ContactPaymentMethod.class));
+       final TypeAdapter<ApiForbiddenException> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ApiForbiddenException.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ContactPaymentMethod>() {
+       return (TypeAdapter<T>) new TypeAdapter<ApiForbiddenException>() {
            @Override
-           public void write(JsonWriter out, ContactPaymentMethod value) throws IOException {
+           public void write(JsonWriter out, ApiForbiddenException value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ContactPaymentMethod read(JsonReader in) throws IOException {
+           public ApiForbiddenException read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -222,18 +283,18 @@ public class ContactPaymentMethod implements Serializable {
   }
 
  /**
-  * Create an instance of ContactPaymentMethod given an JSON string
+  * Create an instance of ApiForbiddenException given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ContactPaymentMethod
-  * @throws IOException if the JSON string is invalid with respect to ContactPaymentMethod
+  * @return An instance of ApiForbiddenException
+  * @throws IOException if the JSON string is invalid with respect to ApiForbiddenException
   */
-  public static ContactPaymentMethod fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ContactPaymentMethod.class);
+  public static ApiForbiddenException fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ApiForbiddenException.class);
   }
 
  /**
-  * Convert an instance of ContactPaymentMethod to an JSON string
+  * Convert an instance of ApiForbiddenException to an JSON string
   *
   * @return JSON string
   */
