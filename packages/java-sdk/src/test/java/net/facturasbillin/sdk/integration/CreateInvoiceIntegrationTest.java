@@ -105,7 +105,7 @@ public class CreateInvoiceIntegrationTest {
             line.setUnitPrice(new BigDecimal("10"));
             line.setTotalAmount(new BigDecimal("21.78"));
             line.setDiscountAmount(new BigDecimal("2"));
-            line.setTaxKey("IVA_21");
+            line.setTaxKey(DocumentLineDto.TaxKeyEnum.IVA_21);
             line.setTaxAmount(new BigDecimal("3.78"));
             line.setSalesEqTaxAmount(new BigDecimal("0"));
 
@@ -117,8 +117,9 @@ public class CreateInvoiceIntegrationTest {
 
             System.out.println("📤 Sending request to API...");
 
-            // Ejecutar llamada a la API - ahora envía directamente InvoiceCreateDto sin wrapper
-            InvoiceDocumentAnswerDto response = invoicesApi.createInvoice(invoice);
+            // POST /v1/invoices ahora acepta oneOf [InvoiceCreateDto, InvoiceBaiCreateDto]
+            // por lo que se envuelve en CreateInvoiceRequest
+            InvoiceDocumentAnswerDto response = invoicesApi.createInvoice(new CreateInvoiceRequest(invoice));
 
             assertNotNull(response, "API response should not be null");
 

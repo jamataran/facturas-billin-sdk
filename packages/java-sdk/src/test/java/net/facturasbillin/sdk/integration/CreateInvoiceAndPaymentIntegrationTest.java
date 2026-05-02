@@ -18,6 +18,7 @@ import net.facturasbillin.sdk.api.AuthApi;
 import net.facturasbillin.sdk.api.InvoicesApi;
 import net.facturasbillin.sdk.api.PaymentsApi;
 import net.facturasbillin.sdk.auth.HttpBearerAuth;
+import net.facturasbillin.sdk.model.CreateInvoiceRequest;
 import net.facturasbillin.sdk.model.CreatePaymentDto;
 import net.facturasbillin.sdk.model.CreatePaymentDto.MethodEnum;
 import net.facturasbillin.sdk.model.CreatePaymentDto.TypeEnum;
@@ -108,7 +109,7 @@ public class CreateInvoiceAndPaymentIntegrationTest {
             line1.setUnitPrice(new BigDecimal("995.95"));
             line1.setTotalAmount(new BigDecimal("995.95"));
             line1.setDiscountAmount(BigDecimal.ZERO);
-            line1.setTaxKey("IVA_0");
+            line1.setTaxKey(DocumentLineDto.TaxKeyEnum.IVA_0);
             line1.setTaxAmount(BigDecimal.ZERO);
             line1.setSalesEqTaxAmount(BigDecimal.ZERO);
 
@@ -118,7 +119,7 @@ public class CreateInvoiceAndPaymentIntegrationTest {
             line2.setUnitPrice(new BigDecimal("35"));
             line2.setTotalAmount(new BigDecimal("35"));
             line2.setDiscountAmount(BigDecimal.ZERO);
-            line2.setTaxKey("IVA_0");
+            line2.setTaxKey(DocumentLineDto.TaxKeyEnum.IVA_0);
             line2.setTaxAmount(BigDecimal.ZERO);
             line2.setSalesEqTaxAmount(BigDecimal.ZERO);
 
@@ -130,7 +131,7 @@ public class CreateInvoiceAndPaymentIntegrationTest {
             invoiceRequest.setContact(contact);
 
             System.out.println("\n📤 Creating invoice with real payload...");
-            InvoiceDocumentAnswerDto invoiceResponse = invoicesApi.createInvoice(invoiceRequest);
+            InvoiceDocumentAnswerDto invoiceResponse = invoicesApi.createInvoice(new CreateInvoiceRequest(invoiceRequest));
             assertNotNull(invoiceResponse);
             assertNotNull(invoiceResponse.getId());
             System.out.println("✅ Invoice created: " + invoiceResponse);
