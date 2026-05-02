@@ -35,16 +35,69 @@ npm run generate
 npm run build
 ```
 
+## 🧰 Monorepo con Turborepo
+
+El repositorio es un monorepo npm + [Turborepo](https://turbo.build/repo) con la
+siguiente estructura:
+
+```
+facturas-billin-sdk/
+├── openapi-spec/swagger.json     # Fuente única de verdad de la API
+├── packages/
+│   ├── java-sdk/                 # SDK Java (Maven)
+│   └── php-sdk/                  # SDK PHP (Composer)
+├── turbo.json                    # Pipeline de Turborepo
+└── package.json                  # Workspaces npm
+```
+
+### Pipeline de Turborepo
+
+`turbo.json` define cuatro tareas que se ejecutan por paquete:
+
+| Tarea | Depende de | Inputs | Outputs cacheados |
+|-------|------------|--------|-------------------|
+| `generate` | – | `openapi-spec/**` (global), `openapi-generator-config.yaml`, `openapitools.json`, `generate.sh` | `src/**`, `lib/**`, `docs/**`, `api/**`, `.openapi-generator/**` |
+| `build` | `generate`, `^build` | – | `dist/**`, `target/**`, `vendor/**` |
+| `test` | `build` | – | reportes (no cacheable) |
+| `clean` | – | – | – (no cacheable) |
+
+`openapi-spec/**` está declarado como `globalDependencies`, así que cualquier cambio
+en el swagger invalida la caché de `generate` y `build` en todos los paquetes a la vez.
+
+### Comandos típicos
+
+| Quiero... | Comando |
+|-----------|---------|
+| Regenerar Java desde el swagger | `npm run generate:java` |
+| Regenerar PHP desde el swagger | `npm run generate:php` |
+| Regenerar todos los SDKs en paralelo | `npm run generate:all` |
+| Compilar todos los paquetes | `npm run build` |
+| Compilar sólo Java | `npm run build:java` |
+| Forzar regeneración (ignorar caché) | `npx turbo run generate --force` |
+| Ver el grafo de dependencias | `npx turbo run build --graph` |
+| Limpiar artefactos | `npm run clean` |
+
+> Si una tarea no aparece, ejecútala directamente con `npx turbo run <tarea> --filter=@facturas-billin-sdk/java`.
+
 ## 🔧 Flujo de Trabajo
 
 ### 1. Actualizar la Especificación OpenAPI
 
 Si necesitas actualizar la especificación de la API:
 
-1. Coloca el nuevo archivo `swagger.json` en `openapi-spec/`
-2. Regenera los SDKs: `npm run generate`
-3. Verifica que todo compile: `npm run build`
-4. Ejecuta los tests: `npm run test`
+1. Sustituye `openapi-spec/swagger.json` por la nueva versión.
+2. Regenera los SDKs: `npm run generate` (turbo invalidará la caché automáticamente).
+3. Compila para detectar cambios incompatibles: `npm run build`.
+4. Si los DTOs cambian de forma o se renombran, **actualiza los tests de
+   integración** (`packages/java-sdk/src/test/java/...`) — el generador no los
+   ajusta por ti.
+5. Ejecuta los tests: `npm run test`.
+6. Decide qué bump de versión corresponde según [Semver](https://semver.org/lang/es/):
+   - **MAJOR** si hay cambios incompatibles en DTOs, firmas de método, o enums cerrados.
+   - **MINOR** si sólo se añaden endpoints/campos opcionales.
+   - **PATCH** si son correcciones de descripciones, ejemplos o cambios cosméticos.
+7. Actualiza la versión en `pom.xml`, `openapi-generator-config.yaml`,
+   `package.json` y los ejemplos del README de cada paquete que cambie.
 
 ### 2. Agregar un Nuevo Lenguaje
 
@@ -52,11 +105,12 @@ Para agregar soporte para un nuevo lenguaje:
 
 1. Crea un directorio en `packages/<language>-sdk/`
 2. Añade los archivos de configuración necesarios:
-   - `package.json` con scripts de generación, build y test
+   - `package.json` con scripts `generate`, `build`, `test`, `clean` y nombre `@facturas-billin-sdk/<lang>`
    - `openapi-generator-config.yaml` con la configuración del generador
    - `README.md` con documentación del SDK
 3. Configura las dependencias específicas del lenguaje
-4. Actualiza el README principal
+4. Asegúrate de que los nombres de tarea coincidan con `turbo.json` (`generate`, `build`, `test`, `clean`)
+5. Actualiza el README principal y añade el nuevo paquete a la tabla de versiones
 
 ### 3. Mejorar la Configuración del Generador
 

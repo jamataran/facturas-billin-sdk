@@ -1,20 +1,39 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "openapi-spec/**"
+  ],
   "tasks": {
     "generate": {
-      "dependsOn": ["^generate"],
-      "inputs": ["../../openapi-spec/**", "**/openapi-generator-config.yaml"],
-      "outputs": ["src/**", "lib/**"]
+      "inputs": [
+        "openapi-generator-config.yaml",
+        "openapitools.json",
+        "generate.sh"
+      ],
+      "outputs": [
+        "src/**",
+        "lib/**",
+        "docs/**",
+        "api/**",
+        ".openapi-generator/**"
+      ]
     },
     "build": {
       "dependsOn": ["generate", "^build"],
-      "outputs": ["dist/**", "target/**", "vendor/**"],
+      "outputs": [
+        "dist/**",
+        "target/**",
+        "vendor/**"
+      ],
       "cache": true
     },
     "test": {
       "dependsOn": ["build"],
       "cache": false,
-      "outputs": ["**/target/surefire-reports/**", "**/coverage/**"]
+      "outputs": [
+        "**/target/surefire-reports/**",
+        "**/coverage/**"
+      ]
     },
     "clean": {
       "cache": false

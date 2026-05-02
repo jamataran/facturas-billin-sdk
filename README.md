@@ -10,7 +10,7 @@ Repositorio **NO OFICIAL** con SDKs para consumir la API REST de [Facturas Billi
 
 | SDK | Versión | Estado |
 |-----|---------|--------|
-| [Java/Maven SDK](./packages/java-sdk) | 1.0.0 | ✅ Disponible |
+| [Java/Maven SDK](./packages/java-sdk) | 2.0.0 | ✅ Disponible |
 | [PHP SDK](./packages/php-sdk) | 1.0.0 | 🚧 En desarrollo |
 
 ---
@@ -36,7 +36,7 @@ En tu `pom.xml`, añade el repositorio:
 <dependency>
     <groupId>net.facturasbillin</groupId>
     <artifactId>facturas-billin-java-sdk</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
@@ -145,12 +145,32 @@ npm install
 
 ### Comandos
 
+El monorepo se orquesta con [Turborepo](https://turbo.build/repo). Estos son los comandos principales que ejecutas siempre desde la raíz:
+
 ```bash
-npm run generate    # Genera SDKs desde OpenAPI
-npm run build       # Compila todos los paquetes
-npm run test        # Ejecuta tests
-npm run clean       # Limpia artefactos
+npm run generate          # Regenera el SDK Java a partir de openapi-spec/swagger.json
+npm run generate:java     # Solo Java (alias del anterior)
+npm run generate:php      # Solo PHP
+npm run generate:all      # Todos los SDKs en paralelo (vía turbo)
+
+npm run build             # Compila todos los paquetes (turbo run build)
+npm run build:java        # Solo Java
+npm run build:php         # Solo PHP
+
+npm run test              # Tests de todos los paquetes
+npm run test:java
+npm run test:php
+
+npm run clean             # Limpia artefactos generados
 ```
+
+> Turborepo cachea la salida de `generate` y `build` cuando ni `openapi-spec/**` ni la
+> configuración del paquete han cambiado, por eso las ejecuciones repetidas son casi
+> instantáneas. Si necesitas forzar la regeneración, usa `npx turbo run generate --force`.
+
+Para más detalles de la organización del monorepo y de cómo añadir un nuevo SDK, revisa
+[`CONTRIBUTING.md`](./CONTRIBUTING.md). Para los workflows de CI/CD y el modelo de ramas,
+ver [`.github/README.md`](./.github/README.md).
 
 ---
 
