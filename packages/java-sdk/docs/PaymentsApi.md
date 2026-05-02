@@ -83,7 +83,7 @@ public class Example {
 
 Get payment list
 
-Endpoint to get the payment list
+Endpoint to get the payment list  **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).  The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
 
 ### Example
 ```java
@@ -109,7 +109,7 @@ public class Example {
     String sortOperationDate = "ASC"; // String | 
     String queryType = "INCOME"; // String | 
     String queryMethod = "BIZUM"; // String | 
-    String queryOperationDate = "queryOperationDate_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01
+    String queryOperationDate = "queryOperationDate_example"; // String | You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]=2023-01-01&query[date][$lt]=2023-02-01  Accepts ISO-8601 datetime
     String queryContactId = "queryContactId_example"; // String | The contact id of the payment
     String queryAccountingAccountId = "queryAccountingAccountId_example"; // String | The accounting account id of the payment
     BigDecimal limit = new BigDecimal("10"); // BigDecimal | 
@@ -136,7 +136,7 @@ public class Example {
 | **sortOperationDate** | **String**|  | [optional] [enum: ASC, DESC] |
 | **queryType** | **String**|  | [optional] [enum: INCOME, EXPENSE] |
 | **queryMethod** | **String**|  | [optional] [enum: BIZUM, CASH, CREDIT_CARD, DIRECT_DEBIT, PROMISSORY_NOTE, TRANSFER, OTHER, CONFIRMING, NOT_CONFIRMED] |
-| **queryOperationDate** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 | [optional] |
+| **queryOperationDate** | **String**| You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime | [optional] |
 | **queryContactId** | **String**| The contact id of the payment | [optional] |
 | **queryAccountingAccountId** | **String**| The accounting account id of the payment | [optional] |
 | **limit** | **BigDecimal**|  | [optional] [default to 10] |

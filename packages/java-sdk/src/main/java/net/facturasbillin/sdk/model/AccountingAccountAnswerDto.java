@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -145,6 +146,26 @@ public class AccountingAccountAnswerDto implements Serializable {
   public static final String SERIALIZED_NAME_CREDIT_CARD_EXPIRE_DATE = "creditCardExpireDate";
   @SerializedName(SERIALIZED_NAME_CREDIT_CARD_EXPIRE_DATE)
   private String creditCardExpireDate;
+
+  public static final String SERIALIZED_NAME_IS_AUTOMATIC_CONNECTED = "isAutomaticConnected";
+  @SerializedName(SERIALIZED_NAME_IS_AUTOMATIC_CONNECTED)
+  private Boolean isAutomaticConnected;
+
+  public static final String SERIALIZED_NAME_LAST_SYNC = "lastSync";
+  @SerializedName(SERIALIZED_NAME_LAST_SYNC)
+  private String lastSync;
+
+  public static final String SERIALIZED_NAME_PENDING_RECONCILIATION_COUNT = "pendingReconciliationCount";
+  @SerializedName(SERIALIZED_NAME_PENDING_RECONCILIATION_COUNT)
+  private BigDecimal pendingReconciliationCount;
+
+  public static final String SERIALIZED_NAME_BANK_NAME = "bankName";
+  @SerializedName(SERIALIZED_NAME_BANK_NAME)
+  private String bankName;
+
+  public static final String SERIALIZED_NAME_BALANCE = "balance";
+  @SerializedName(SERIALIZED_NAME_BALANCE)
+  private BigDecimal balance;
 
   public AccountingAccountAnswerDto() {
   }
@@ -320,6 +341,101 @@ public class AccountingAccountAnswerDto implements Serializable {
   }
 
 
+  public AccountingAccountAnswerDto isAutomaticConnected(Boolean isAutomaticConnected) {
+    this.isAutomaticConnected = isAutomaticConnected;
+    return this;
+  }
+
+   /**
+   * Whether the account is automatically connected (true) or manual (false)
+   * @return isAutomaticConnected
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsAutomaticConnected() {
+    return isAutomaticConnected;
+  }
+
+  public void setIsAutomaticConnected(Boolean isAutomaticConnected) {
+    this.isAutomaticConnected = isAutomaticConnected;
+  }
+
+
+  public AccountingAccountAnswerDto lastSync(String lastSync) {
+    this.lastSync = lastSync;
+    return this;
+  }
+
+   /**
+   * Date and time of the last sync (ISO 8601)
+   * @return lastSync
+  **/
+  @javax.annotation.Nullable
+  public String getLastSync() {
+    return lastSync;
+  }
+
+  public void setLastSync(String lastSync) {
+    this.lastSync = lastSync;
+  }
+
+
+  public AccountingAccountAnswerDto pendingReconciliationCount(BigDecimal pendingReconciliationCount) {
+    this.pendingReconciliationCount = pendingReconciliationCount;
+    return this;
+  }
+
+   /**
+   * Count of imported transactions pending reconciliation
+   * @return pendingReconciliationCount
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getPendingReconciliationCount() {
+    return pendingReconciliationCount;
+  }
+
+  public void setPendingReconciliationCount(BigDecimal pendingReconciliationCount) {
+    this.pendingReconciliationCount = pendingReconciliationCount;
+  }
+
+
+  public AccountingAccountAnswerDto bankName(String bankName) {
+    this.bankName = bankName;
+    return this;
+  }
+
+   /**
+   * Bank name
+   * @return bankName
+  **/
+  @javax.annotation.Nullable
+  public String getBankName() {
+    return bankName;
+  }
+
+  public void setBankName(String bankName) {
+    this.bankName = bankName;
+  }
+
+
+  public AccountingAccountAnswerDto balance(BigDecimal balance) {
+    this.balance = balance;
+    return this;
+  }
+
+   /**
+   * Current balance
+   * @return balance
+  **/
+  @javax.annotation.Nullable
+  public BigDecimal getBalance() {
+    return balance;
+  }
+
+  public void setBalance(BigDecimal balance) {
+    this.balance = balance;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -338,7 +454,12 @@ public class AccountingAccountAnswerDto implements Serializable {
         Objects.equals(this.IBAN, accountingAccountAnswerDto.IBAN) &&
         Objects.equals(this.swiftCode, accountingAccountAnswerDto.swiftCode) &&
         Objects.equals(this.creditCardNumber, accountingAccountAnswerDto.creditCardNumber) &&
-        Objects.equals(this.creditCardExpireDate, accountingAccountAnswerDto.creditCardExpireDate);
+        Objects.equals(this.creditCardExpireDate, accountingAccountAnswerDto.creditCardExpireDate) &&
+        Objects.equals(this.isAutomaticConnected, accountingAccountAnswerDto.isAutomaticConnected) &&
+        Objects.equals(this.lastSync, accountingAccountAnswerDto.lastSync) &&
+        Objects.equals(this.pendingReconciliationCount, accountingAccountAnswerDto.pendingReconciliationCount) &&
+        Objects.equals(this.bankName, accountingAccountAnswerDto.bankName) &&
+        Objects.equals(this.balance, accountingAccountAnswerDto.balance);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -347,7 +468,7 @@ public class AccountingAccountAnswerDto implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, type, alias, IBAN, swiftCode, creditCardNumber, creditCardExpireDate);
+    return Objects.hash(id, createdAt, updatedAt, type, alias, IBAN, swiftCode, creditCardNumber, creditCardExpireDate, isAutomaticConnected, lastSync, pendingReconciliationCount, bankName, balance);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -370,6 +491,11 @@ public class AccountingAccountAnswerDto implements Serializable {
     sb.append("    swiftCode: ").append(toIndentedString(swiftCode)).append("\n");
     sb.append("    creditCardNumber: ").append(toIndentedString(creditCardNumber)).append("\n");
     sb.append("    creditCardExpireDate: ").append(toIndentedString(creditCardExpireDate)).append("\n");
+    sb.append("    isAutomaticConnected: ").append(toIndentedString(isAutomaticConnected)).append("\n");
+    sb.append("    lastSync: ").append(toIndentedString(lastSync)).append("\n");
+    sb.append("    pendingReconciliationCount: ").append(toIndentedString(pendingReconciliationCount)).append("\n");
+    sb.append("    bankName: ").append(toIndentedString(bankName)).append("\n");
+    sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -401,6 +527,11 @@ public class AccountingAccountAnswerDto implements Serializable {
     openapiFields.add("swiftCode");
     openapiFields.add("creditCardNumber");
     openapiFields.add("creditCardExpireDate");
+    openapiFields.add("isAutomaticConnected");
+    openapiFields.add("lastSync");
+    openapiFields.add("pendingReconciliationCount");
+    openapiFields.add("bankName");
+    openapiFields.add("balance");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -409,6 +540,7 @@ public class AccountingAccountAnswerDto implements Serializable {
     openapiRequiredFields.add("updatedAt");
     openapiRequiredFields.add("type");
     openapiRequiredFields.add("alias");
+    openapiRequiredFields.add("isAutomaticConnected");
   }
 
  /**
@@ -461,6 +593,12 @@ public class AccountingAccountAnswerDto implements Serializable {
       }
       if ((jsonObj.get("creditCardExpireDate") != null && !jsonObj.get("creditCardExpireDate").isJsonNull()) && !jsonObj.get("creditCardExpireDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `creditCardExpireDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creditCardExpireDate").toString()));
+      }
+      if ((jsonObj.get("lastSync") != null && !jsonObj.get("lastSync").isJsonNull()) && !jsonObj.get("lastSync").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `lastSync` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastSync").toString()));
+      }
+      if ((jsonObj.get("bankName") != null && !jsonObj.get("bankName").isJsonNull()) && !jsonObj.get("bankName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `bankName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bankName").toString()));
       }
   }
 

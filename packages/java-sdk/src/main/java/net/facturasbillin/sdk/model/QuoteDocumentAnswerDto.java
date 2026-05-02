@@ -410,7 +410,7 @@ public class QuoteDocumentAnswerDto implements Serializable {
 
   public static final String SERIALIZED_NAME_ADDITIONAL_EXPENSES = "additionalExpenses";
   @SerializedName(SERIALIZED_NAME_ADDITIONAL_EXPENSES)
-  private List<AdditionalExpenseAnswerDto> additionalExpenses = new ArrayList<>();
+  private AdditionalExpenseAnswerDto additionalExpenses;
 
   public static final String SERIALIZED_NAME_RETENTION_PERCENTAGE = "retentionPercentage";
   @SerializedName(SERIALIZED_NAME_RETENTION_PERCENTAGE)
@@ -495,6 +495,28 @@ public class QuoteDocumentAnswerDto implements Serializable {
    */
   @JsonAdapter(CategoryEnum.Adapter.class)
   public enum CategoryEnum {
+    _206_SOFTWARE_APPLICATIONS("206_SOFTWARE_APPLICATIONS"),
+    
+    _210_LAND_AND_NATURAL_RESOURCES("210_LAND_AND_NATURAL_RESOURCES"),
+    
+    _211_BUILDINGS("211_BUILDINGS"),
+    
+    _212_TECHNICAL_INSTALLATIONS("212_TECHNICAL_INSTALLATIONS"),
+    
+    _213_MACHINERY("213_MACHINERY"),
+    
+    _214_TOOLS("214_TOOLS"),
+    
+    _215_OTHER_INSTALLATIONS("215_OTHER_INSTALLATIONS"),
+    
+    _216_FURNITURE("216_FURNITURE"),
+    
+    _217_INFORMATION_PROCESSING_EQUIPMENT("217_INFORMATION_PROCESSING_EQUIPMENT"),
+    
+    _218_TRANSPORT_ELEMENTS("218_TRANSPORT_ELEMENTS"),
+    
+    _219_OTHER_TANGIBLE_ASSETS("219_OTHER_TANGIBLE_ASSETS"),
+    
     _600_WARE("600_WARE"),
     
     _601_RAW_MATERIALS("601_RAW_MATERIALS"),
@@ -1069,29 +1091,21 @@ public class QuoteDocumentAnswerDto implements Serializable {
   }
 
 
-  public QuoteDocumentAnswerDto additionalExpenses(List<AdditionalExpenseAnswerDto> additionalExpenses) {
+  public QuoteDocumentAnswerDto additionalExpenses(AdditionalExpenseAnswerDto additionalExpenses) {
     this.additionalExpenses = additionalExpenses;
     return this;
   }
 
-  public QuoteDocumentAnswerDto addAdditionalExpensesItem(AdditionalExpenseAnswerDto additionalExpensesItem) {
-    if (this.additionalExpenses == null) {
-      this.additionalExpenses = new ArrayList<>();
-    }
-    this.additionalExpenses.add(additionalExpensesItem);
-    return this;
-  }
-
    /**
-   * Additional expenses of the quote
+   * Get additionalExpenses
    * @return additionalExpenses
   **/
   @javax.annotation.Nonnull
-  public List<AdditionalExpenseAnswerDto> getAdditionalExpenses() {
+  public AdditionalExpenseAnswerDto getAdditionalExpenses() {
     return additionalExpenses;
   }
 
-  public void setAdditionalExpenses(List<AdditionalExpenseAnswerDto> additionalExpenses) {
+  public void setAdditionalExpenses(AdditionalExpenseAnswerDto additionalExpenses) {
     this.additionalExpenses = additionalExpenses;
   }
 
@@ -1488,16 +1502,8 @@ public class QuoteDocumentAnswerDto implements Serializable {
       for (int i = 0; i < jsonArraytaxLines.size(); i++) {
         DocumentTaxLineAnswerDto.validateJsonElement(jsonArraytaxLines.get(i));
       };
-      // ensure the json data is an array
-      if (!jsonObj.get("additionalExpenses").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `additionalExpenses` to be an array in the JSON string but got `%s`", jsonObj.get("additionalExpenses").toString()));
-      }
-
-      JsonArray jsonArrayadditionalExpenses = jsonObj.getAsJsonArray("additionalExpenses");
-      // validate the required field `additionalExpenses` (array)
-      for (int i = 0; i < jsonArrayadditionalExpenses.size(); i++) {
-        AdditionalExpenseAnswerDto.validateJsonElement(jsonArrayadditionalExpenses.get(i));
-      };
+      // validate the required field `additionalExpenses`
+      AdditionalExpenseAnswerDto.validateJsonElement(jsonObj.get("additionalExpenses"));
       if ((jsonObj.get("documentType") != null && !jsonObj.get("documentType").isJsonNull()) && !jsonObj.get("documentType").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `documentType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("documentType").toString()));
       }

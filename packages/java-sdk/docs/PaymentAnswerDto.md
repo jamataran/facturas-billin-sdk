@@ -17,9 +17,10 @@
 |**status** | [**StatusEnum**](#StatusEnum) | Status of the payment |  |
 |**contact** | [**PaymentAnswerDtoContact**](PaymentAnswerDtoContact.md) |  |  |
 |**documents** | [**List&lt;PaymentDocumentDto&gt;**](PaymentDocumentDto.md) | Documents that are related to the payment |  |
-|**accountingAccount** | [**PaymentAnswerDtoAccountingAccount**](PaymentAnswerDtoAccountingAccount.md) |  |  [optional] |
+|**accountingAccount** | [**PaymentAnswerDtoAccountingAccount**](PaymentAnswerDtoAccountingAccount.md) |  |  |
 |**description** | **String** | Description of the payment |  [optional] |
-|**remittance** | [**PaymentAnswerDtoRemittance**](PaymentAnswerDtoRemittance.md) |  |  [optional] |
+|**remittance** | [**PaymentAnswerDtoRemittance**](PaymentAnswerDtoRemittance.md) |  |  |
+|**isReconciled** | **Boolean** | Whether the payment was created through bank transaction reconciliation |  |
 
 
 

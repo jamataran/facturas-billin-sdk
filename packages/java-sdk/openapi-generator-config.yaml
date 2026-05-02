@@ -7,7 +7,7 @@ useJakartaEe: false
 
 # Naming conventions
 artifactId: facturas-billin-java-sdk
-artifactVersion: 1.0.0
+artifactVersion: 2.0.0
 groupId: net.facturasbillin
 
 # Code generation options

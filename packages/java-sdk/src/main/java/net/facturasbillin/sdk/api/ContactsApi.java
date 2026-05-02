@@ -28,8 +28,11 @@ import java.io.IOException;
 
 
 import net.facturasbillin.sdk.model.ApiBadRequestException;
+import net.facturasbillin.sdk.model.ApiForbiddenException;
 import net.facturasbillin.sdk.model.ApiUnauthorizedException;
+import java.math.BigDecimal;
 import net.facturasbillin.sdk.model.ContactAnswerDto;
+import net.facturasbillin.sdk.model.ContactListAnswerDto;
 import net.facturasbillin.sdk.model.CreateContactDto;
 
 import java.lang.reflect.Type;
@@ -202,6 +205,203 @@ public class ContactsApi {
 
         okhttp3.Call localVarCall = createContactValidateBeforeCall(createContactDto, _callback);
         Type localVarReturnType = new TypeToken<ContactAnswerDto>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getContactsList
+     * @param queryVatNumber Filter by exact VAT number (optional)
+     * @param queryIsCustomer Filter by customer flag (optional)
+     * @param queryIsProvider Filter by provider flag (optional)
+     * @param sortFiscalName  (optional)
+     * @param sortVatNumber  (optional)
+     * @param sortUpdatedAt  (optional)
+     * @param sortCreatedAt  (optional)
+     * @param limit  (optional, default to 10)
+     * @param offset  (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getContactsListCall(String queryVatNumber, Boolean queryIsCustomer, Boolean queryIsProvider, String sortFiscalName, String sortVatNumber, String sortUpdatedAt, String sortCreatedAt, BigDecimal limit, BigDecimal offset, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/v1/contacts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (queryVatNumber != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query[vatNumber]", queryVatNumber));
+        }
+
+        if (queryIsCustomer != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query[isCustomer]", queryIsCustomer));
+        }
+
+        if (queryIsProvider != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("query[isProvider]", queryIsProvider));
+        }
+
+        if (sortFiscalName != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort[fiscalName]", sortFiscalName));
+        }
+
+        if (sortVatNumber != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort[vatNumber]", sortVatNumber));
+        }
+
+        if (sortUpdatedAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort[updatedAt]", sortUpdatedAt));
+        }
+
+        if (sortCreatedAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("sort[createdAt]", sortCreatedAt));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "bearer" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getContactsListValidateBeforeCall(String queryVatNumber, Boolean queryIsCustomer, Boolean queryIsProvider, String sortFiscalName, String sortVatNumber, String sortUpdatedAt, String sortCreatedAt, BigDecimal limit, BigDecimal offset, final ApiCallback _callback) throws ApiException {
+        return getContactsListCall(queryVatNumber, queryIsCustomer, queryIsProvider, sortFiscalName, sortVatNumber, sortUpdatedAt, sortCreatedAt, limit, offset, _callback);
+
+    }
+
+    /**
+     * Get the contacts list
+     * Endpoint to get the list of contacts for the business.  **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the \&quot;Try it out\&quot; feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, curl, etc.).
+     * @param queryVatNumber Filter by exact VAT number (optional)
+     * @param queryIsCustomer Filter by customer flag (optional)
+     * @param queryIsProvider Filter by provider flag (optional)
+     * @param sortFiscalName  (optional)
+     * @param sortVatNumber  (optional)
+     * @param sortUpdatedAt  (optional)
+     * @param sortCreatedAt  (optional)
+     * @param limit  (optional, default to 10)
+     * @param offset  (optional)
+     * @return ContactListAnswerDto
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ContactListAnswerDto getContactsList(String queryVatNumber, Boolean queryIsCustomer, Boolean queryIsProvider, String sortFiscalName, String sortVatNumber, String sortUpdatedAt, String sortCreatedAt, BigDecimal limit, BigDecimal offset) throws ApiException {
+        ApiResponse<ContactListAnswerDto> localVarResp = getContactsListWithHttpInfo(queryVatNumber, queryIsCustomer, queryIsProvider, sortFiscalName, sortVatNumber, sortUpdatedAt, sortCreatedAt, limit, offset);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Get the contacts list
+     * Endpoint to get the list of contacts for the business.  **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the \&quot;Try it out\&quot; feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, curl, etc.).
+     * @param queryVatNumber Filter by exact VAT number (optional)
+     * @param queryIsCustomer Filter by customer flag (optional)
+     * @param queryIsProvider Filter by provider flag (optional)
+     * @param sortFiscalName  (optional)
+     * @param sortVatNumber  (optional)
+     * @param sortUpdatedAt  (optional)
+     * @param sortCreatedAt  (optional)
+     * @param limit  (optional, default to 10)
+     * @param offset  (optional)
+     * @return ApiResponse&lt;ContactListAnswerDto&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<ContactListAnswerDto> getContactsListWithHttpInfo(String queryVatNumber, Boolean queryIsCustomer, Boolean queryIsProvider, String sortFiscalName, String sortVatNumber, String sortUpdatedAt, String sortCreatedAt, BigDecimal limit, BigDecimal offset) throws ApiException {
+        okhttp3.Call localVarCall = getContactsListValidateBeforeCall(queryVatNumber, queryIsCustomer, queryIsProvider, sortFiscalName, sortVatNumber, sortUpdatedAt, sortCreatedAt, limit, offset, null);
+        Type localVarReturnType = new TypeToken<ContactListAnswerDto>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Get the contacts list (asynchronously)
+     * Endpoint to get the list of contacts for the business.  **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the \&quot;Try it out\&quot; feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, curl, etc.).
+     * @param queryVatNumber Filter by exact VAT number (optional)
+     * @param queryIsCustomer Filter by customer flag (optional)
+     * @param queryIsProvider Filter by provider flag (optional)
+     * @param sortFiscalName  (optional)
+     * @param sortVatNumber  (optional)
+     * @param sortUpdatedAt  (optional)
+     * @param sortCreatedAt  (optional)
+     * @param limit  (optional, default to 10)
+     * @param offset  (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getContactsListAsync(String queryVatNumber, Boolean queryIsCustomer, Boolean queryIsProvider, String sortFiscalName, String sortVatNumber, String sortUpdatedAt, String sortCreatedAt, BigDecimal limit, BigDecimal offset, final ApiCallback<ContactListAnswerDto> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getContactsListValidateBeforeCall(queryVatNumber, queryIsCustomer, queryIsProvider, sortFiscalName, sortVatNumber, sortUpdatedAt, sortCreatedAt, limit, offset, _callback);
+        Type localVarReturnType = new TypeToken<ContactListAnswerDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -20,7 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import net.facturasbillin.sdk.model.ContactAnswerDto;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -48,58 +52,66 @@ import java.util.Set;
 import net.facturasbillin.sdk.JSON;
 
 /**
- * ContactPaymentMethod
+ * ContactListAnswerDto
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ContactPaymentMethod implements Serializable {
+public class ContactListAnswerDto implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  private BigDecimal count;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  private Object data;
+  public static final String SERIALIZED_NAME_ITEMS = "items";
+  @SerializedName(SERIALIZED_NAME_ITEMS)
+  private List<ContactAnswerDto> items = new ArrayList<>();
 
-  public ContactPaymentMethod() {
+  public ContactListAnswerDto() {
   }
 
-  public ContactPaymentMethod type(String type) {
-    this.type = type;
+  public ContactListAnswerDto count(BigDecimal count) {
+    this.count = count;
     return this;
   }
 
    /**
-   * A string indicating the payment method type. For now, the only accepted value is \&quot;DIRECT_DEBIT\&quot;, which corresponds to a bank transfer.
-   * @return type
+   * Total number of contacts with the query filter and without pagination
+   * @return count
   **/
   @javax.annotation.Nonnull
-  public String getType() {
-    return type;
+  public BigDecimal getCount() {
+    return count;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setCount(BigDecimal count) {
+    this.count = count;
   }
 
 
-  public ContactPaymentMethod data(Object data) {
-    this.data = data;
+  public ContactListAnswerDto items(List<ContactAnswerDto> items) {
+    this.items = items;
+    return this;
+  }
+
+  public ContactListAnswerDto addItemsItem(ContactAnswerDto itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
     return this;
   }
 
    /**
-   * An object containing the data required for the payment method. For the DIRECT_DEBIT type, it includes the IBAN number.
-   * @return data
+   * Paginated list of contacts with the query filter
+   * @return items
   **/
   @javax.annotation.Nonnull
-  public Object getData() {
-    return data;
+  public List<ContactAnswerDto> getItems() {
+    return items;
   }
 
-  public void setData(Object data) {
-    this.data = data;
+  public void setItems(List<ContactAnswerDto> items) {
+    this.items = items;
   }
 
 
@@ -112,22 +124,22 @@ public class ContactPaymentMethod implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ContactPaymentMethod contactPaymentMethod = (ContactPaymentMethod) o;
-    return Objects.equals(this.type, contactPaymentMethod.type) &&
-        Objects.equals(this.data, contactPaymentMethod.data);
+    ContactListAnswerDto contactListAnswerDto = (ContactListAnswerDto) o;
+    return Objects.equals(this.count, contactListAnswerDto.count) &&
+        Objects.equals(this.items, contactListAnswerDto.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, data);
+    return Objects.hash(count, items);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ContactPaymentMethod {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("class ContactListAnswerDto {\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -150,68 +162,75 @@ public class ContactPaymentMethod implements Serializable {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("type");
-    openapiFields.add("data");
+    openapiFields.add("count");
+    openapiFields.add("items");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("data");
+    openapiRequiredFields.add("count");
+    openapiRequiredFields.add("items");
   }
 
  /**
   * Validates the JSON Element and throws an exception if issues found
   *
   * @param jsonElement JSON Element
-  * @throws IOException if the JSON Element is invalid with respect to ContactPaymentMethod
+  * @throws IOException if the JSON Element is invalid with respect to ContactListAnswerDto
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
       if (jsonElement == null) {
-        if (!ContactPaymentMethod.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in ContactPaymentMethod is not found in the empty JSON string", ContactPaymentMethod.openapiRequiredFields.toString()));
+        if (!ContactListAnswerDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in ContactListAnswerDto is not found in the empty JSON string", ContactListAnswerDto.openapiRequiredFields.toString()));
         }
       }
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
       for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ContactPaymentMethod.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ContactPaymentMethod` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+        if (!ContactListAnswerDto.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ContactListAnswerDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
 
       // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ContactPaymentMethod.openapiRequiredFields) {
+      for (String requiredField : ContactListAnswerDto.openapiRequiredFields) {
         if (jsonElement.getAsJsonObject().get(requiredField) == null) {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
+      // ensure the json data is an array
+      if (!jsonObj.get("items").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `items` to be an array in the JSON string but got `%s`", jsonObj.get("items").toString()));
       }
+
+      JsonArray jsonArrayitems = jsonObj.getAsJsonArray("items");
+      // validate the required field `items` (array)
+      for (int i = 0; i < jsonArrayitems.size(); i++) {
+        ContactAnswerDto.validateJsonElement(jsonArrayitems.get(i));
+      };
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!ContactPaymentMethod.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'ContactPaymentMethod' and its subtypes
+       if (!ContactListAnswerDto.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'ContactListAnswerDto' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<ContactPaymentMethod> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(ContactPaymentMethod.class));
+       final TypeAdapter<ContactListAnswerDto> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(ContactListAnswerDto.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<ContactPaymentMethod>() {
+       return (TypeAdapter<T>) new TypeAdapter<ContactListAnswerDto>() {
            @Override
-           public void write(JsonWriter out, ContactPaymentMethod value) throws IOException {
+           public void write(JsonWriter out, ContactListAnswerDto value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public ContactPaymentMethod read(JsonReader in) throws IOException {
+           public ContactListAnswerDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
              return thisAdapter.fromJsonTree(jsonElement);
@@ -222,18 +241,18 @@ public class ContactPaymentMethod implements Serializable {
   }
 
  /**
-  * Create an instance of ContactPaymentMethod given an JSON string
+  * Create an instance of ContactListAnswerDto given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of ContactPaymentMethod
-  * @throws IOException if the JSON string is invalid with respect to ContactPaymentMethod
+  * @return An instance of ContactListAnswerDto
+  * @throws IOException if the JSON string is invalid with respect to ContactListAnswerDto
   */
-  public static ContactPaymentMethod fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, ContactPaymentMethod.class);
+  public static ContactListAnswerDto fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, ContactListAnswerDto.class);
   }
 
  /**
-  * Convert an instance of ContactPaymentMethod to an JSON string
+  * Convert an instance of ContactListAnswerDto to an JSON string
   *
   * @return JSON string
   */

@@ -16,6 +16,11 @@
 |**swiftCode** | **String** | SWIFT code of the accounting account in case it has the bank account type |  [optional] |
 |**creditCardNumber** | **String** | Credit card number of the accounting account in case it has the credit card type |  [optional] |
 |**creditCardExpireDate** | **String** | Expiration date of the credit card in case it has the credit card type |  [optional] |
+|**isAutomaticConnected** | **Boolean** | Whether the account is automatically connected (true) or manual (false) |  |
+|**lastSync** | **String** | Date and time of the last sync (ISO 8601) |  [optional] |
+|**pendingReconciliationCount** | **BigDecimal** | Count of imported transactions pending reconciliation |  [optional] |
+|**bankName** | **String** | Bank name |  [optional] |
+|**balance** | **BigDecimal** | Current balance |  [optional] |
 
 
 

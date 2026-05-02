@@ -29,7 +29,6 @@ import net.facturasbillin.sdk.model.PaymentAnswerDtoAccountingAccount;
 import net.facturasbillin.sdk.model.PaymentAnswerDtoContact;
 import net.facturasbillin.sdk.model.PaymentAnswerDtoRemittance;
 import net.facturasbillin.sdk.model.PaymentDocumentDto;
-import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -286,6 +285,10 @@ public class PaymentAnswerDto implements Serializable {
   public static final String SERIALIZED_NAME_REMITTANCE = "remittance";
   @SerializedName(SERIALIZED_NAME_REMITTANCE)
   private PaymentAnswerDtoRemittance remittance;
+
+  public static final String SERIALIZED_NAME_IS_RECONCILED = "isReconciled";
+  @SerializedName(SERIALIZED_NAME_IS_RECONCILED)
+  private Boolean isReconciled;
 
   public PaymentAnswerDto() {
   }
@@ -545,6 +548,25 @@ public class PaymentAnswerDto implements Serializable {
   }
 
 
+  public PaymentAnswerDto isReconciled(Boolean isReconciled) {
+    this.isReconciled = isReconciled;
+    return this;
+  }
+
+   /**
+   * Whether the payment was created through bank transaction reconciliation
+   * @return isReconciled
+  **/
+  @javax.annotation.Nonnull
+  public Boolean getIsReconciled() {
+    return isReconciled;
+  }
+
+  public void setIsReconciled(Boolean isReconciled) {
+    this.isReconciled = isReconciled;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -567,23 +589,13 @@ public class PaymentAnswerDto implements Serializable {
         Objects.equals(this.documents, paymentAnswerDto.documents) &&
         Objects.equals(this.accountingAccount, paymentAnswerDto.accountingAccount) &&
         Objects.equals(this.description, paymentAnswerDto.description) &&
-        Objects.equals(this.remittance, paymentAnswerDto.remittance);
-  }
-
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+        Objects.equals(this.remittance, paymentAnswerDto.remittance) &&
+        Objects.equals(this.isReconciled, paymentAnswerDto.isReconciled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, operationDate, amount, method, type, status, contact, documents, accountingAccount, description, remittance);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
+    return Objects.hash(id, createdAt, updatedAt, operationDate, amount, method, type, status, contact, documents, accountingAccount, description, remittance, isReconciled);
   }
 
   @Override
@@ -603,6 +615,7 @@ public class PaymentAnswerDto implements Serializable {
     sb.append("    accountingAccount: ").append(toIndentedString(accountingAccount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    remittance: ").append(toIndentedString(remittance)).append("\n");
+    sb.append("    isReconciled: ").append(toIndentedString(isReconciled)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -638,6 +651,7 @@ public class PaymentAnswerDto implements Serializable {
     openapiFields.add("accountingAccount");
     openapiFields.add("description");
     openapiFields.add("remittance");
+    openapiFields.add("isReconciled");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -651,6 +665,9 @@ public class PaymentAnswerDto implements Serializable {
     openapiRequiredFields.add("status");
     openapiRequiredFields.add("contact");
     openapiRequiredFields.add("documents");
+    openapiRequiredFields.add("accountingAccount");
+    openapiRequiredFields.add("remittance");
+    openapiRequiredFields.add("isReconciled");
   }
 
  /**
@@ -711,17 +728,13 @@ public class PaymentAnswerDto implements Serializable {
       for (int i = 0; i < jsonArraydocuments.size(); i++) {
         PaymentDocumentDto.validateJsonElement(jsonArraydocuments.get(i));
       };
-      // validate the optional field `accountingAccount`
-      if (jsonObj.get("accountingAccount") != null && !jsonObj.get("accountingAccount").isJsonNull()) {
-        PaymentAnswerDtoAccountingAccount.validateJsonElement(jsonObj.get("accountingAccount"));
-      }
+      // validate the required field `accountingAccount`
+      PaymentAnswerDtoAccountingAccount.validateJsonElement(jsonObj.get("accountingAccount"));
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
       }
-      // validate the optional field `remittance`
-      if (jsonObj.get("remittance") != null && !jsonObj.get("remittance").isJsonNull()) {
-        PaymentAnswerDtoRemittance.validateJsonElement(jsonObj.get("remittance"));
-      }
+      // validate the required field `remittance`
+      PaymentAnswerDtoRemittance.validateJsonElement(jsonObj.get("remittance"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

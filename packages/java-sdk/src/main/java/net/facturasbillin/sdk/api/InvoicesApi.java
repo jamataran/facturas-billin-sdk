@@ -30,9 +30,9 @@ import java.io.IOException;
 import net.facturasbillin.sdk.model.ApiBadRequestException;
 import net.facturasbillin.sdk.model.ApiUnauthorizedException;
 import java.math.BigDecimal;
+import net.facturasbillin.sdk.model.CreateInvoiceRequest;
 import net.facturasbillin.sdk.model.GetInvoice200Response;
 import net.facturasbillin.sdk.model.GetInvoicesListAnswerDto;
-import net.facturasbillin.sdk.model.InvoiceCreateDto;
 import net.facturasbillin.sdk.model.InvoiceDocumentAnswerDto;
 
 import java.lang.reflect.Type;
@@ -80,7 +80,7 @@ public class InvoicesApi {
 
     /**
      * Build call for createInvoice
-     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -92,7 +92,7 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInvoiceCall(InvoiceCreateDto invoiceCreateDto, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createInvoiceCall(CreateInvoiceRequest createInvoiceRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -106,7 +106,7 @@ public class InvoicesApi {
             basePath = null;
         }
 
-        Object localVarPostBody = invoiceCreateDto;
+        Object localVarPostBody = createInvoiceRequest;
 
         // create path and map variables
         String localVarPath = "/v1/invoices";
@@ -138,15 +138,15 @@ public class InvoicesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createInvoiceValidateBeforeCall(InvoiceCreateDto invoiceCreateDto, final ApiCallback _callback) throws ApiException {
-        return createInvoiceCall(invoiceCreateDto, _callback);
+    private okhttp3.Call createInvoiceValidateBeforeCall(CreateInvoiceRequest createInvoiceRequest, final ApiCallback _callback) throws ApiException {
+        return createInvoiceCall(createInvoiceRequest, _callback);
 
     }
 
     /**
      * Create an invoice
      * Endpoint to create an invoice
-     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @return InvoiceDocumentAnswerDto
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -157,15 +157,15 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InvoiceDocumentAnswerDto createInvoice(InvoiceCreateDto invoiceCreateDto) throws ApiException {
-        ApiResponse<InvoiceDocumentAnswerDto> localVarResp = createInvoiceWithHttpInfo(invoiceCreateDto);
+    public InvoiceDocumentAnswerDto createInvoice(CreateInvoiceRequest createInvoiceRequest) throws ApiException {
+        ApiResponse<InvoiceDocumentAnswerDto> localVarResp = createInvoiceWithHttpInfo(createInvoiceRequest);
         return localVarResp.getData();
     }
 
     /**
      * Create an invoice
      * Endpoint to create an invoice
-     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @return ApiResponse&lt;InvoiceDocumentAnswerDto&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -176,8 +176,8 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InvoiceDocumentAnswerDto> createInvoiceWithHttpInfo(InvoiceCreateDto invoiceCreateDto) throws ApiException {
-        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(invoiceCreateDto, null);
+    public ApiResponse<InvoiceDocumentAnswerDto> createInvoiceWithHttpInfo(CreateInvoiceRequest createInvoiceRequest) throws ApiException {
+        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(createInvoiceRequest, null);
         Type localVarReturnType = new TypeToken<InvoiceDocumentAnswerDto>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -185,7 +185,7 @@ public class InvoicesApi {
     /**
      * Create an invoice (asynchronously)
      * Endpoint to create an invoice
-     * @param invoiceCreateDto - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
+     * @param createInvoiceRequest - If you only send the *lines* field, Billin will **calculate the totals**. If, on the other hand, you want to send all the values so that Billin **does not calculate anything**, you must send the fields *taxLines* and *total*.        - There are two fields to send the **serial number**, either by filling in the *serialCode* field or the *serialId* field. In case of sending both, the serialId field has priority.         - Depending on where you have your tax domicile (Basque Country or the rest of Spain) you will have to send some data or others.        - *Province* **is mandatory** for Spain country. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -197,9 +197,9 @@ public class InvoicesApi {
         <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createInvoiceAsync(InvoiceCreateDto invoiceCreateDto, final ApiCallback<InvoiceDocumentAnswerDto> _callback) throws ApiException {
+    public okhttp3.Call createInvoiceAsync(CreateInvoiceRequest createInvoiceRequest, final ApiCallback<InvoiceDocumentAnswerDto> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(invoiceCreateDto, _callback);
+        okhttp3.Call localVarCall = createInvoiceValidateBeforeCall(createInvoiceRequest, _callback);
         Type localVarReturnType = new TypeToken<InvoiceDocumentAnswerDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -339,9 +339,9 @@ public class InvoicesApi {
      * Build call for getInvoicesList
      * @param queryDocumentType  (optional)
      * @param queryStatus Allowed values:         - DRAFT         - ISSUED        - VOID        - CORRECTED: The invoice has been corrected with another invoice (a corrective invoice)        - REPLACED: The simplified invoice has been replaced with a standard invoice (optional)
-     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
+     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
      * @param querySerialCode  (optional)
      * @param queryCode  (optional)
      * @param queryIsPaid  (optional)
@@ -495,12 +495,12 @@ public class InvoicesApi {
 
     /**
      * Get the invoices or sales receipts list
-     * Endpoint to get the invoices and sales receipts list
+     * Endpoint to get the invoices and sales receipts list   **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).  The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
      * @param queryDocumentType  (optional)
      * @param queryStatus Allowed values:         - DRAFT         - ISSUED        - VOID        - CORRECTED: The invoice has been corrected with another invoice (a corrective invoice)        - REPLACED: The simplified invoice has been replaced with a standard invoice (optional)
-     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
+     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
      * @param querySerialCode  (optional)
      * @param queryCode  (optional)
      * @param queryIsPaid  (optional)
@@ -532,12 +532,12 @@ public class InvoicesApi {
 
     /**
      * Get the invoices or sales receipts list
-     * Endpoint to get the invoices and sales receipts list
+     * Endpoint to get the invoices and sales receipts list   **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).  The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
      * @param queryDocumentType  (optional)
      * @param queryStatus Allowed values:         - DRAFT         - ISSUED        - VOID        - CORRECTED: The invoice has been corrected with another invoice (a corrective invoice)        - REPLACED: The simplified invoice has been replaced with a standard invoice (optional)
-     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
+     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
      * @param querySerialCode  (optional)
      * @param queryCode  (optional)
      * @param queryIsPaid  (optional)
@@ -570,12 +570,12 @@ public class InvoicesApi {
 
     /**
      * Get the invoices or sales receipts list (asynchronously)
-     * Endpoint to get the invoices and sales receipts list
+     * Endpoint to get the invoices and sales receipts list   **Important limitation:**  Swagger UI does not correctly serialize nested query parameters with brackets when using the “Try it out” feature. As a result, requests built through the Swagger interface may not match the expected format and may return incorrect results.  To use advanced filters reliably, construct the URL manually or use an external HTTP client (Postman, Insomnia, curl, etc.).  The API fully supports bracket-based query syntax; this limitation applies only to Swagger UI presentation, not to the API behavior.
      * @param queryDocumentType  (optional)
      * @param queryStatus Allowed values:         - DRAFT         - ISSUED        - VOID        - CORRECTED: The invoice has been corrected with another invoice (a corrective invoice)        - REPLACED: The simplified invoice has been replaced with a standard invoice (optional)
-     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
-     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01 (optional)
+     * @param queryIssuedDate You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryCreatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
+     * @param queryUpdatedAt You can filter by a date range using one of the following operators:  - $gt: greater than  - $gte: greater than or equal  - $lt: lower than  - $lte: lower than or equal  - ⚠️ Swagger UI cannot serialize these parameters correctly; build the query manually when using these operators.  Example: query[date][$gt]&#x3D;2023-01-01&amp;query[date][$lt]&#x3D;2023-02-01  Accepts ISO-8601 datetime (optional)
      * @param querySerialCode  (optional)
      * @param queryCode  (optional)
      * @param queryIsPaid  (optional)

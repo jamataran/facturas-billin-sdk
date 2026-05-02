@@ -88,9 +88,185 @@ public class DocumentLineBaiDto implements Serializable {
   @SerializedName(SERIALIZED_NAME_DISCOUNT_AMOUNT)
   private BigDecimal discountAmount;
 
+  /**
+   * It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT.  The TAXTYPE can be IVA, IPSI or IGIC. INT is the tax rate and the second INT is for the decimal part of the tax rate. The NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge. For the NONTAXABLETAXTYPE the INT must be 0. Only spanish or european tax keys are allowed. Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5
+   */
+  @JsonAdapter(TaxKeyEnum.Adapter.class)
+  public enum TaxKeyEnum {
+    IVA_EXEMPT_0("IVA_Exempt_0"),
+    
+    IVA_NOTSUBJECT_0("IVA_NotSubject_0"),
+    
+    IVA_REVERSECHARGE_0("IVA_ReverseCharge_0"),
+    
+    IGIC_EXEMPT_0("IGIC_Exempt_0"),
+    
+    IGIC_NOTSUBJECT_0("IGIC_NotSubject_0"),
+    
+    IGIC_REVERSECHARGE_0("IGIC_ReverseCharge_0"),
+    
+    IPSI_EXEMPT_0("IPSI_Exempt_0"),
+    
+    IPSI_NOTSUBJECT_0("IPSI_NotSubject_0"),
+    
+    IPSI_REVERSECHARGE_0("IPSI_ReverseCharge_0"),
+    
+    IVA_27("IVA_27"),
+    
+    IVA_25_5("IVA_25_5"),
+    
+    IVA_25("IVA_25"),
+    
+    IVA_24("IVA_24"),
+    
+    IVA_23("IVA_23"),
+    
+    IVA_22("IVA_22"),
+    
+    IVA_21("IVA_21"),
+    
+    IVA_20("IVA_20"),
+    
+    IVA_19("IVA_19"),
+    
+    IVA_18("IVA_18"),
+    
+    IVA_17("IVA_17"),
+    
+    IVA_16("IVA_16"),
+    
+    IVA_15("IVA_15"),
+    
+    IVA_14("IVA_14"),
+    
+    IVA_13_5("IVA_13_5"),
+    
+    IVA_13("IVA_13"),
+    
+    IVA_12("IVA_12"),
+    
+    IVA_10("IVA_10"),
+    
+    IVA_9_5("IVA_9_5"),
+    
+    IVA_9("IVA_9"),
+    
+    IVA_8_5("IVA_8_5"),
+    
+    IVA_8("IVA_8"),
+    
+    IVA_7_5("IVA_7_5"),
+    
+    IVA_7("IVA_7"),
+    
+    IVA_6("IVA_6"),
+    
+    IVA_5_5("IVA_5_5"),
+    
+    IVA_5("IVA_5"),
+    
+    IVA_4_8("IVA_4_8"),
+    
+    IVA_4("IVA_4"),
+    
+    IVA_3("IVA_3"),
+    
+    IVA_2_1("IVA_2_1"),
+    
+    IVA_2("IVA_2"),
+    
+    IVA_0("IVA_0"),
+    
+    IGIC_35("IGIC_35"),
+    
+    IGIC_20("IGIC_20"),
+    
+    IGIC_15("IGIC_15"),
+    
+    IGIC_13_5("IGIC_13_5"),
+    
+    IGIC_9_5("IGIC_9_5"),
+    
+    IGIC_7("IGIC_7"),
+    
+    IGIC_5("IGIC_5"),
+    
+    IGIC_3("IGIC_3"),
+    
+    IGIC_0("IGIC_0"),
+    
+    IPSI_10("IPSI_10"),
+    
+    IPSI_9("IPSI_9"),
+    
+    IPSI_8("IPSI_8"),
+    
+    IPSI_7("IPSI_7"),
+    
+    IPSI_6("IPSI_6"),
+    
+    IPSI_5("IPSI_5"),
+    
+    IPSI_4("IPSI_4"),
+    
+    IPSI_3_5("IPSI_3_5"),
+    
+    IPSI_3("IPSI_3"),
+    
+    IPSI_2("IPSI_2"),
+    
+    IPSI_1("IPSI_1"),
+    
+    IPSI_0_5("IPSI_0_5"),
+    
+    IPSI_0("IPSI_0");
+
+    private String value;
+
+    TaxKeyEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TaxKeyEnum fromValue(String value) {
+      for (TaxKeyEnum b : TaxKeyEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TaxKeyEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TaxKeyEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TaxKeyEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TaxKeyEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TaxKeyEnum.fromValue(value);
+    }
+  }
+
   public static final String SERIALIZED_NAME_TAX_KEY = "taxKey";
   @SerializedName(SERIALIZED_NAME_TAX_KEY)
-  private String taxKey;
+  private TaxKeyEnum taxKey;
 
   public static final String SERIALIZED_NAME_TAX_BASE = "taxBase";
   @SerializedName(SERIALIZED_NAME_TAX_BASE)
@@ -407,21 +583,21 @@ public class DocumentLineBaiDto implements Serializable {
   }
 
 
-  public DocumentLineBaiDto taxKey(String taxKey) {
+  public DocumentLineBaiDto taxKey(TaxKeyEnum taxKey) {
     this.taxKey = taxKey;
     return this;
   }
 
    /**
-   * It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT.  The TAXTYPE can be IVA, IPSI or IGIC. INT is the tax rate and the second INT is for the decimal part of the tax rate. The NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge. For the NONTAXABLETAXTYPE the INT must be 0. Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5
+   * It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT.  The TAXTYPE can be IVA, IPSI or IGIC. INT is the tax rate and the second INT is for the decimal part of the tax rate. The NONTAXABLETAXTYPE can be Exempt, NotSubject or ReverseCharge. For the NONTAXABLETAXTYPE the INT must be 0. Only spanish or european tax keys are allowed. Some examples are: IVA_Exempt_0, IVA_21, IPSI_3, IGIC_7_5
    * @return taxKey
   **/
   @javax.annotation.Nonnull
-  public String getTaxKey() {
+  public TaxKeyEnum getTaxKey() {
     return taxKey;
   }
 
-  public void setTaxKey(String taxKey) {
+  public void setTaxKey(TaxKeyEnum taxKey) {
     this.taxKey = taxKey;
   }
 
@@ -777,6 +953,8 @@ public class DocumentLineBaiDto implements Serializable {
       if (!jsonObj.get("taxKey").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `taxKey` to be a primitive type in the JSON string but got `%s`", jsonObj.get("taxKey").toString()));
       }
+      // validate the required field `taxKey`
+      TaxKeyEnum.validateJsonElement(jsonObj.get("taxKey"));
       if ((jsonObj.get("productId") != null && !jsonObj.get("productId").isJsonNull()) && !jsonObj.get("productId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `productId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("productId").toString()));
       }
