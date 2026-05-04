@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**accessToken** | **String** |  |  |
-|**expireIn** | **BigDecimal** |  |  |
-|**refreshToken** | **String** |  |  |
+|**accessToken** | **String** |  |  [optional] |
+|**expireIn** | **BigDecimal** |  |  [optional] |
+|**refreshToken** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

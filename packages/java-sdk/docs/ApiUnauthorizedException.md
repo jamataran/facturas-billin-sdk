@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**message** | **String** |  |  |
-|**statusCode** | **BigDecimal** |  |  |
-|**type** | **String** |  |  |
-|**description** | **String** |  |  |
+|**message** | **String** |  |  [optional] |
+|**statusCode** | **BigDecimal** |  |  [optional] |
+|**type** | **String** |  |  [optional] |
+|**description** | **String** |  |  [optional] |
 
 
 ## Implemented Interfaces

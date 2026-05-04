@@ -2793,6 +2793,7 @@ paths:
 components:
   schemas:
     RequestTokenUserApiCredentialDto:
+      additionalProperties: true
       example:
         password: password
         clientId: my client id
@@ -2828,10 +2829,9 @@ components:
           description: Required if grantType is 'password'
           example: password
           type: string
-      required:
-      - clientId
       type: object
     TokenAnswerDto:
+      additionalProperties: true
       example:
         expireIn: 0.8008281904610115
         accessToken: accessToken
@@ -2843,12 +2843,9 @@ components:
           type: number
         refreshToken:
           type: string
-      required:
-      - accessToken
-      - expireIn
-      - refreshToken
       type: object
     ApiBadRequestException:
+      additionalProperties: true
       properties:
         statusCode:
           example: 400
@@ -2871,13 +2868,9 @@ components:
           items:
             type: string
           type: array
-      required:
-      - description
-      - message
-      - statusCode
-      - type
       type: object
     ApiUnauthorizedException:
+      additionalProperties: true
       properties:
         message:
           example: UnauthorizedException
@@ -2891,13 +2884,9 @@ components:
         description:
           example: Unauthorized
           type: string
-      required:
-      - description
-      - message
-      - statusCode
-      - type
       type: object
     AuthInfoAnswerDto:
+      additionalProperties: true
       example:
         role: role
         businessId: 005c890a-349f-45ef-b1a8-843cbd55f82b
@@ -2930,15 +2919,9 @@ components:
         role:
           description: Role that the user has in the business
           type: string
-      required:
-      - businessId
-      - email
-      - fiscalName
-      - role
-      - userId
-      - vatNumber
       type: object
     VisualLineDto:
+      additionalProperties: true
       example:
         groupName: groupName
         text: text
@@ -2956,12 +2939,9 @@ components:
           type: number
         groupName:
           type: string
-      required:
-      - order
-      - text
-      - type
       type: object
     DocumentTaxLineBaseDto:
+      additionalProperties: true
       example:
         salesEqTaxAmount: 0
         taxKey: IVA_21
@@ -3001,13 +2981,9 @@ components:
             de Recargoo de equivalencia"
           example: 0
           type: number
-      required:
-      - salesEqTaxAmount
-      - taxAmount
-      - taxBase
-      - taxKey
       type: object
     DocumentTotalDto:
+      additionalProperties: true
       properties:
         subtotal:
           description: Sum of all subtotal lines
@@ -3029,14 +3005,9 @@ components:
           description: Amount due
           example: 21.78
           type: number
-      required:
-      - amountDue
-      - discountAmount
-      - discountPercentage
-      - subtotal
-      - totalAmount
       type: object
     DocumentLineDto:
+      additionalProperties: true
       example:
         unitPrice: 10
         quantity: 2
@@ -3202,17 +3173,9 @@ components:
           type: string
         order:
           type: number
-      required:
-      - discountAmount
-      - name
-      - quantity
-      - salesEqTaxAmount
-      - taxAmount
-      - taxKey
-      - totalAmount
-      - unitPrice
       type: object
     AdditionalExpenseDto:
+      additionalProperties: true
       example:
         description: Additional expense description
         expense: 0
@@ -3226,10 +3189,9 @@ components:
           example: Additional expense description
           maxLength: 750
           type: string
-      required:
-      - expense
       type: object
     DocumentContactAddressDto:
+      additionalProperties: true
       properties:
         postalAddress:
           description: Address of the contact
@@ -3505,13 +3467,9 @@ components:
           example: ES
           maxLength: 2
           type: string
-      required:
-      - city
-      - country
-      - postalAddress
-      - postalCode
       type: object
     DocumentContactDto:
+      additionalProperties: true
       properties:
         fiscalName:
           description: The fiscal name of the contact
@@ -3562,10 +3520,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/DocumentContactAddressDto'
           description: The address of the contact
-      required:
-      - fiscalName
       type: object
     InvoiceCreateDto:
+      additionalProperties: true
       properties:
         serieId:
           description: "The id of the serie. If provided together with serialCode,\
@@ -3790,12 +3747,9 @@ components:
             PDF visualization in Billin's web app
           example: false
           type: boolean
-      required:
-      - contact
-      - currency
-      - lines
       type: object
     DocumentTaxLineBaiDto:
+      additionalProperties: true
       properties:
         taxKey:
           description: "It must have the format TAXTYPE_INT, TAXTYPE_INT_INT or TAXTYPE_NONTAXABLETAXTYPE_INT.\
@@ -3850,13 +3804,9 @@ components:
           - PROVISION_OF_SERVICES
           example: PROVISION_OF_SERVICES
           type: string
-      required:
-      - salesEqTaxAmount
-      - taxAmount
-      - taxBase
-      - taxKey
       type: object
     DocumentLineBaiDto:
+      additionalProperties: true
       properties:
         name:
           description: Name of the line
@@ -4026,17 +3976,9 @@ components:
           type: string
         order:
           type: number
-      required:
-      - discountAmount
-      - name
-      - quantity
-      - salesEqTaxAmount
-      - taxAmount
-      - taxKey
-      - totalAmount
-      - unitPrice
       type: object
     DocumentContactBaiDto:
+      additionalProperties: true
       properties:
         fiscalName:
           description: The fiscal name of the contact
@@ -4087,13 +4029,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/DocumentContactAddressDto'
           description: The address of the contact
-      required:
-      - address
-      - fiscalName
-      - vatNumber
-      - vatNumberType
       type: object
     InvoiceBaiCreateDto:
+      additionalProperties: true
       properties:
         serieId:
           description: "The id of the serie. If provided together with serialCode,\
@@ -5336,12 +5274,9 @@ components:
             PDF visualization in Billin's web app
           example: false
           type: boolean
-      required:
-      - contact
-      - currency
-      - lines
       type: object
     GetAddressAnswerDto:
+      additionalProperties: true
       properties:
         postalAddress:
           description: The postal address
@@ -5670,6 +5605,7 @@ components:
           type: string
       type: object
     BusinessBaseAnswerDto:
+      additionalProperties: true
       properties:
         fiscalName:
           description: The name of the business
@@ -5683,12 +5619,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/GetAddressAnswerDto'
           description: The address of the business
-      required:
-      - address
-      - fiscalName
-      - vatNumber
       type: object
     DocumentTotalAnswerDto:
+      additionalProperties: true
       properties:
         subtotal:
           description: Sum of all subtotal lines
@@ -5710,14 +5643,9 @@ components:
           description: Amount due
           example: 21.78
           type: number
-      required:
-      - amountDue
-      - discountAmount
-      - discountPercentage
-      - subtotal
-      - totalAmount
       type: object
     DocumentLineAnswerDto:
+      additionalProperties: true
       example:
         unitPrice: 10
         quantity: 2
@@ -5836,22 +5764,9 @@ components:
           - PROVISION_OF_SERVICES
           example: PROVISION_OF_SERVICES
           type: string
-      required:
-      - discountAmount
-      - discountPercentage
-      - name
-      - quantity
-      - salesEqTaxAmount
-      - salesEqTaxPercentage
-      - subtotal
-      - taxAmount
-      - taxBase
-      - taxKey
-      - taxPercentage
-      - totalAmount
-      - unitPrice
       type: object
     DocumentTaxLineAnswerDto:
+      additionalProperties: true
       example:
         salesEqTaxAmount: 0
         taxKey: IVA_21
@@ -5921,15 +5836,9 @@ components:
           - PROVISION_OF_SERVICES
           example: PROVISION_OF_SERVICES
           type: string
-      required:
-      - salesEqTaxAmount
-      - salesEqTaxPercentage
-      - taxAmount
-      - taxBase
-      - taxKey
-      - taxPercentage
       type: object
     AdditionalExpenseAnswerDto:
+      additionalProperties: true
       example:
         description: Additional expense description
         expense: 0
@@ -5943,10 +5852,9 @@ components:
           example: Additional expense description
           maxLength: 750
           type: string
-      required:
-      - expense
       type: object
     TaxAuthorityDescriptionErrorDto:
+      additionalProperties: true
       example:
         ES: El fichero no debe haber sido recibido anteriormente
       properties:
@@ -5954,10 +5862,9 @@ components:
           description: Error message
           example: El fichero no debe haber sido recibido anteriormente
           type: string
-      required:
-      - ES
       type: object
     TaxAuthorityErrorDto:
+      additionalProperties: true
       example:
         code: "005"
         description:
@@ -5969,11 +5876,9 @@ components:
           type: string
         description:
           $ref: '#/components/schemas/TaxAuthorityDescriptionErrorDto'
-      required:
-      - code
-      - description
       type: object
     CorrectedInvoicesAnswerDto:
+      additionalProperties: true
       example:
         identifier: F2023001
         id: 5f7b1b3b-5b9a-4b0a-8b0a-0b1a5b7b1f7b
@@ -5986,11 +5891,9 @@ components:
           description: Identifier of the corrected invoice
           example: F2023001
           type: string
-      required:
-      - id
-      - identifier
       type: object
     CorrectiveDataAnswerDto:
+      additionalProperties: true
       properties:
         reason:
           description: Reason for the corrective action
@@ -6010,11 +5913,9 @@ components:
           - I
           example: I
           type: string
-      required:
-      - reason
-      - type
       type: object
     DocumentContactAnswerDto:
+      additionalProperties: true
       properties:
         fiscalName:
           description: The fiscal name of the contact
@@ -6080,10 +5981,9 @@ components:
           example: false
           nullable: true
           type: boolean
-      required:
-      - fiscalName
       type: object
     GetPaymentMethodDto:
+      additionalProperties: true
       properties:
         id:
           type: string
@@ -6100,10 +6000,9 @@ components:
           type: string
         data:
           type: object
-      required:
-      - id
       type: object
     InvoiceDocumentAnswerDto:
+      additionalProperties: true
       example:
         issuedDate: 2021-01-01
         operationDate: 2023-05-29
@@ -7596,27 +7495,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/GetPaymentMethodDto'
           description: Payment methods of the invoice
-      required:
-      - additionalExpenses
-      - contact
-      - createdAt
-      - currency
-      - dueDate
-      - id
-      - isReceipt
-      - lines
-      - ownerInfo
-      - paidAmount
-      - paymentMethods
-      - retentionAmount
-      - retentionPercentage
-      - status
-      - taxLines
-      - total
-      - updatedAt
-      - visualLines
       type: object
     SalesReceiptDocumentAnswerDto:
+      additionalProperties: true
       example:
         issuedDate: 2021-01-01
         operationDate: 2023-05-29
@@ -9104,29 +8985,15 @@ components:
           type: array
         correctiveData:
           $ref: '#/components/schemas/InvoiceDocumentAnswerDto_correctiveData'
-      required:
-      - createdAt
-      - currency
-      - dueDate
-      - id
-      - isReceipt
-      - lines
-      - ownerInfo
-      - paidAmount
-      - retentionAmount
-      - retentionPercentage
-      - status
-      - taxLines
-      - total
-      - updatedAt
-      - visualLines
       type: object
     ContactDto:
+      additionalProperties: true
       properties:
         vatNumber:
           type: string
       type: object
     QueryDto:
+      additionalProperties: true
       properties:
         documentType:
           default:
@@ -9237,6 +9104,7 @@ components:
           type: boolean
       type: object
     SortDto:
+      additionalProperties: true
       properties:
         issuedDate:
           enum:
@@ -9270,6 +9138,7 @@ components:
           type: string
       type: object
     GetInvoicesListQueryDto:
+      additionalProperties: true
       properties:
         offset:
           default: 0
@@ -9298,6 +9167,7 @@ components:
           type: array
       type: object
     GetInvoicesListAnswerDto:
+      additionalProperties: true
       example:
         count: 23
         items:
@@ -9542,11 +9412,9 @@ components:
           items:
             $ref: '#/components/schemas/InvoiceDocumentAnswerDto'
           type: array
-      required:
-      - count
-      - items
       type: object
     SalesReceiptBaiCreateDto:
+      additionalProperties: true
       properties:
         serieId:
           description: "The id of the serie. If provided together with serialCode,\
@@ -10766,11 +10634,9 @@ components:
             $ref: '#/components/schemas/DocumentLineBaiDto'
           minItems: 1
           type: array
-      required:
-      - currency
-      - lines
       type: object
     SalesReceiptCreateDto:
+      additionalProperties: true
       properties:
         serieId:
           description: "The id of the serie. If provided together with serialCode,\
@@ -10972,11 +10838,9 @@ components:
             $ref: '#/components/schemas/DocumentLineDto'
           minItems: 1
           type: array
-      required:
-      - currency
-      - lines
       type: object
     GetExpenseListQueryDto:
+      additionalProperties: true
       properties:
         offset:
           default: 0
@@ -11005,6 +10869,7 @@ components:
           type: array
       type: object
     ExpenseDocumentAnswerDto:
+      additionalProperties: true
       example:
         issuedDate: 2021-01-01
         identifier: F2023001
@@ -11331,23 +11196,9 @@ components:
           description: Boolean indicating if the document is an expense
           example: true
           type: object
-      required:
-      - contact
-      - createdAt
-      - currency
-      - id
-      - isExpense
-      - lines
-      - ownerInfo
-      - paidAmount
-      - paymentMethods
-      - retentionAmount
-      - retentionPercentage
-      - taxLines
-      - total
-      - updatedAt
       type: object
     GetExpenseListAnswerDto:
+      additionalProperties: true
       example:
         count: 23
         items:
@@ -11512,11 +11363,9 @@ components:
           items:
             $ref: '#/components/schemas/ExpenseDocumentAnswerDto'
           type: array
-      required:
-      - count
-      - items
       type: object
     ExpenseLineBaseDto:
+      additionalProperties: true
       example:
         totalAmount: 21.78
         taxKey: IVA_21
@@ -11631,14 +11480,9 @@ components:
           type: number
         order:
           type: number
-      required:
-      - name
-      - subtotal
-      - taxAmount
-      - taxKey
-      - totalAmount
       type: object
     ExpenseTaxLineBaseDto:
+      additionalProperties: true
       example:
         taxKey: IVA_21
         taxPercentage: 21
@@ -11666,12 +11510,9 @@ components:
           description: Amount tax to be deducted from the price
           example: 3.78
           type: number
-      required:
-      - taxAmount
-      - taxBase
-      - taxKey
       type: object
     ExpenseTotalDto:
+      additionalProperties: true
       properties:
         subtotal:
           description: Sum of all subtotal lines
@@ -11685,12 +11526,9 @@ components:
           description: Amount due
           example: 21.78
           type: number
-      required:
-      - amountDue
-      - subtotal
-      - totalAmount
       type: object
     ExpenseCreateDto:
+      additionalProperties: true
       example:
         retentionAmount: 0
         identifier: F20240012
@@ -11976,14 +11814,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/DocumentContactDto'
           description: Contact of the document
-      required:
-      - contact
-      - currency
-      - identifier
-      - issuedDate
-      - lines
       type: object
     QuoteCreateDto:
+      additionalProperties: true
       example:
         issuedDate: 2021-01-01
         retentionAmount: 0
@@ -12291,12 +12124,9 @@ components:
           - REJECTED
           example: PENDING
           type: string
-      required:
-      - contact
-      - currency
-      - lines
       type: object
     QuoteDocumentAnswerDto:
+      additionalProperties: true
       example:
         issuedDate: 2021-01-01
         code: 1
@@ -12687,26 +12517,9 @@ components:
           - REJECTED
           example: PENDING
           type: string
-      required:
-      - additionalExpenses
-      - contact
-      - createdAt
-      - currency
-      - dueDate
-      - id
-      - lines
-      - ownerInfo
-      - paidAmount
-      - paymentMethods
-      - retentionAmount
-      - retentionPercentage
-      - status
-      - taxLines
-      - total
-      - updatedAt
-      - visualLines
       type: object
     ContactListQueryDto:
+      additionalProperties: true
       properties:
         vatNumber:
           description: Filter by exact VAT number
@@ -12719,6 +12532,7 @@ components:
           type: boolean
       type: object
     ContactListSortDto:
+      additionalProperties: true
       properties:
         fiscalName:
           enum:
@@ -12742,6 +12556,7 @@ components:
           type: string
       type: object
     GetContactListQueryDto:
+      additionalProperties: true
       properties:
         offset:
           default: 0
@@ -12770,6 +12585,7 @@ components:
           type: array
       type: object
     ContactPaymentMethod:
+      additionalProperties: true
       properties:
         type:
           description: "A string indicating the payment method type. For now, the\
@@ -12783,11 +12599,9 @@ components:
           example:
             IBAN: ES1801249021325578279827
           type: object
-      required:
-      - data
-      - type
       type: object
     ContactAnswerDto:
+      additionalProperties: true
       example:
         isProvider: true
         address: ""
@@ -12895,13 +12709,9 @@ components:
           items:
             $ref: '#/components/schemas/ContactPaymentMethod'
           type: array
-      required:
-      - createdAt
-      - fiscalName
-      - id
-      - updatedAt
       type: object
     ContactListAnswerDto:
+      additionalProperties: true
       example:
         count: 1
         items:
@@ -12952,11 +12762,9 @@ components:
           items:
             $ref: '#/components/schemas/ContactAnswerDto'
           type: array
-      required:
-      - count
-      - items
       type: object
     ApiForbiddenException:
+      additionalProperties: true
       properties:
         message:
           example: ForbiddenException
@@ -12970,13 +12778,9 @@ components:
         description:
           example: Forbidden
           type: string
-      required:
-      - description
-      - message
-      - statusCode
-      - type
       type: object
     CreateContactDto:
+      additionalProperties: true
       example:
         isProvider: true
         isCustomer: true
@@ -13068,13 +12872,13 @@ components:
             $ref: '#/components/schemas/ContactPaymentMethod'
           maxItems: 1
           type: array
-      required:
-      - fiscalName
       type: object
     ForbiddenException:
+      additionalProperties: true
       properties: {}
       type: object
     CreatePaymentDto:
+      additionalProperties: true
       example:
         operationDate: 2024-03-04
         amount: 50
@@ -13142,12 +12946,9 @@ components:
           example: Payment for the purchase of potatoes
           maxLength: 250
           type: string
-      required:
-      - amount
-      - operationDate
-      - type
       type: object
     ContactPaymentDto:
+      additionalProperties: true
       properties:
         id:
           description: Unique ID of the contact that is related to the payment
@@ -13162,10 +12963,9 @@ components:
           example: 12345678A
           nullable: true
           type: string
-      required:
-      - id
       type: object
     PaymentDocumentDto:
+      additionalProperties: true
       example:
         identifier: F2024001
         issuedDate: 202-02-12
@@ -13191,10 +12991,9 @@ components:
           description: The date when the documen was issued
           example: 202-02-12
           type: string
-      required:
-      - id
       type: object
     AccountingAccountDto:
+      additionalProperties: true
       properties:
         id:
           description: Unique ID of the accounting account that is related to the
@@ -13229,12 +13028,9 @@ components:
             the credit card type
           example: "4249287503791846"
           type: string
-      required:
-      - alias
-      - id
-      - type
       type: object
     RemittanceDto:
+      additionalProperties: true
       properties:
         id:
           description: Unique ID of the remittance that is related to the payment
@@ -13244,11 +13040,9 @@ components:
           description: Name of the remittance that is related to the payment
           example: My first remittance
           type: string
-      required:
-      - id
-      - name
       type: object
     PaymentAnswerDto:
+      additionalProperties: true
       example:
         isReconciled: false
         operationDate: 2024-03-04T00:00:00Z
@@ -13345,22 +13139,9 @@ components:
           description: Whether the payment was created through bank transaction reconciliation
           example: false
           type: boolean
-      required:
-      - accountingAccount
-      - amount
-      - contact
-      - createdAt
-      - documents
-      - id
-      - isReconciled
-      - method
-      - operationDate
-      - remittance
-      - status
-      - type
-      - updatedAt
       type: object
     GetPaymentListQueryDto:
+      additionalProperties: true
       properties:
         offset:
           default: 0
@@ -13389,6 +13170,7 @@ components:
           type: array
       type: object
     PaymentListAnswerDto:
+      additionalProperties: true
       example:
         count: 23
         items:
@@ -13447,11 +13229,9 @@ components:
           items:
             $ref: '#/components/schemas/PaymentAnswerDto'
           type: array
-      required:
-      - count
-      - items
       type: object
     CreateProductDto:
+      additionalProperties: true
       example:
         reference: PTT-001
         discountPercentage: 10
@@ -13514,11 +13294,9 @@ components:
           maximum: 100
           minimum: 0
           type: number
-      required:
-      - name
-      - taxKey
       type: object
     ProductAnswerDto:
+      additionalProperties: true
       example:
         reference: PTT-001
         discountPercentage: 10
@@ -13604,15 +13382,9 @@ components:
           example: 50
           nullable: true
           type: number
-      required:
-      - createdAt
-      - id
-      - marginPercentage
-      - name
-      - taxKey
-      - updatedAt
       type: object
     CreateAccountingAccountDto:
+      additionalProperties: true
       example:
         IBAN: ES7221002792116644245555
         creditCardNumber: "1846"
@@ -13656,11 +13428,9 @@ components:
             card type
           example: 01/23
           type: string
-      required:
-      - alias
-      - type
       type: object
     AccountingAccountAnswerDto:
+      additionalProperties: true
       example:
         pendingReconciliationCount: 0
         IBAN: ES7221002792116644245555
@@ -13753,15 +13523,9 @@ components:
           example: 1234.56
           nullable: true
           type: number
-      required:
-      - alias
-      - createdAt
-      - id
-      - isAutomaticConnected
-      - type
-      - updatedAt
       type: object
     GetAccountingAccountListQueryDto:
+      additionalProperties: true
       properties:
         offset:
           default: 0
@@ -13790,6 +13554,7 @@ components:
           type: array
       type: object
     AccountingAccountListAnswerDto:
+      additionalProperties: true
       example:
         count: 23
         items:
@@ -13832,9 +13597,6 @@ components:
           items:
             $ref: '#/components/schemas/AccountingAccountAnswerDto'
           type: array
-      required:
-      - count
-      - items
       type: object
     createInvoice_request:
       oneOf:

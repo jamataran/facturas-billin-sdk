@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fiscalName** | **String** | The name of the business |  |
-|**vatNumber** | **String** | The VAT Identification number of the business |  |
-|**address** | [**GetAddressAnswerDto**](GetAddressAnswerDto.md) |  |  |
+|**fiscalName** | **String** | The name of the business |  [optional] |
+|**vatNumber** | **String** | The VAT Identification number of the business |  [optional] |
+|**address** | **GetAddressAnswerDto** |  |  [optional] |
 
 
 ## Implemented Interfaces

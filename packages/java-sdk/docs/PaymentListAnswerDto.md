@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**count** | **BigDecimal** | Total number of payments with the query filter and without pagination |  |
-|**items** | [**List&lt;PaymentAnswerDto&gt;**](PaymentAnswerDto.md) | Paginated list of payments with the query filter |  |
+|**count** | **BigDecimal** | Total number of payments with the query filter and without pagination |  [optional] |
+|**items** | **List&lt;PaymentAnswerDto&gt;** | Paginated list of payments with the query filter |  [optional] |
 
 
 ## Implemented Interfaces

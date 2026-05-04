@@ -10,7 +10,7 @@ Repositorio **NO OFICIAL** con SDKs para consumir la API REST de [Facturas Billi
 
 | SDK | Versión | Estado |
 |-----|---------|--------|
-| [Java/Maven SDK](./packages/java-sdk) | 2.0.0 | ✅ Disponible |
+| [Java/Maven SDK](./packages/java-sdk) | 2.0.1 | ✅ Disponible |
 | [PHP SDK](./packages/php-sdk) | 1.0.0 | 🚧 En desarrollo |
 
 ---
@@ -36,7 +36,7 @@ En tu `pom.xml`, añade el repositorio:
 <dependency>
     <groupId>net.facturasbillin</groupId>
     <artifactId>facturas-billin-java-sdk</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 

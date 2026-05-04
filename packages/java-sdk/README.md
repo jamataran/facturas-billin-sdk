@@ -17,7 +17,7 @@ Añade la siguiente dependencia a tu `pom.xml`:
 <dependency>
     <groupId>net.facturasbillin</groupId>
     <artifactId>facturas-billin-java-sdk</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
 </dependency>
 ```
 

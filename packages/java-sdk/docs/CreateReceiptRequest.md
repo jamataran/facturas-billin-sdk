@@ -13,11 +13,11 @@
 |**mask** | **BigDecimal** | Mask used on the code of the document. The complete invoice identifier number is built from the serial code and the code. For example, for a serial code \&quot;F2023\&quot; and a code \&quot;1\&quot; the full identifier number that will appear in the PDF will be \&quot;F20231\&quot;. The mask allows for leading zeros to be included when constructing the complete ID number in the PDF. If we put a mask of 3, the full ID number will be \&quot;F2023001\&quot; |  [optional] |
 |**issuedDate** | **String** | The date when the documen was issued |  [optional] |
 |**reference** | **String** | The reference of the document |  [optional] |
-|**visualLines** | [**List&lt;VisualLineDto&gt;**](VisualLineDto.md) | Visual Lines of the document |  [optional] |
-|**taxLines** | [**List&lt;DocumentTaxLineBaseDto&gt;**](DocumentTaxLineBaseDto.md) | Tax lines of the document. If not provided, they will be calculated from the lines |  [optional] |
+|**visualLines** | **List&lt;VisualLineDto&gt;** | Visual Lines of the document |  [optional] |
+|**taxLines** | **List&lt;DocumentTaxLineBaseDto&gt;** | Tax lines of the document. If not provided, they will be calculated from the lines |  [optional] |
 |**comments** | **String** | Comments of the document |  [optional] |
-|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  |
-|**total** | [**DocumentTotalDto**](DocumentTotalDto.md) |  |  [optional] |
+|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  [optional] |
+|**total** | **DocumentTotalDto** |  |  [optional] |
 |**isPaid** | **Boolean** | True if the document is paid. In the case of sending this value to true, a payment will be created with the same date and for the total value of the document. |  [optional] |
 |**paidAmount** | **BigDecimal** | Paid amount |  [optional] |
 |**retentionAmount** | **BigDecimal** | Amount of retention. If this property is set it will override retentionPercentage if it is also set |  [optional] |
@@ -30,7 +30,7 @@
 |**epigraphIAE** | [**EpigraphIAEEnum**](#EpigraphIAEEnum) | (Bizkaia businesses) IAE code in the Spanish Tax Office |  [optional] |
 |**chargingCriterionIRPF** | **Boolean** | (Bizkaia businesses) True if your business activity is covered by the system whereby you can compute income and expenses at the time the services or products are actually received or paid for, even if the accrual has occurred at another time. |  [optional] |
 |**customIRPF** | **BigDecimal** | (Bizkaia businesses). If IRPF computed is different from VAT Tax Base, it is mandatory to indicate the value of Amount income IRPF. Required if chargingCriterionIRPF is true. |  [optional] |
-|**lines** | [**List&lt;DocumentLineDto&gt;**](DocumentLineDto.md) | Lines of the document |  |
+|**lines** | **List&lt;DocumentLineDto&gt;** | Lines of the document |  [optional] |
 
 
 

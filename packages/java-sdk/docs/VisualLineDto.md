@@ -7,9 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**type** | [**TypeEnum**](#TypeEnum) |  |  |
-|**text** | **String** |  |  |
-|**order** | **BigDecimal** |  |  |
+|**type** | [**TypeEnum**](#TypeEnum) |  |  [optional] |
+|**text** | **String** |  |  [optional] |
+|**order** | **BigDecimal** |  |  [optional] |
 |**groupName** | **String** |  |  [optional] |
 
 

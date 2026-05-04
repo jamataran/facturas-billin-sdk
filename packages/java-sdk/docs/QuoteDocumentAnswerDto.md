@@ -7,34 +7,34 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | The id of the document |  |
-|**createdAt** | **OffsetDateTime** | The date when the document was created |  |
-|**updatedAt** | **OffsetDateTime** | The date when the document was last updated |  |
+|**id** | **String** | The id of the document |  [optional] |
+|**createdAt** | **OffsetDateTime** | The date when the document was created |  [optional] |
+|**updatedAt** | **OffsetDateTime** | The date when the document was last updated |  [optional] |
 |**issuedDateTime** | **OffsetDateTime** | The datetime when the document was issued |  [optional] |
 |**issuedDate** | **String** | The date when the document was issued |  [optional] |
-|**ownerInfo** | [**BusinessBaseAnswerDto**](BusinessBaseAnswerDto.md) |  |  |
-|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  |
+|**ownerInfo** | **BusinessBaseAnswerDto** |  |  [optional] |
+|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  [optional] |
 |**comments** | **String** | Comments of the document |  [optional] |
 |**serieId** | **String** | The id of the serie |  [optional] |
 |**serialCode** | **String** | Serial Code of the document |  [optional] |
 |**mask** | **BigDecimal** | Mask used on the code of the document. The complete invoice identifier number is built from the serial code and the code. For example, for a serial code \&quot;F2023\&quot; and a code \&quot;1\&quot; the full identifier number that will appear in the PDF will be \&quot;F20231\&quot;. The mask allows for leading zeros to be included when constructing the complete ID number in the PDF. If we put a mask of 3, the full ID number will be \&quot;F2023001\&quot; |  [optional] |
 |**code** | **BigDecimal** | Code/Number of the document |  [optional] |
 |**identifier** | **String** | The identifier of the document |  [optional] |
-|**dueDate** | **String** | The due date of the document |  |
+|**dueDate** | **String** | The due date of the document |  [optional] |
 |**reference** | **String** | The reference of the document |  [optional] |
-|**total** | [**DocumentTotalAnswerDto**](DocumentTotalAnswerDto.md) |  |  |
-|**lines** | [**List&lt;DocumentLineAnswerDto&gt;**](DocumentLineAnswerDto.md) | Lines of the quote |  |
-|**visualLines** | [**List&lt;VisualLineDto&gt;**](VisualLineDto.md) | Visual Lines of the document |  |
-|**taxLines** | [**List&lt;DocumentTaxLineAnswerDto&gt;**](DocumentTaxLineAnswerDto.md) | Tax lines of the quote |  |
-|**additionalExpenses** | [**AdditionalExpenseAnswerDto**](AdditionalExpenseAnswerDto.md) |  |  |
-|**retentionPercentage** | **BigDecimal** | Percentage of retention |  |
-|**retentionAmount** | **BigDecimal** | Retention amount |  |
-|**paidAmount** | **BigDecimal** | Paid amount |  |
+|**total** | **DocumentTotalAnswerDto** |  |  [optional] |
+|**lines** | **List&lt;DocumentLineAnswerDto&gt;** | Lines of the quote |  [optional] |
+|**visualLines** | **List&lt;VisualLineDto&gt;** | Visual Lines of the document |  [optional] |
+|**taxLines** | **List&lt;DocumentTaxLineAnswerDto&gt;** | Tax lines of the quote |  [optional] |
+|**additionalExpenses** | **AdditionalExpenseAnswerDto** |  |  [optional] |
+|**retentionPercentage** | **BigDecimal** | Percentage of retention |  [optional] |
+|**retentionAmount** | **BigDecimal** | Retention amount |  [optional] |
+|**paidAmount** | **BigDecimal** | Paid amount |  [optional] |
 |**documentType** | [**DocumentTypeEnum**](#DocumentTypeEnum) | Type of the document |  [optional] |
 |**category** | [**CategoryEnum**](#CategoryEnum) | Type of the document |  [optional] |
-|**contact** | [**DocumentContactAnswerDto**](DocumentContactAnswerDto.md) |  |  |
-|**paymentMethods** | [**GetPaymentMethodDto**](GetPaymentMethodDto.md) |  |  |
-|**status** | [**StatusEnum**](#StatusEnum) | Status of the quote |  |
+|**contact** | **DocumentContactAnswerDto** |  |  [optional] |
+|**paymentMethods** | **GetPaymentMethodDto** |  |  [optional] |
+|**status** | [**StatusEnum**](#StatusEnum) | Status of the quote |  [optional] |
 
 
 

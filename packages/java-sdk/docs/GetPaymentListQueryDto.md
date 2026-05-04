@@ -9,8 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**offset** | **BigDecimal** |  |  [optional] |
 |**limit** | **BigDecimal** |  |  [optional] |
-|**sort** | [**SortDto**](SortDto.md) |  |  [optional] |
-|**query** | [**QueryDto**](QueryDto.md) |  |  [optional] |
+|**sort** | **SortDto** |  |  [optional] |
+|**query** | **QueryDto** |  |  [optional] |
 |**fields** | **List&lt;String&gt;** |  |  [optional] |
 |**customSearchFields** | **List&lt;String&gt;** |  |  [optional] |
 
