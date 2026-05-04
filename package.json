@@ -9,15 +9,17 @@
   "scripts": {
     "build": "turbo run build",
     "generate": "npm run generate:java",
-    "generate:all": "turbo run generate",
+    "generate:all": "npm run patch:spec && turbo run generate",
     "clean": "turbo run clean",
     "test": "turbo run test",
     "test:java": "turbo run test --filter=@facturas-billin-sdk/java",
     "test:php": "turbo run test --filter=@facturas-billin-sdk/php",
     "build:java": "turbo run build --filter=@facturas-billin-sdk/java",
     "build:php": "turbo run build --filter=@facturas-billin-sdk/php",
-    "generate:java": "cd packages/java-sdk && npm run generate",
-    "generate:php": "cd packages/php-sdk && npm run generate"
+    "generate:java": "npm run patch:spec && cd packages/java-sdk && npm run generate",
+    "generate:php": "npm run patch:spec && cd packages/php-sdk && npm run generate",
+    "patch:spec": "node openapi-spec/apply-patches.mjs",
+    "patch:spec:check": "node openapi-spec/apply-patches.mjs --check"
   },
   "devDependencies": {
     "turbo": "^2.3.0"
