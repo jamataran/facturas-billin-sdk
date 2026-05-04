@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**fiscalName** | **String** | The fiscal name of the contact |  |
+|**fiscalName** | **String** | The fiscal name of the contact |  [optional] |
 |**vatNumberType** | [**VatNumberTypeEnum**](#VatNumberTypeEnum) | The type of the VAT Identification number of the contact |  [optional] |
 |**vatNumber** | **String** | The VAT Identification number of the contact |  [optional] |
 |**isCustomer** | **Boolean** | Boolean indicating if the contact is a customer |  [optional] |
@@ -17,7 +17,7 @@
 |**additionalEmails** | **List&lt;String&gt;** | Additional emails of the contact |  [optional] |
 |**phone** | **String** | The phone of the contact |  [optional] |
 |**salesEqTaxCheck** | **Boolean** | Boolean indicating if the sales equivalent tax should be checked |  [optional] |
-|**address** | [**DocumentContactAddressDto**](DocumentContactAddressDto.md) |  |  [optional] |
+|**address** | **DocumentContactAddressDto** |  |  [optional] |
 |**isTest** | **Boolean** | Boolean indicating if the contact is a test contact |  [optional] |
 
 

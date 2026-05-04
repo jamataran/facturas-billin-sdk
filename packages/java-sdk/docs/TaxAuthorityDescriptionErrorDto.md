@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**ES** | **String** | Error message |  |
+|**ES** | **String** | Error message |  [optional] |
 
 
 ## Implemented Interfaces

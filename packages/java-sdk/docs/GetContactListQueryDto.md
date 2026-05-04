@@ -9,8 +9,8 @@
 |------------ | ------------- | ------------- | -------------|
 |**offset** | **BigDecimal** |  |  [optional] |
 |**limit** | **BigDecimal** |  |  [optional] |
-|**query** | [**ContactListQueryDto**](ContactListQueryDto.md) |  |  [optional] |
-|**sort** | [**ContactListSortDto**](ContactListSortDto.md) |  |  [optional] |
+|**query** | **ContactListQueryDto** |  |  [optional] |
+|**sort** | **ContactListSortDto** |  |  [optional] |
 |**fields** | **List&lt;String&gt;** |  |  [optional] |
 |**customSearchFields** | **List&lt;String&gt;** |  |  [optional] |
 

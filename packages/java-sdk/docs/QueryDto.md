@@ -15,7 +15,7 @@
 |**serialCode** | **String** |  |  [optional] |
 |**code** | **BigDecimal** |  |  [optional] |
 |**isPaid** | **Boolean** |  |  [optional] |
-|**contact** | [**ContactDto**](ContactDto.md) |  |  [optional] |
+|**contact** | **ContactDto** |  |  [optional] |
 |**reference** | **String** |  |  [optional] |
 |**getVerifactuInvoices** | **Boolean** | When this parameter is not provided, or is false, only invoices prior to the Verifactu regulation are returned. If true, then only Verifactu type invoices are returned |  [optional] |
 

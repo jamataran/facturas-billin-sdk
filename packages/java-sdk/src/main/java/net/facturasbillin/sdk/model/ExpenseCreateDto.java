@@ -374,7 +374,7 @@ public class ExpenseCreateDto implements Serializable {
 
   public static final String SERIALIZED_NAME_LINES = "lines";
   @SerializedName(SERIALIZED_NAME_LINES)
-  private List<ExpenseLineBaseDto> lines = new ArrayList<>();
+  private List<ExpenseLineBaseDto> lines;
 
   public static final String SERIALIZED_NAME_TAX_LINES = "taxLines";
   @SerializedName(SERIALIZED_NAME_TAX_LINES)
@@ -630,7 +630,7 @@ public class ExpenseCreateDto implements Serializable {
    * Currency used on the document
    * @return currency
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public CurrencyEnum getCurrency() {
     return currency;
   }
@@ -706,7 +706,7 @@ public class ExpenseCreateDto implements Serializable {
    * Invoice number
    * @return identifier
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getIdentifier() {
     return identifier;
   }
@@ -725,7 +725,7 @@ public class ExpenseCreateDto implements Serializable {
    * The date when the documen was issued
    * @return issuedDate
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getIssuedDate() {
     return issuedDate;
   }
@@ -771,7 +771,7 @@ public class ExpenseCreateDto implements Serializable {
    * Lines of the expense
    * @return lines
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public List<ExpenseLineBaseDto> getLines() {
     return lines;
   }
@@ -855,7 +855,7 @@ public class ExpenseCreateDto implements Serializable {
    * Get contact
    * @return contact
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public DocumentContactDto getContact() {
     return contact;
   }
@@ -864,6 +864,50 @@ public class ExpenseCreateDto implements Serializable {
     this.contact = contact;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the ExpenseCreateDto instance itself
+   */
+  public ExpenseCreateDto putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -890,12 +934,13 @@ public class ExpenseCreateDto implements Serializable {
         Objects.equals(this.taxLines, expenseCreateDto.taxLines) &&
         Objects.equals(this.total, expenseCreateDto.total) &&
         Objects.equals(this.category, expenseCreateDto.category) &&
-        Objects.equals(this.contact, expenseCreateDto.contact);
+        Objects.equals(this.contact, expenseCreateDto.contact)&&
+        Objects.equals(this.additionalProperties, expenseCreateDto.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(serieId, serialCode, visualLines, comments, currency, isPaid, retentionAmount, retentionPercentage, identifier, issuedDate, dueDate, lines, taxLines, total, category, contact);
+    return Objects.hash(serieId, serialCode, visualLines, comments, currency, isPaid, retentionAmount, retentionPercentage, identifier, issuedDate, dueDate, lines, taxLines, total, category, contact, additionalProperties);
   }
 
   @Override
@@ -918,6 +963,7 @@ public class ExpenseCreateDto implements Serializable {
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    contact: ").append(toIndentedString(contact)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -959,11 +1005,6 @@ public class ExpenseCreateDto implements Serializable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("currency");
-    openapiRequiredFields.add("identifier");
-    openapiRequiredFields.add("issuedDate");
-    openapiRequiredFields.add("lines");
-    openapiRequiredFields.add("contact");
   }
 
  /**
@@ -978,21 +1019,6 @@ public class ExpenseCreateDto implements Serializable {
           throw new IllegalArgumentException(String.format("The required field(s) %s in ExpenseCreateDto is not found in the empty JSON string", ExpenseCreateDto.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!ExpenseCreateDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `ExpenseCreateDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : ExpenseCreateDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("serieId") != null && !jsonObj.get("serieId").isJsonNull()) && !jsonObj.get("serieId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `serieId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("serieId").toString()));
@@ -1000,64 +1026,36 @@ public class ExpenseCreateDto implements Serializable {
       if ((jsonObj.get("serialCode") != null && !jsonObj.get("serialCode").isJsonNull()) && !jsonObj.get("serialCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `serialCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("serialCode").toString()));
       }
-      if (jsonObj.get("visualLines") != null && !jsonObj.get("visualLines").isJsonNull()) {
-        JsonArray jsonArrayvisualLines = jsonObj.getAsJsonArray("visualLines");
-        if (jsonArrayvisualLines != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("visualLines").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `visualLines` to be an array in the JSON string but got `%s`", jsonObj.get("visualLines").toString()));
-          }
-
-          // validate the optional field `visualLines` (array)
-          for (int i = 0; i < jsonArrayvisualLines.size(); i++) {
-            VisualLineDto.validateJsonElement(jsonArrayvisualLines.get(i));
-          };
-        }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("visualLines") != null && !jsonObj.get("visualLines").isJsonNull() && !jsonObj.get("visualLines").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `visualLines` to be an array in the JSON string but got `%s`", jsonObj.get("visualLines").toString()));
       }
       if ((jsonObj.get("comments") != null && !jsonObj.get("comments").isJsonNull()) && !jsonObj.get("comments").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `comments` to be a primitive type in the JSON string but got `%s`", jsonObj.get("comments").toString()));
       }
-      if (!jsonObj.get("currency").isJsonPrimitive()) {
+      if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
       }
-      // validate the required field `currency`
-      CurrencyEnum.validateJsonElement(jsonObj.get("currency"));
-      if (!jsonObj.get("identifier").isJsonPrimitive()) {
+      // validate the optional field `currency`
+      if (jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) {
+        CurrencyEnum.validateJsonElement(jsonObj.get("currency"));
+      }
+      if ((jsonObj.get("identifier") != null && !jsonObj.get("identifier").isJsonNull()) && !jsonObj.get("identifier").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `identifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("identifier").toString()));
       }
-      if (!jsonObj.get("issuedDate").isJsonPrimitive()) {
+      if ((jsonObj.get("issuedDate") != null && !jsonObj.get("issuedDate").isJsonNull()) && !jsonObj.get("issuedDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `issuedDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("issuedDate").toString()));
       }
       if ((jsonObj.get("dueDate") != null && !jsonObj.get("dueDate").isJsonNull()) && !jsonObj.get("dueDate").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `dueDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dueDate").toString()));
       }
-      // ensure the json data is an array
-      if (!jsonObj.get("lines").isJsonArray()) {
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("lines") != null && !jsonObj.get("lines").isJsonNull() && !jsonObj.get("lines").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `lines` to be an array in the JSON string but got `%s`", jsonObj.get("lines").toString()));
       }
-
-      JsonArray jsonArraylines = jsonObj.getAsJsonArray("lines");
-      // validate the required field `lines` (array)
-      for (int i = 0; i < jsonArraylines.size(); i++) {
-        ExpenseLineBaseDto.validateJsonElement(jsonArraylines.get(i));
-      };
-      if (jsonObj.get("taxLines") != null && !jsonObj.get("taxLines").isJsonNull()) {
-        JsonArray jsonArraytaxLines = jsonObj.getAsJsonArray("taxLines");
-        if (jsonArraytaxLines != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("taxLines").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `taxLines` to be an array in the JSON string but got `%s`", jsonObj.get("taxLines").toString()));
-          }
-
-          // validate the optional field `taxLines` (array)
-          for (int i = 0; i < jsonArraytaxLines.size(); i++) {
-            ExpenseTaxLineBaseDto.validateJsonElement(jsonArraytaxLines.get(i));
-          };
-        }
-      }
-      // validate the optional field `total`
-      if (jsonObj.get("total") != null && !jsonObj.get("total").isJsonNull()) {
-        ExpenseTotalDto.validateJsonElement(jsonObj.get("total"));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("taxLines") != null && !jsonObj.get("taxLines").isJsonNull() && !jsonObj.get("taxLines").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `taxLines` to be an array in the JSON string but got `%s`", jsonObj.get("taxLines").toString()));
       }
       if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
@@ -1066,8 +1064,6 @@ public class ExpenseCreateDto implements Serializable {
       if (jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) {
         CategoryEnum.validateJsonElement(jsonObj.get("category"));
       }
-      // validate the required field `contact`
-      DocumentContactDto.validateJsonElement(jsonObj.get("contact"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
@@ -1085,6 +1081,23 @@ public class ExpenseCreateDto implements Serializable {
            @Override
            public void write(JsonWriter out, ExpenseCreateDto value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -1092,7 +1105,28 @@ public class ExpenseCreateDto implements Serializable {
            public ExpenseCreateDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             ExpenseCreateDto instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

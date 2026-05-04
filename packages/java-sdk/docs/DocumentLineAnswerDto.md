@@ -7,21 +7,21 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**name** | **String** | Name of the line |  |
+|**name** | **String** | Name of the line |  [optional] |
 |**description** | **String** | Description |  [optional] |
 |**productId** | **String** | Product id |  [optional] |
-|**quantity** | **BigDecimal** | Quantity |  |
-|**unitPrice** | **BigDecimal** | Unit price |  |
-|**subtotal** | **BigDecimal** | Subtotal. It is quantity multiplied by unit price. |  |
-|**totalAmount** | **BigDecimal** | Total amount. It is the sum of the subtotal and the tax amount minus the discount amount |  |
-|**discountPercentage** | **BigDecimal** | Discount percentage |  |
-|**discountAmount** | **BigDecimal** | Amount to be discounted from the price |  |
-|**taxKey** | **Object** | Tax key |  |
-|**taxBase** | **BigDecimal** | Price without taxes |  |
-|**taxPercentage** | **BigDecimal** | Tax percentage |  |
-|**taxAmount** | **BigDecimal** | Amount tax to be deducted from the price |  |
-|**salesEqTaxPercentage** | **BigDecimal** | Sales equivalent tax percentage. In Spain it is called \&quot;Porcentaje de Recargoo de equivalencia\&quot; |  |
-|**salesEqTaxAmount** | **BigDecimal** | Sales equivalent tax amount. In Spain it is called \&quot;Cantidad de Recargoo de equivalencia\&quot; |  |
+|**quantity** | **BigDecimal** | Quantity |  [optional] |
+|**unitPrice** | **BigDecimal** | Unit price |  [optional] |
+|**subtotal** | **BigDecimal** | Subtotal. It is quantity multiplied by unit price. |  [optional] |
+|**totalAmount** | **BigDecimal** | Total amount. It is the sum of the subtotal and the tax amount minus the discount amount |  [optional] |
+|**discountPercentage** | **BigDecimal** | Discount percentage |  [optional] |
+|**discountAmount** | **BigDecimal** | Amount to be discounted from the price |  [optional] |
+|**taxKey** | **Object** | Tax key |  [optional] |
+|**taxBase** | **BigDecimal** | Price without taxes |  [optional] |
+|**taxPercentage** | **BigDecimal** | Tax percentage |  [optional] |
+|**taxAmount** | **BigDecimal** | Amount tax to be deducted from the price |  [optional] |
+|**salesEqTaxPercentage** | **BigDecimal** | Sales equivalent tax percentage. In Spain it is called \&quot;Porcentaje de Recargoo de equivalencia\&quot; |  [optional] |
+|**salesEqTaxAmount** | **BigDecimal** | Sales equivalent tax amount. In Spain it is called \&quot;Cantidad de Recargoo de equivalencia\&quot; |  [optional] |
 |**taxExemptionGroup** | [**TaxExemptionGroupEnum**](#TaxExemptionGroupEnum) | Tax exemption group |  [optional] |
 |**taxExemptionCause** | [**TaxExemptionCauseEnum**](#TaxExemptionCauseEnum) | Tax exemption cause |  [optional] |
 |**operation** | [**OperationEnum**](#OperationEnum) | Operation |  [optional] |

@@ -7,27 +7,27 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | The id of the document |  |
-|**createdAt** | **OffsetDateTime** | The date when the document was created |  |
-|**updatedAt** | **OffsetDateTime** | The date when the document was last updated |  |
+|**id** | **String** | The id of the document |  [optional] |
+|**createdAt** | **OffsetDateTime** | The date when the document was created |  [optional] |
+|**updatedAt** | **OffsetDateTime** | The date when the document was last updated |  [optional] |
 |**issuedDateTime** | **OffsetDateTime** | The datetime when the document was issued |  [optional] |
 |**issuedDate** | **String** | The date when the document was issued |  [optional] |
-|**ownerInfo** | [**BusinessBaseAnswerDto**](BusinessBaseAnswerDto.md) |  |  |
-|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  |
+|**ownerInfo** | **BusinessBaseAnswerDto** |  |  [optional] |
+|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  [optional] |
 |**comments** | **String** | Comments of the document |  [optional] |
 |**identifier** | **String** | The identifier of the document |  [optional] |
-|**contact** | [**DocumentContactAnswerDto**](DocumentContactAnswerDto.md) |  |  |
-|**lines** | [**List&lt;DocumentLineAnswerDto&gt;**](DocumentLineAnswerDto.md) | Lines of the document |  |
-|**taxLines** | [**List&lt;DocumentTaxLineAnswerDto&gt;**](DocumentTaxLineAnswerDto.md) | Tax lines of the expense document |  |
-|**total** | [**DocumentTotalAnswerDto**](DocumentTotalAnswerDto.md) |  |  |
-|**retentionPercentage** | **BigDecimal** | Percentage of retention |  |
-|**retentionAmount** | **BigDecimal** | Retention amount |  |
-|**paidAmount** | **BigDecimal** | Paid amount |  |
+|**contact** | **DocumentContactAnswerDto** |  |  [optional] |
+|**lines** | **List&lt;DocumentLineAnswerDto&gt;** | Lines of the document |  [optional] |
+|**taxLines** | **List&lt;DocumentTaxLineAnswerDto&gt;** | Tax lines of the expense document |  [optional] |
+|**total** | **DocumentTotalAnswerDto** |  |  [optional] |
+|**retentionPercentage** | **BigDecimal** | Percentage of retention |  [optional] |
+|**retentionAmount** | **BigDecimal** | Retention amount |  [optional] |
+|**paidAmount** | **BigDecimal** | Paid amount |  [optional] |
 |**isPaid** | **Boolean** | True if the document is paid |  [optional] |
 |**dueDate** | **String** | The due date of the document |  [optional] |
-|**paymentMethods** | [**GetPaymentMethodDto**](GetPaymentMethodDto.md) |  |  |
+|**paymentMethods** | **GetPaymentMethodDto** |  |  [optional] |
 |**category** | [**CategoryEnum**](#CategoryEnum) | Type of the document |  [optional] |
-|**isExpense** | **Object** | Boolean indicating if the document is an expense |  |
+|**isExpense** | **Object** | Boolean indicating if the document is an expense |  [optional] |
 
 
 

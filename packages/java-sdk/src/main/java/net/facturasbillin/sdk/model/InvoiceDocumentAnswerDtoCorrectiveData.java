@@ -184,7 +184,7 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
    * Reason for the corrective action
    * @return reason
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public ReasonEnum getReason() {
     return reason;
   }
@@ -203,7 +203,7 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
    * Type of corrective action. It can be I (correction for differences) or S (correction by replacement)
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -265,8 +265,6 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("reason");
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -289,24 +287,21 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InvoiceDocumentAnswerDtoCorrectiveData` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : InvoiceDocumentAnswerDtoCorrectiveData.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("reason").isJsonPrimitive()) {
+      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
       }
-      // validate the required field `reason`
-      ReasonEnum.validateJsonElement(jsonObj.get("reason"));
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      // validate the optional field `reason`
+      if (jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) {
+        ReasonEnum.validateJsonElement(jsonObj.get("reason"));
+      }
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

@@ -7,12 +7,12 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**taxKey** | **Object** | Tax key |  |
-|**taxBase** | **BigDecimal** | Price without taxes |  |
-|**taxPercentage** | **BigDecimal** | Tax percentage |  |
-|**taxAmount** | **BigDecimal** | Amount tax to be deducted from the price |  |
-|**salesEqTaxPercentage** | **BigDecimal** | Sales equivalent tax percentage. In Spain it is called \&quot;Porcentaje de Recargoo de equivalencia\&quot; |  |
-|**salesEqTaxAmount** | **BigDecimal** | Sales equivalent tax amount. In Spain it is called \&quot;Cantidad de Recargoo de equivalencia\&quot; |  |
+|**taxKey** | **Object** | Tax key |  [optional] |
+|**taxBase** | **BigDecimal** | Price without taxes |  [optional] |
+|**taxPercentage** | **BigDecimal** | Tax percentage |  [optional] |
+|**taxAmount** | **BigDecimal** | Amount tax to be deducted from the price |  [optional] |
+|**salesEqTaxPercentage** | **BigDecimal** | Sales equivalent tax percentage. In Spain it is called \&quot;Porcentaje de Recargoo de equivalencia\&quot; |  [optional] |
+|**salesEqTaxAmount** | **BigDecimal** | Sales equivalent tax amount. In Spain it is called \&quot;Cantidad de Recargoo de equivalencia\&quot; |  [optional] |
 |**taxExemptionGroup** | [**TaxExemptionGroupEnum**](#TaxExemptionGroupEnum) | Tax exemption group |  [optional] |
 |**taxExemptionCause** | [**TaxExemptionCauseEnum**](#TaxExemptionCauseEnum) | Tax exemption cause |  [optional] |
 |**operation** | [**OperationEnum**](#OperationEnum) | Operation |  [optional] |

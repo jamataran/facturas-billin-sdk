@@ -7,11 +7,11 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**postalAddress** | **String** | Address of the contact |  |
-|**postalCode** | **String** | Postal code of the contact |  |
-|**city** | **String** | We use the ISO 3166-2:ES standard for provinces [https://es.wikipedia.org/wiki/ISO_3166-2:ES](https://es.wikipedia.org/wiki/ISO_3166-2:ES) |  |
+|**postalAddress** | **String** | Address of the contact |  [optional] |
+|**postalCode** | **String** | Postal code of the contact |  [optional] |
+|**city** | **String** | We use the ISO 3166-2:ES standard for provinces [https://es.wikipedia.org/wiki/ISO_3166-2:ES](https://es.wikipedia.org/wiki/ISO_3166-2:ES) |  [optional] |
 |**province** | **String** | We use the ISO 3166-2:ES standard for provinces [https://es.wikipedia.org/wiki/ISO_3166-2:ES](https://es.wikipedia.org/wiki/ISO_3166-2:ES) |  [optional] |
-|**country** | [**CountryEnum**](#CountryEnum) | We use the ISO 3166-1:ES standard for countries, [https://es.wikipedia.org/wiki/ISO_3166-1)](https://es.wikipedia.org/wiki/ISO_3166-1) |  |
+|**country** | [**CountryEnum**](#CountryEnum) | We use the ISO 3166-1:ES standard for countries, [https://es.wikipedia.org/wiki/ISO_3166-1)](https://es.wikipedia.org/wiki/ISO_3166-1) |  [optional] |
 
 
 

@@ -7,8 +7,8 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**reason** | [**ReasonEnum**](#ReasonEnum) | Reason for the corrective action |  |
-|**type** | [**TypeEnum**](#TypeEnum) | Type of corrective action. It can be I (correction for differences) or S (correction by replacement) |  |
+|**reason** | [**ReasonEnum**](#ReasonEnum) | Reason for the corrective action |  [optional] |
+|**type** | [**TypeEnum**](#TypeEnum) | Type of corrective action. It can be I (correction for differences) or S (correction by replacement) |  [optional] |
 
 
 

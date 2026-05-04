@@ -8,8 +8,8 @@ Remittance that is related to the payment
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**id** | **String** | Unique ID of the remittance that is related to the payment |  |
-|**name** | **String** | Name of the remittance that is related to the payment |  |
+|**id** | **String** | Unique ID of the remittance that is related to the payment |  [optional] |
+|**name** | **String** | Name of the remittance that is related to the payment |  [optional] |
 
 
 ## Implemented Interfaces

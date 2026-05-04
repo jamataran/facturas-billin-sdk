@@ -144,7 +144,7 @@ public class PaymentAnswerDtoAccountingAccount implements Serializable {
    * Unique ID of the accounting account that is related to the payment
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -163,7 +163,7 @@ public class PaymentAnswerDtoAccountingAccount implements Serializable {
    * Alias of the accounting account that is related to the payment
    * @return alias
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAlias() {
     return alias;
   }
@@ -182,7 +182,7 @@ public class PaymentAnswerDtoAccountingAccount implements Serializable {
    * Type of the accounting account: bank account, credit card or cash register
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -313,9 +313,6 @@ public class PaymentAnswerDtoAccountingAccount implements Serializable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("alias");
-    openapiRequiredFields.add("type");
   }
 
  /**
@@ -338,25 +335,20 @@ public class PaymentAnswerDtoAccountingAccount implements Serializable {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `PaymentAnswerDtoAccountingAccount` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : PaymentAnswerDtoAccountingAccount.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("alias").isJsonPrimitive()) {
+      if ((jsonObj.get("alias") != null && !jsonObj.get("alias").isJsonNull()) && !jsonObj.get("alias").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `alias` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alias").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
       if ((jsonObj.get("IBAN") != null && !jsonObj.get("IBAN").isJsonNull()) && !jsonObj.get("IBAN").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `IBAN` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IBAN").toString()));
       }

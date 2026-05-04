@@ -90,7 +90,7 @@ public class AuthInfoAnswerDto implements Serializable {
    * Unique ID of user&#39;s account
    * @return userId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getUserId() {
     return userId;
   }
@@ -109,7 +109,7 @@ public class AuthInfoAnswerDto implements Serializable {
    * Unique ID of business&#39;s account
    * @return businessId
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getBusinessId() {
     return businessId;
   }
@@ -128,7 +128,7 @@ public class AuthInfoAnswerDto implements Serializable {
    * The email of the user
    * @return email
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getEmail() {
     return email;
   }
@@ -147,7 +147,7 @@ public class AuthInfoAnswerDto implements Serializable {
    * The name of the business
    * @return fiscalName
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getFiscalName() {
     return fiscalName;
   }
@@ -166,7 +166,7 @@ public class AuthInfoAnswerDto implements Serializable {
    * The VAT Identification number of the business
    * @return vatNumber
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getVatNumber() {
     return vatNumber;
   }
@@ -185,7 +185,7 @@ public class AuthInfoAnswerDto implements Serializable {
    * Role that the user has in the business
    * @return role
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getRole() {
     return role;
   }
@@ -194,6 +194,50 @@ public class AuthInfoAnswerDto implements Serializable {
     this.role = role;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AuthInfoAnswerDto instance itself
+   */
+  public AuthInfoAnswerDto putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -210,12 +254,13 @@ public class AuthInfoAnswerDto implements Serializable {
         Objects.equals(this.email, authInfoAnswerDto.email) &&
         Objects.equals(this.fiscalName, authInfoAnswerDto.fiscalName) &&
         Objects.equals(this.vatNumber, authInfoAnswerDto.vatNumber) &&
-        Objects.equals(this.role, authInfoAnswerDto.role);
+        Objects.equals(this.role, authInfoAnswerDto.role)&&
+        Objects.equals(this.additionalProperties, authInfoAnswerDto.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, businessId, email, fiscalName, vatNumber, role);
+    return Objects.hash(userId, businessId, email, fiscalName, vatNumber, role, additionalProperties);
   }
 
   @Override
@@ -228,6 +273,7 @@ public class AuthInfoAnswerDto implements Serializable {
     sb.append("    fiscalName: ").append(toIndentedString(fiscalName)).append("\n");
     sb.append("    vatNumber: ").append(toIndentedString(vatNumber)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -259,12 +305,6 @@ public class AuthInfoAnswerDto implements Serializable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("userId");
-    openapiRequiredFields.add("businessId");
-    openapiRequiredFields.add("email");
-    openapiRequiredFields.add("fiscalName");
-    openapiRequiredFields.add("vatNumber");
-    openapiRequiredFields.add("role");
   }
 
  /**
@@ -279,38 +319,23 @@ public class AuthInfoAnswerDto implements Serializable {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AuthInfoAnswerDto is not found in the empty JSON string", AuthInfoAnswerDto.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AuthInfoAnswerDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AuthInfoAnswerDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AuthInfoAnswerDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("userId").isJsonPrimitive()) {
+      if ((jsonObj.get("userId") != null && !jsonObj.get("userId").isJsonNull()) && !jsonObj.get("userId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userId").toString()));
       }
-      if (!jsonObj.get("businessId").isJsonPrimitive()) {
+      if ((jsonObj.get("businessId") != null && !jsonObj.get("businessId").isJsonNull()) && !jsonObj.get("businessId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `businessId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("businessId").toString()));
       }
-      if (!jsonObj.get("email").isJsonPrimitive()) {
+      if ((jsonObj.get("email") != null && !jsonObj.get("email").isJsonNull()) && !jsonObj.get("email").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `email` to be a primitive type in the JSON string but got `%s`", jsonObj.get("email").toString()));
       }
-      if (!jsonObj.get("fiscalName").isJsonPrimitive()) {
+      if ((jsonObj.get("fiscalName") != null && !jsonObj.get("fiscalName").isJsonNull()) && !jsonObj.get("fiscalName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `fiscalName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("fiscalName").toString()));
       }
-      if (!jsonObj.get("vatNumber").isJsonPrimitive()) {
+      if ((jsonObj.get("vatNumber") != null && !jsonObj.get("vatNumber").isJsonNull()) && !jsonObj.get("vatNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `vatNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vatNumber").toString()));
       }
-      if (!jsonObj.get("role").isJsonPrimitive()) {
+      if ((jsonObj.get("role") != null && !jsonObj.get("role").isJsonNull()) && !jsonObj.get("role").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `role` to be a primitive type in the JSON string but got `%s`", jsonObj.get("role").toString()));
       }
   }
@@ -330,6 +355,23 @@ public class AuthInfoAnswerDto implements Serializable {
            @Override
            public void write(JsonWriter out, AuthInfoAnswerDto value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -337,7 +379,28 @@ public class AuthInfoAnswerDto implements Serializable {
            public AuthInfoAnswerDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             AuthInfoAnswerDto instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**grantType** | [**GrantTypeEnum**](#GrantTypeEnum) | &#39;client_credentials&#39; is the default value if this field is omitted. &#39;password&#39; value is only allowed for highly trusted applications |  [optional] |
-|**clientId** | **String** |  |  |
+|**clientId** | **String** |  |  [optional] |
 |**clientSecret** | **String** |  |  [optional] |
 |**refreshToken** | **String** |  |  [optional] |
 |**username** | **String** | Required if grantType is &#39;password&#39; |  [optional] |

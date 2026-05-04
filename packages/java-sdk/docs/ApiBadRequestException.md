@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**statusCode** | **BigDecimal** |  |  |
-|**message** | **String** |  |  |
-|**type** | **String** |  |  |
-|**description** | **String** | El documento contiene errores de validación |  |
+|**statusCode** | **BigDecimal** |  |  [optional] |
+|**message** | **String** |  |  [optional] |
+|**type** | **String** |  |  [optional] |
+|**description** | **String** | El documento contiene errores de validación |  [optional] |
 |**errors** | **List&lt;String&gt;** |  |  [optional] |
 
 

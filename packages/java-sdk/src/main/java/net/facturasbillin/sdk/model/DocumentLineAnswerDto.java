@@ -318,7 +318,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Name of the line
    * @return name
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getName() {
     return name;
   }
@@ -375,7 +375,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Quantity
    * @return quantity
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getQuantity() {
     return quantity;
   }
@@ -394,7 +394,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Unit price
    * @return unitPrice
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getUnitPrice() {
     return unitPrice;
   }
@@ -413,7 +413,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Subtotal. It is quantity multiplied by unit price.
    * @return subtotal
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getSubtotal() {
     return subtotal;
   }
@@ -432,7 +432,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Total amount. It is the sum of the subtotal and the tax amount minus the discount amount
    * @return totalAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getTotalAmount() {
     return totalAmount;
   }
@@ -451,7 +451,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Discount percentage
    * @return discountPercentage
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getDiscountPercentage() {
     return discountPercentage;
   }
@@ -470,7 +470,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Amount to be discounted from the price
    * @return discountAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getDiscountAmount() {
     return discountAmount;
   }
@@ -489,7 +489,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Tax key
    * @return taxKey
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Object getTaxKey() {
     return taxKey;
   }
@@ -508,7 +508,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Price without taxes
    * @return taxBase
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getTaxBase() {
     return taxBase;
   }
@@ -527,7 +527,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Tax percentage
    * @return taxPercentage
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getTaxPercentage() {
     return taxPercentage;
   }
@@ -546,7 +546,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Amount tax to be deducted from the price
    * @return taxAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getTaxAmount() {
     return taxAmount;
   }
@@ -565,7 +565,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Sales equivalent tax percentage. In Spain it is called \&quot;Porcentaje de Recargoo de equivalencia\&quot;
    * @return salesEqTaxPercentage
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getSalesEqTaxPercentage() {
     return salesEqTaxPercentage;
   }
@@ -584,7 +584,7 @@ public class DocumentLineAnswerDto implements Serializable {
    * Sales equivalent tax amount. In Spain it is called \&quot;Cantidad de Recargoo de equivalencia\&quot;
    * @return salesEqTaxAmount
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public BigDecimal getSalesEqTaxAmount() {
     return salesEqTaxAmount;
   }
@@ -650,6 +650,50 @@ public class DocumentLineAnswerDto implements Serializable {
     this.operation = operation;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the DocumentLineAnswerDto instance itself
+   */
+  public DocumentLineAnswerDto putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -678,7 +722,8 @@ public class DocumentLineAnswerDto implements Serializable {
         Objects.equals(this.salesEqTaxAmount, documentLineAnswerDto.salesEqTaxAmount) &&
         Objects.equals(this.taxExemptionGroup, documentLineAnswerDto.taxExemptionGroup) &&
         Objects.equals(this.taxExemptionCause, documentLineAnswerDto.taxExemptionCause) &&
-        Objects.equals(this.operation, documentLineAnswerDto.operation);
+        Objects.equals(this.operation, documentLineAnswerDto.operation)&&
+        Objects.equals(this.additionalProperties, documentLineAnswerDto.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -687,7 +732,7 @@ public class DocumentLineAnswerDto implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, description, productId, quantity, unitPrice, subtotal, totalAmount, discountPercentage, discountAmount, taxKey, taxBase, taxPercentage, taxAmount, salesEqTaxPercentage, salesEqTaxAmount, taxExemptionGroup, taxExemptionCause, operation);
+    return Objects.hash(name, description, productId, quantity, unitPrice, subtotal, totalAmount, discountPercentage, discountAmount, taxKey, taxBase, taxPercentage, taxAmount, salesEqTaxPercentage, salesEqTaxAmount, taxExemptionGroup, taxExemptionCause, operation, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -719,6 +764,7 @@ public class DocumentLineAnswerDto implements Serializable {
     sb.append("    taxExemptionGroup: ").append(toIndentedString(taxExemptionGroup)).append("\n");
     sb.append("    taxExemptionCause: ").append(toIndentedString(taxExemptionCause)).append("\n");
     sb.append("    operation: ").append(toIndentedString(operation)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -762,19 +808,6 @@ public class DocumentLineAnswerDto implements Serializable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("name");
-    openapiRequiredFields.add("quantity");
-    openapiRequiredFields.add("unitPrice");
-    openapiRequiredFields.add("subtotal");
-    openapiRequiredFields.add("totalAmount");
-    openapiRequiredFields.add("discountPercentage");
-    openapiRequiredFields.add("discountAmount");
-    openapiRequiredFields.add("taxKey");
-    openapiRequiredFields.add("taxBase");
-    openapiRequiredFields.add("taxPercentage");
-    openapiRequiredFields.add("taxAmount");
-    openapiRequiredFields.add("salesEqTaxPercentage");
-    openapiRequiredFields.add("salesEqTaxAmount");
   }
 
  /**
@@ -789,23 +822,8 @@ public class DocumentLineAnswerDto implements Serializable {
           throw new IllegalArgumentException(String.format("The required field(s) %s in DocumentLineAnswerDto is not found in the empty JSON string", DocumentLineAnswerDto.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!DocumentLineAnswerDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `DocumentLineAnswerDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : DocumentLineAnswerDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("name").isJsonPrimitive()) {
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
@@ -852,6 +870,23 @@ public class DocumentLineAnswerDto implements Serializable {
            @Override
            public void write(JsonWriter out, DocumentLineAnswerDto value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -859,7 +894,28 @@ public class DocumentLineAnswerDto implements Serializable {
            public DocumentLineAnswerDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             DocumentLineAnswerDto instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();

@@ -9,20 +9,20 @@
 |------------ | ------------- | ------------- | -------------|
 |**serieId** | **String** | The id of the serie. If provided together with serialCode, the serieId will be used |  [optional] |
 |**serialCode** | **String** | Serial Code of the document. If provided together with serieId, the serieId will be used |  [optional] |
-|**visualLines** | [**List&lt;VisualLineDto&gt;**](VisualLineDto.md) | Visual Lines of the document |  [optional] |
+|**visualLines** | **List&lt;VisualLineDto&gt;** | Visual Lines of the document |  [optional] |
 |**comments** | **String** | Comments of the document |  [optional] |
-|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  |
+|**currency** | [**CurrencyEnum**](#CurrencyEnum) | Currency used on the document |  [optional] |
 |**isPaid** | **Boolean** | True if the document is paid. In the case of sending this value to true, a payment will be created with the same date and for the total value of the document. |  [optional] |
 |**retentionAmount** | **BigDecimal** | Amount of retention. If this property is set it will override retentionPercentage if it is also set |  [optional] |
 |**retentionPercentage** | **BigDecimal** | Percentage of retention |  [optional] |
-|**identifier** | **String** | Invoice number |  |
-|**issuedDate** | **String** | The date when the documen was issued |  |
+|**identifier** | **String** | Invoice number |  [optional] |
+|**issuedDate** | **String** | The date when the documen was issued |  [optional] |
 |**dueDate** | **String** | Due date of the document |  [optional] |
-|**lines** | [**List&lt;ExpenseLineBaseDto&gt;**](ExpenseLineBaseDto.md) | Lines of the expense |  |
-|**taxLines** | [**List&lt;ExpenseTaxLineBaseDto&gt;**](ExpenseTaxLineBaseDto.md) | Tax lines of the expense. If not provided, they will be calculated from the lines |  [optional] |
-|**total** | [**ExpenseTotalDto**](ExpenseTotalDto.md) |  |  [optional] |
+|**lines** | **List&lt;ExpenseLineBaseDto&gt;** | Lines of the expense |  [optional] |
+|**taxLines** | **List&lt;ExpenseTaxLineBaseDto&gt;** | Tax lines of the expense. If not provided, they will be calculated from the lines |  [optional] |
+|**total** | **ExpenseTotalDto** |  |  [optional] |
 |**category** | [**CategoryEnum**](#CategoryEnum) | Type of the document |  [optional] |
-|**contact** | [**DocumentContactDto**](DocumentContactDto.md) |  |  |
+|**contact** | **DocumentContactDto** |  |  [optional] |
 
 
 

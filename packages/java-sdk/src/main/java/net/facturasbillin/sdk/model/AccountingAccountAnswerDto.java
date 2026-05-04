@@ -179,7 +179,7 @@ public class AccountingAccountAnswerDto implements Serializable {
    * Unique ID of the accounting account
    * @return id
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getId() {
     return id;
   }
@@ -198,7 +198,7 @@ public class AccountingAccountAnswerDto implements Serializable {
    * The date when the accounting account was created
    * @return createdAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getCreatedAt() {
     return createdAt;
   }
@@ -217,7 +217,7 @@ public class AccountingAccountAnswerDto implements Serializable {
    * The date when the accounting account was last updated
    * @return updatedAt
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public OffsetDateTime getUpdatedAt() {
     return updatedAt;
   }
@@ -236,7 +236,7 @@ public class AccountingAccountAnswerDto implements Serializable {
    * Type of the accounting account: bank account, credit card or cash register
    * @return type
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public TypeEnum getType() {
     return type;
   }
@@ -255,7 +255,7 @@ public class AccountingAccountAnswerDto implements Serializable {
    * Name given by the user to be able to identify the account
    * @return alias
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public String getAlias() {
     return alias;
   }
@@ -350,7 +350,7 @@ public class AccountingAccountAnswerDto implements Serializable {
    * Whether the account is automatically connected (true) or manual (false)
    * @return isAutomaticConnected
   **/
-  @javax.annotation.Nonnull
+  @javax.annotation.Nullable
   public Boolean getIsAutomaticConnected() {
     return isAutomaticConnected;
   }
@@ -435,6 +435,50 @@ public class AccountingAccountAnswerDto implements Serializable {
     this.balance = balance;
   }
 
+  /**
+   * A container for additional, undeclared properties.
+   * This is a holder for any undeclared properties as specified with
+   * the 'additionalProperties' keyword in the OAS document.
+   */
+  private Map<String, Object> additionalProperties;
+
+  /**
+   * Set the additional (undeclared) property with the specified name and value.
+   * If the property does not already exist, create it otherwise replace it.
+   *
+   * @param key name of the property
+   * @param value value of the property
+   * @return the AccountingAccountAnswerDto instance itself
+   */
+  public AccountingAccountAnswerDto putAdditionalProperty(String key, Object value) {
+    if (this.additionalProperties == null) {
+        this.additionalProperties = new HashMap<String, Object>();
+    }
+    this.additionalProperties.put(key, value);
+    return this;
+  }
+
+  /**
+   * Return the additional (undeclared) property.
+   *
+   * @return a map of objects
+   */
+  public Map<String, Object> getAdditionalProperties() {
+    return additionalProperties;
+  }
+
+  /**
+   * Return the additional (undeclared) property with the specified name.
+   *
+   * @param key name of the property
+   * @return an object
+   */
+  public Object getAdditionalProperty(String key) {
+    if (this.additionalProperties == null) {
+        return null;
+    }
+    return this.additionalProperties.get(key);
+  }
 
 
   @Override
@@ -459,7 +503,8 @@ public class AccountingAccountAnswerDto implements Serializable {
         Objects.equals(this.lastSync, accountingAccountAnswerDto.lastSync) &&
         Objects.equals(this.pendingReconciliationCount, accountingAccountAnswerDto.pendingReconciliationCount) &&
         Objects.equals(this.bankName, accountingAccountAnswerDto.bankName) &&
-        Objects.equals(this.balance, accountingAccountAnswerDto.balance);
+        Objects.equals(this.balance, accountingAccountAnswerDto.balance)&&
+        Objects.equals(this.additionalProperties, accountingAccountAnswerDto.additionalProperties);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -468,7 +513,7 @@ public class AccountingAccountAnswerDto implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, updatedAt, type, alias, IBAN, swiftCode, creditCardNumber, creditCardExpireDate, isAutomaticConnected, lastSync, pendingReconciliationCount, bankName, balance);
+    return Objects.hash(id, createdAt, updatedAt, type, alias, IBAN, swiftCode, creditCardNumber, creditCardExpireDate, isAutomaticConnected, lastSync, pendingReconciliationCount, bankName, balance, additionalProperties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -496,6 +541,7 @@ public class AccountingAccountAnswerDto implements Serializable {
     sb.append("    pendingReconciliationCount: ").append(toIndentedString(pendingReconciliationCount)).append("\n");
     sb.append("    bankName: ").append(toIndentedString(bankName)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
+    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -535,12 +581,6 @@ public class AccountingAccountAnswerDto implements Serializable {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
-    openapiRequiredFields.add("createdAt");
-    openapiRequiredFields.add("updatedAt");
-    openapiRequiredFields.add("type");
-    openapiRequiredFields.add("alias");
-    openapiRequiredFields.add("isAutomaticConnected");
   }
 
  /**
@@ -555,31 +595,18 @@ public class AccountingAccountAnswerDto implements Serializable {
           throw new IllegalArgumentException(String.format("The required field(s) %s in AccountingAccountAnswerDto is not found in the empty JSON string", AccountingAccountAnswerDto.openapiRequiredFields.toString()));
         }
       }
-
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!AccountingAccountAnswerDto.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `AccountingAccountAnswerDto` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : AccountingAccountAnswerDto.openapiRequiredFields) {
-        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
-        }
-      }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (!jsonObj.get("id").isJsonPrimitive()) {
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
-      if (!jsonObj.get("type").isJsonPrimitive()) {
+      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
       }
-      // validate the required field `type`
-      TypeEnum.validateJsonElement(jsonObj.get("type"));
-      if (!jsonObj.get("alias").isJsonPrimitive()) {
+      // validate the optional field `type`
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+        TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
+      if ((jsonObj.get("alias") != null && !jsonObj.get("alias").isJsonNull()) && !jsonObj.get("alias").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `alias` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alias").toString()));
       }
       if ((jsonObj.get("IBAN") != null && !jsonObj.get("IBAN").isJsonNull()) && !jsonObj.get("IBAN").isJsonPrimitive()) {
@@ -617,6 +644,23 @@ public class AccountingAccountAnswerDto implements Serializable {
            @Override
            public void write(JsonWriter out, AccountingAccountAnswerDto value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
+             obj.remove("additionalProperties");
+             // serialize additional properties
+             if (value.getAdditionalProperties() != null) {
+               for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
+                 if (entry.getValue() instanceof String)
+                   obj.addProperty(entry.getKey(), (String) entry.getValue());
+                 else if (entry.getValue() instanceof Number)
+                   obj.addProperty(entry.getKey(), (Number) entry.getValue());
+                 else if (entry.getValue() instanceof Boolean)
+                   obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
+                 else if (entry.getValue() instanceof Character)
+                   obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else {
+                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                 }
+               }
+             }
              elementAdapter.write(out, obj);
            }
 
@@ -624,7 +668,28 @@ public class AccountingAccountAnswerDto implements Serializable {
            public AccountingAccountAnswerDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
              validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             JsonObject jsonObj = jsonElement.getAsJsonObject();
+             // store additional fields in the deserialized instance
+             AccountingAccountAnswerDto instance = thisAdapter.fromJsonTree(jsonObj);
+             for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
+               if (!openapiFields.contains(entry.getKey())) {
+                 if (entry.getValue().isJsonPrimitive()) { // primitive type
+                   if (entry.getValue().getAsJsonPrimitive().isString())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
+                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
+                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
+                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
+                   else
+                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
+                 } else if (entry.getValue().isJsonArray()) {
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
+                 } else { // JSON object
+                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 }
+               }
+             }
+             return instance;
            }
 
        }.nullSafe();
