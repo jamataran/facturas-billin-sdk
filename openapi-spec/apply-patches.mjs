@@ -1,6 +1,11 @@
 #!/usr/bin/env node
-// Post-process the swagger.json synced from Billin so the generated SDK is
-// tolerant to mismatches between the spec and the live API.
+// Post-process the swagger.json synced from Billin into a separate file
+// (swagger.patched.json) so the generated SDK is tolerant to mismatches
+// between the spec and the live API — without ever mutating swagger.json.
+//
+// Keeping swagger.json untouched preserves traceability of upstream changes
+// (a clean diff against Billin's published spec). Generators consume the
+// patched file instead.
 //
 // Two passes, both idempotent:
 //
@@ -21,22 +26,28 @@
 //      skips that block, so new fields the API adds without bumping the
 //      spec just get ignored instead of crashing the SDK.
 //
+// Note: extra runtime tolerance for type mismatches (e.g. the API returning
+// `[]` where an object is expected) is implemented separately via the
+// Mustache template overrides under packages/java-sdk/templates/. These two
+// layers — spec patch + template override — are independent and complementary.
+//
 // Usage:
-//   node openapi-spec/apply-patches.mjs            # patch in-place
-//   node openapi-spec/apply-patches.mjs --check    # exit 1 if not patched
+//   node openapi-spec/apply-patches.mjs            # write swagger.patched.json
+//   node openapi-spec/apply-patches.mjs --check    # exit 1 if patched file is stale or missing
 //
 // This script is wired into `npm run generate:java` so manual invocation
 // is only needed if you want to inspect the diff before regenerating.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const specPath = join(here, 'swagger.json');
+const sourcePath = join(here, 'swagger.json');
+const targetPath = join(here, 'swagger.patched.json');
 const checkOnly = process.argv.includes('--check');
 
-const original = readFileSync(specPath, 'utf-8');
+const original = readFileSync(sourcePath, 'utf-8');
 const spec = JSON.parse(original);
 
 let droppedRequired = 0;
@@ -56,23 +67,27 @@ for (const schema of Object.values(schemas)) {
 }
 
 const patched = JSON.stringify(spec, null, 2) + '\n';
-const changed = patched !== original;
+const existing = existsSync(targetPath) ? readFileSync(targetPath, 'utf-8') : null;
+const changed = patched !== existing;
 
 if (checkOnly) {
   if (changed) {
-    console.error('swagger.json has not been patched. Run: npm run patch:spec');
+    console.error(
+      'swagger.patched.json is missing or stale. Run: npm run patch:spec'
+    );
     process.exit(1);
   }
-  console.log('swagger.json is already patched.');
+  console.log('swagger.patched.json is up to date.');
   process.exit(0);
 }
 
 if (changed) {
-  writeFileSync(specPath, patched);
+  writeFileSync(targetPath, patched);
 }
 
 console.log(
   `apply-patches: dropped ${droppedRequired} required entries, ` +
   `added additionalProperties:true on ${addedAdditionalProps} schemas ` +
-  `(${changed ? 'spec rewritten' : 'no changes — already patched'}).`
+  `(${changed ? 'swagger.patched.json rewritten' : 'no changes — already up to date'}). ` +
+  `swagger.json was not modified.`
 );

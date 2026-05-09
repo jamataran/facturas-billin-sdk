@@ -180,10 +180,15 @@
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <version>7.2.0</version>
                 <configuration>
-                    <inputSpec>${project.basedir}/../../openapi-spec/swagger.json</inputSpec>
+                    <!-- Consume the patched spec so we never mutate the upstream swagger.json.
+                         apply-patches.mjs (run via `npm run patch:spec`) produces this file. -->
+                    <inputSpec>${project.basedir}/../../openapi-spec/swagger.patched.json</inputSpec>
                     <generatorName>java</generatorName>
                     <library>okhttp-gson</library>
                     <configurationFile>${project.basedir}/openapi-generator-config.yaml</configurationFile>
+                    <!-- Mustache overrides: tolerate API shape mismatches at runtime
+                         (e.g. `[]` returned where an object is expected). -->
+                    <templateDirectory>${project.basedir}/templates</templateDirectory>
                     <output>${project.basedir}</output>
                     <apiPackage>net.facturasbillin.sdk.api</apiPackage>
                     <modelPackage>net.facturasbillin.sdk.model</modelPackage>
