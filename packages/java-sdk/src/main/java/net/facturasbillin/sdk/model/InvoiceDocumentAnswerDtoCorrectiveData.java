@@ -268,17 +268,28 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
   }
 
  /**
-  * Validates the JSON Element and throws an exception if issues found
+  * Validates the JSON Element. Made tolerant via the SDK template override:
+  * any non-object payload (e.g. the API returning {@code []} where the spec
+  * says object) is silently ignored, and field-level type mismatches are
+  * swallowed, so a malformed field never crashes the whole DTO.
   *
   * @param jsonElement JSON Element
   * @throws IOException if the JSON Element is invalid with respect to InvoiceDocumentAnswerDtoCorrectiveData
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
+      if (jsonElement == null || jsonElement.isJsonNull()) {
         if (!InvoiceDocumentAnswerDtoCorrectiveData.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InvoiceDocumentAnswerDtoCorrectiveData is not found in the empty JSON string", InvoiceDocumentAnswerDtoCorrectiveData.openapiRequiredFields.toString()));
         }
+        return;
       }
+      // SDK tolerance: when the API returns a shape other than a JSON object
+      // (e.g. an empty array []), do not crash deserialization. The reflective
+      // adapter will leave the field null and the caller can handle absence.
+      if (!jsonElement.isJsonObject()) {
+        return;
+      }
+      try {
 
       Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
       // check to see if the JSON string contains additional fields
@@ -288,19 +299,19 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) && !jsonObj.get("reason").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `reason` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reason").toString()));
-      }
       // validate the optional field `reason`
-      if (jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull()) {
+      if (jsonObj.get("reason") != null && !jsonObj.get("reason").isJsonNull() && jsonObj.get("reason").isJsonPrimitive()) {
         ReasonEnum.validateJsonElement(jsonObj.get("reason"));
       }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull() && jsonObj.get("type").isJsonPrimitive()) {
         TypeEnum.validateJsonElement(jsonObj.get("type"));
+      }
+      } catch (RuntimeException ignored) {
+        // SDK tolerance: per-field validation failures (unknown keys, wrong
+        // primitive types, etc.) must not crash the whole response. The
+        // reflective Gson adapter that runs next will leave problematic
+        // fields null when conversion is impossible.
       }
   }
 
@@ -325,8 +336,23 @@ public class InvoiceDocumentAnswerDtoCorrectiveData implements Serializable {
            @Override
            public InvoiceDocumentAnswerDtoCorrectiveData read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
+             // SDK tolerance: API may return a non-object shape (commonly `[]`)
+             // where the spec declares this type. Don't crash — return null.
+             if (jsonElement == null || jsonElement.isJsonNull() || !jsonElement.isJsonObject()) {
+               return null;
+             }
+             try {
+               validateJsonElement(jsonElement);
+             } catch (RuntimeException ignored) {
+               // SDK tolerance: validation already swallows internally, but
+               // belt-and-braces in case a future change throws unexpectedly.
+             }
+             try {
+               return thisAdapter.fromJsonTree(jsonElement);
+             } catch (RuntimeException ignored) {
+               // SDK tolerance: a single misshapen field shouldn't crash the response.
+               return null;
+             }
            }
 
        }.nullSafe();

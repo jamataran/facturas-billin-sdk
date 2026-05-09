@@ -584,48 +584,38 @@ public class AccountingAccountAnswerDto implements Serializable {
   }
 
  /**
-  * Validates the JSON Element and throws an exception if issues found
+  * Validates the JSON Element. Made tolerant via the SDK template override:
+  * any non-object payload (e.g. the API returning {@code []} where the spec
+  * says object) is silently ignored, and field-level type mismatches are
+  * swallowed, so a malformed field never crashes the whole DTO.
   *
   * @param jsonElement JSON Element
   * @throws IOException if the JSON Element is invalid with respect to AccountingAccountAnswerDto
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
+      if (jsonElement == null || jsonElement.isJsonNull()) {
         if (!AccountingAccountAnswerDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in AccountingAccountAnswerDto is not found in the empty JSON string", AccountingAccountAnswerDto.openapiRequiredFields.toString()));
         }
+        return;
       }
+      // SDK tolerance: when the API returns a shape other than a JSON object
+      // (e.g. an empty array []), do not crash deserialization. The reflective
+      // adapter will leave the field null and the caller can handle absence.
+      if (!jsonElement.isJsonObject()) {
+        return;
+      }
+      try {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
       // validate the optional field `type`
-      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) {
+      if (jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull() && jsonObj.get("type").isJsonPrimitive()) {
         TypeEnum.validateJsonElement(jsonObj.get("type"));
       }
-      if ((jsonObj.get("alias") != null && !jsonObj.get("alias").isJsonNull()) && !jsonObj.get("alias").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `alias` to be a primitive type in the JSON string but got `%s`", jsonObj.get("alias").toString()));
-      }
-      if ((jsonObj.get("IBAN") != null && !jsonObj.get("IBAN").isJsonNull()) && !jsonObj.get("IBAN").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `IBAN` to be a primitive type in the JSON string but got `%s`", jsonObj.get("IBAN").toString()));
-      }
-      if ((jsonObj.get("swiftCode") != null && !jsonObj.get("swiftCode").isJsonNull()) && !jsonObj.get("swiftCode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `swiftCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("swiftCode").toString()));
-      }
-      if ((jsonObj.get("creditCardNumber") != null && !jsonObj.get("creditCardNumber").isJsonNull()) && !jsonObj.get("creditCardNumber").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creditCardNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creditCardNumber").toString()));
-      }
-      if ((jsonObj.get("creditCardExpireDate") != null && !jsonObj.get("creditCardExpireDate").isJsonNull()) && !jsonObj.get("creditCardExpireDate").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `creditCardExpireDate` to be a primitive type in the JSON string but got `%s`", jsonObj.get("creditCardExpireDate").toString()));
-      }
-      if ((jsonObj.get("lastSync") != null && !jsonObj.get("lastSync").isJsonNull()) && !jsonObj.get("lastSync").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `lastSync` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lastSync").toString()));
-      }
-      if ((jsonObj.get("bankName") != null && !jsonObj.get("bankName").isJsonNull()) && !jsonObj.get("bankName").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `bankName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("bankName").toString()));
+      } catch (RuntimeException ignored) {
+        // SDK tolerance: per-field validation failures (unknown keys, wrong
+        // primitive types, etc.) must not crash the whole response. The
+        // reflective Gson adapter that runs next will leave problematic
+        // fields null when conversion is impossible.
       }
   }
 
@@ -656,8 +646,15 @@ public class AccountingAccountAnswerDto implements Serializable {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else if (entry.getValue() == null)
+                   obj.add(entry.getKey(), null);
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement tree = gson.toJsonTree(entry.getValue());
+                   if (tree.isJsonObject()) {
+                     obj.add(entry.getKey(), tree.getAsJsonObject());
+                   } else {
+                     obj.add(entry.getKey(), tree);
+                   }
                  }
                }
              }
@@ -667,25 +664,53 @@ public class AccountingAccountAnswerDto implements Serializable {
            @Override
            public AccountingAccountAnswerDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
+             // SDK tolerance: API may return a non-object shape (commonly `[]`)
+             // where the spec declares this type. Don't crash — return null.
+             if (jsonElement == null || jsonElement.isJsonNull() || !jsonElement.isJsonObject()) {
+               return null;
+             }
+             try {
+               validateJsonElement(jsonElement);
+             } catch (RuntimeException ignored) {
+               // SDK tolerance: validation already swallows internally, but
+               // belt-and-braces in case a future change throws unexpectedly.
+             }
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             AccountingAccountAnswerDto instance = thisAdapter.fromJsonTree(jsonObj);
+             AccountingAccountAnswerDto instance;
+             try {
+               instance = thisAdapter.fromJsonTree(jsonObj);
+             } catch (RuntimeException ignored) {
+               // SDK tolerance: a single field with a wildly wrong shape can
+               // make the reflective adapter throw. Better to lose the DTO
+               // than to crash the entire API call.
+               return null;
+             }
+             if (instance == null) {
+               return null;
+             }
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 try {
+                   JsonElement value = entry.getValue();
+                   if (value == null || value.isJsonNull()) {
+                     instance.putAdditionalProperty(entry.getKey(), null);
+                   } else if (value.isJsonPrimitive()) { // primitive type
+                     if (value.getAsJsonPrimitive().isString())
+                       instance.putAdditionalProperty(entry.getKey(), value.getAsString());
+                     else if (value.getAsJsonPrimitive().isNumber())
+                       instance.putAdditionalProperty(entry.getKey(), value.getAsNumber());
+                     else if (value.getAsJsonPrimitive().isBoolean())
+                       instance.putAdditionalProperty(entry.getKey(), value.getAsBoolean());
+                     else
+                       instance.putAdditionalProperty(entry.getKey(), value.toString());
+                   } else if (value.isJsonArray()) {
+                       instance.putAdditionalProperty(entry.getKey(), gson.fromJson(value, List.class));
+                   } else { // JSON object
+                       instance.putAdditionalProperty(entry.getKey(), gson.fromJson(value, HashMap.class));
+                   }
+                 } catch (RuntimeException ignored) {
+                   // SDK tolerance: skip additional properties that can't be deserialized.
                  }
                }
              }

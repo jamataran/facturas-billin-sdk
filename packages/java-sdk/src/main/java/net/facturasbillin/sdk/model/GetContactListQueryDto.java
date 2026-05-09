@@ -332,25 +332,36 @@ public class GetContactListQueryDto implements Serializable {
   }
 
  /**
-  * Validates the JSON Element and throws an exception if issues found
+  * Validates the JSON Element. Made tolerant via the SDK template override:
+  * any non-object payload (e.g. the API returning {@code []} where the spec
+  * says object) is silently ignored, and field-level type mismatches are
+  * swallowed, so a malformed field never crashes the whole DTO.
   *
   * @param jsonElement JSON Element
   * @throws IOException if the JSON Element is invalid with respect to GetContactListQueryDto
   */
   public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
+      if (jsonElement == null || jsonElement.isJsonNull()) {
         if (!GetContactListQueryDto.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in GetContactListQueryDto is not found in the empty JSON string", GetContactListQueryDto.openapiRequiredFields.toString()));
         }
+        return;
       }
+      // SDK tolerance: when the API returns a shape other than a JSON object
+      // (e.g. an empty array []), do not crash deserialization. The reflective
+      // adapter will leave the field null and the caller can handle absence.
+      if (!jsonElement.isJsonObject()) {
+        return;
+      }
+      try {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("fields") != null && !jsonObj.get("fields").isJsonNull() && !jsonObj.get("fields").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `fields` to be an array in the JSON string but got `%s`", jsonObj.get("fields").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("customSearchFields") != null && !jsonObj.get("customSearchFields").isJsonNull() && !jsonObj.get("customSearchFields").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `customSearchFields` to be an array in the JSON string but got `%s`", jsonObj.get("customSearchFields").toString()));
+      // SDK tolerance: optional array fields tolerate non-array shapes silently
+      // SDK tolerance: optional array fields tolerate non-array shapes silently
+      } catch (RuntimeException ignored) {
+        // SDK tolerance: per-field validation failures (unknown keys, wrong
+        // primitive types, etc.) must not crash the whole response. The
+        // reflective Gson adapter that runs next will leave problematic
+        // fields null when conversion is impossible.
       }
   }
 
@@ -381,8 +392,15 @@ public class GetContactListQueryDto implements Serializable {
                    obj.addProperty(entry.getKey(), (Boolean) entry.getValue());
                  else if (entry.getValue() instanceof Character)
                    obj.addProperty(entry.getKey(), (Character) entry.getValue());
+                 else if (entry.getValue() == null)
+                   obj.add(entry.getKey(), null);
                  else {
-                   obj.add(entry.getKey(), gson.toJsonTree(entry.getValue()).getAsJsonObject());
+                   JsonElement tree = gson.toJsonTree(entry.getValue());
+                   if (tree.isJsonObject()) {
+                     obj.add(entry.getKey(), tree.getAsJsonObject());
+                   } else {
+                     obj.add(entry.getKey(), tree);
+                   }
                  }
                }
              }
@@ -392,25 +410,53 @@ public class GetContactListQueryDto implements Serializable {
            @Override
            public GetContactListQueryDto read(JsonReader in) throws IOException {
              JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
+             // SDK tolerance: API may return a non-object shape (commonly `[]`)
+             // where the spec declares this type. Don't crash — return null.
+             if (jsonElement == null || jsonElement.isJsonNull() || !jsonElement.isJsonObject()) {
+               return null;
+             }
+             try {
+               validateJsonElement(jsonElement);
+             } catch (RuntimeException ignored) {
+               // SDK tolerance: validation already swallows internally, but
+               // belt-and-braces in case a future change throws unexpectedly.
+             }
              JsonObject jsonObj = jsonElement.getAsJsonObject();
              // store additional fields in the deserialized instance
-             GetContactListQueryDto instance = thisAdapter.fromJsonTree(jsonObj);
+             GetContactListQueryDto instance;
+             try {
+               instance = thisAdapter.fromJsonTree(jsonObj);
+             } catch (RuntimeException ignored) {
+               // SDK tolerance: a single field with a wildly wrong shape can
+               // make the reflective adapter throw. Better to lose the DTO
+               // than to crash the entire API call.
+               return null;
+             }
+             if (instance == null) {
+               return null;
+             }
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
-                 if (entry.getValue().isJsonPrimitive()) { // primitive type
-                   if (entry.getValue().getAsJsonPrimitive().isString())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsString());
-                   else if (entry.getValue().getAsJsonPrimitive().isNumber())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsNumber());
-                   else if (entry.getValue().getAsJsonPrimitive().isBoolean())
-                     instance.putAdditionalProperty(entry.getKey(), entry.getValue().getAsBoolean());
-                   else
-                     throw new IllegalArgumentException(String.format("The field `%s` has unknown primitive type. Value: %s", entry.getKey(), entry.getValue().toString()));
-                 } else if (entry.getValue().isJsonArray()) {
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), List.class));
-                 } else { // JSON object
-                     instance.putAdditionalProperty(entry.getKey(), gson.fromJson(entry.getValue(), HashMap.class));
+                 try {
+                   JsonElement value = entry.getValue();
+                   if (value == null || value.isJsonNull()) {
+                     instance.putAdditionalProperty(entry.getKey(), null);
+                   } else if (value.isJsonPrimitive()) { // primitive type
+                     if (value.getAsJsonPrimitive().isString())
+                       instance.putAdditionalProperty(entry.getKey(), value.getAsString());
+                     else if (value.getAsJsonPrimitive().isNumber())
+                       instance.putAdditionalProperty(entry.getKey(), value.getAsNumber());
+                     else if (value.getAsJsonPrimitive().isBoolean())
+                       instance.putAdditionalProperty(entry.getKey(), value.getAsBoolean());
+                     else
+                       instance.putAdditionalProperty(entry.getKey(), value.toString());
+                   } else if (value.isJsonArray()) {
+                       instance.putAdditionalProperty(entry.getKey(), gson.fromJson(value, List.class));
+                   } else { // JSON object
+                       instance.putAdditionalProperty(entry.getKey(), gson.fromJson(value, HashMap.class));
+                   }
+                 } catch (RuntimeException ignored) {
+                   // SDK tolerance: skip additional properties that can't be deserialized.
                  }
                }
              }
